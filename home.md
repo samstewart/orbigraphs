@@ -1,4 +1,5 @@
-Hello World
-===========
+Research in Orbigraphs
+======================
 
-This is where we're going to do math.
+This wiki contains results and notes regarding ongoing research at Lewis & Clark college on the subject of [[Orbigraphs | Orbigraph]].
+

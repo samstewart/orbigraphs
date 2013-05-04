@@ -1,3 +1,6 @@
+Orbigraph
+========
+
 A \\(k\\)-Orbigraph is a [[Graph]] such that the adjacency matrix \\(A\\) has the following properties:
 
 - Each entry is a non-negative integer.

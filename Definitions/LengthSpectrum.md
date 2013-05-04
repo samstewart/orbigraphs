@@ -1,7 +1,7 @@
 Length Spectrum
 ===============
 
-If \\(G\\) is a [[Graph]], then the **Length Spectrum** of \\(G\\), denoted \\(\mathcal{C}(G)\\), is the sequence \\(l_n\\) that counts the number of cycles in \\(G\\) of length \\(n\\).
+If \\(G\\) is a [[Graph]], then the **length spectrum** of \\(G\\), denoted \\(\mathcal{C}(G)\\), is the sequence \\(l_n\\) that counts the number of cycles in \\(G\\) of length \\(n\\).
 
 Notes
 -----

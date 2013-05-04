@@ -5,4 +5,4 @@ A \\(k\\)-Orbigraph is a [[Graph]] such that the adjacency matrix \\(A\\) has th
 
 - Each entry is a non-negative integer.
 - The sum of each row is \\(k\\).
-- If \\(A_{ij}\\) is non-zero then so is \\(A_{ji}\\)
+- If \\(A_{ij}\\) is non-zero then so is \\(A_{ji}\\).

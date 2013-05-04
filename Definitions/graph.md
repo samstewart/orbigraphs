@@ -1,0 +1,1 @@
+A Graph is a pair (V, E) such that V is a set of vertices and E is a subset of VxV.

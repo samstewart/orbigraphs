@@ -10,26 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     34051,        846]
-NotebookOptionsPosition[     33242,        814]
-NotebookOutlinePosition[     33597,        830]
-CellTagsIndexPosition[     33554,        827]
+NotebookDataLength[     34088,        844]
+NotebookOptionsPosition[     33279,        812]
+NotebookOutlinePosition[     33634,        828]
+CellTagsIndexPosition[     33591,        825]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["\<\
-The Sunada Theorem for Good Orbigraphs\
-\>", "Title",
+Cell["The Sunada Theorem for Good Orbigraphs", "Title",
  CellChangeTimes->{{3.5767730312317257`*^9, 3.5767730516366577`*^9}}],
 
 Cell["\<\
-This notebook gives an example that gives evidence that an analog for the \
-Sunada condition holds for (at least) good Orbigraphs.\
+This notebook gives an example that gives evidence that an analog of Sunada\
+\[CloseCurlyQuote]s theorem holds for (at least) good Orbigraphs.\
 \>", "Text",
- CellChangeTimes->{{3.576773065394801*^9, 3.576773090057016*^9}}],
+ CellChangeTimes->{{3.576773065394801*^9, 3.576773090057016*^9}, {
+  3.576777666324108*^9, 3.576777670651787*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -43,19 +42,18 @@ Cell[BoxData[{
   3.5767156792646933`*^9}}],
 
 Cell[TextData[{
- "The following groups (from Sunada ___) are subgroups of ",
+ "The following groups (from Sunada 1985) are subgroups of ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["S", "6"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SubscriptBox["S", "6"], TraditionalForm]]],
  " which acts on ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["K", "6"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SubscriptBox["K", "6"], TraditionalForm]]],
  " by automorphisms."
 }], "Text",
- CellChangeTimes->{{3.576772875941194*^9, 3.576772910477948*^9}}],
+ CellChangeTimes->{{3.576772875941194*^9, 3.576772910477948*^9}, {
+  3.576777685617133*^9, 3.576777686585319*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -474,7 +472,7 @@ Cell[BoxData[
            TrackedSymbols :> {$CellContext`flag}},
           
           ImageSizeCache->{{-0.13058224679153874`, 
-           155.56680445670995`}, {-111.38016367064012`, 106.2393066909899}}],
+           155.56680445670995`}, {-111.38016367064014`, 106.2393066909899}}],
          MouseAppearanceTag["NetworkGraphics"]],
         AllowKernelInitialization->False,
         UnsavedVariables:>{$CellContext`flag}]],
@@ -830,22 +828,22 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 133, 3, 92, "Title"],
-Cell[715, 27, 220, 4, 30, "Text"],
-Cell[938, 33, 383, 9, 46, "Input"],
-Cell[1324, 44, 408, 13, 32, "Text"],
-Cell[1735, 59, 1951, 59, 182, "Input"],
-Cell[3689, 120, 156, 3, 30, "Text"],
+Cell[579, 22, 125, 1, 92, "Title"],
+Cell[707, 25, 281, 5, 30, "Text"],
+Cell[991, 32, 383, 9, 46, "Input"],
+Cell[1377, 43, 392, 12, 32, "Text"],
+Cell[1772, 57, 1951, 59, 182, "Input"],
+Cell[3726, 118, 156, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[3870, 127, 220, 5, 28, "Input"],
-Cell[4093, 134, 168, 2, 28, "Output"]
+Cell[3907, 125, 220, 5, 28, "Input"],
+Cell[4130, 132, 168, 2, 28, "Output"]
 }, Open  ]],
-Cell[4276, 139, 277, 8, 32, "Text"],
-Cell[4556, 149, 573, 16, 63, "Input"],
-Cell[5132, 167, 294, 8, 32, "Text"],
+Cell[4313, 137, 277, 8, 32, "Text"],
+Cell[4593, 147, 573, 16, 63, "Input"],
+Cell[5169, 165, 294, 8, 32, "Text"],
 Cell[CellGroupData[{
-Cell[5451, 179, 1055, 28, 46, "Input"],
-Cell[6509, 209, 26705, 601, 453, "Output"]
+Cell[5488, 177, 1055, 28, 46, "Input"],
+Cell[6546, 207, 26705, 601, 453, "Output"]
 }, Open  ]]
 }, Open  ]]
 }

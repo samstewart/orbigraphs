@@ -1,0 +1,541 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     21234,        532]
+NotebookOptionsPosition[     20540,        505]
+NotebookOutlinePosition[     20973,        522]
+CellTagsIndexPosition[     20930,        519]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cospectral Bad Orbigraphs", "Title",
+ CellChangeTimes->{{3.576773138578809*^9, 3.576773143475246*^9}}],
+
+Cell["\<\
+This notebook shows an example of two non-isomorphic bad orbigraphs that are \
+cospectral.\
+\>", "Text",
+ CellChangeTimes->{{3.576773106080261*^9, 3.576773149036928*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "\"\<Orbigraphs.m\>\""}]}], "Input"],
+
+Cell["\<\
+Find all the 6-orbigraphs on 3 vertices.\
+\>", "Text",
+ CellChangeTimes->{{3.57677315615394*^9, 3.576773165170354*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bad36", "=", 
+   RowBox[{"SurelyBadOrbigraphs", "[", 
+    RowBox[{"3", ",", "6"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.574090904954562*^9, 3.5740909353442698`*^9}, {
+  3.574091031960855*^9, 3.574091043984413*^9}, {3.574102904226465*^9, 
+  3.5741029083090353`*^9}}],
+
+Cell[TextData[{
+ "Group the orbigraphs by spectrum and filter out the isomorphic graphs from \
+the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["3", "rd"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " group. After filtering, there are two non-isomorphic graphs remaining."
+}], "Text",
+ CellChangeTimes->{{3.576773168925105*^9, 3.5767732132585087`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nonisomorphic", "=", 
+   RowBox[{"DeleteIsomorphicGraphs", "[", 
+    RowBox[{"AdjacencyOrbigraph", "/@", 
+     RowBox[{
+      RowBox[{"GatherBy", "[", 
+       RowBox[{"bad36", ",", "Eigenvalues"}], "]"}], "[", 
+      RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.574093770328109*^9, 3.574093830682909*^9}, {
+   3.574093904019281*^9, 3.574093918803227*^9}, {3.574094174905463*^9, 
+   3.574094193161528*^9}, {3.576772328549467*^9, 3.576772350012163*^9}, 
+   3.576772476364792*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#", ",", 
+       RowBox[{"TableForm", "[", 
+        RowBox[{
+         RowBox[{"OrbigraphSpectrum", "[", "#", "]"}], ",", 
+         RowBox[{"TableAlignments", "\[Rule]", "Center"}]}], "]"}]}], "}"}], 
+     "&"}], "/@", "nonisomorphic"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.576772575386702*^9, 3.5767726076932*^9}, {
+  3.5767732484495564`*^9, 3.5767732715988693`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 3}, {
+          SparseArray[
+           Automatic, {3, 3}, 0, {
+            1, {{0, 2, 5, 8}, {{2}, {3}, {1}, {2}, {3}, {1}, {2}, {3}}}, {1, 
+             1, 1, 1, 1, 1, 1, 1}}], Null}, {
+          EdgeLabels -> {"EdgeWeight"}, 
+           EdgeWeight -> {5, 1, 1, 3, 2, 2, 3, 1}}]], Typeset`boxes, 
+        Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Arrowheads[0.04158219578146897], 
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.6142573696809985, 0.5102397598812024}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$1"], 
+            InsetBox[
+             FormBox["\"5\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$1", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.1137092818331808, 0.35673507828119033`}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$2"], 
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$2", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.8826585025027763, 0.3540051804647464}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$3"], 
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$3", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.981970912857964, 1.0737732572347456`}, {1.126532110476953, 
+                1.2215407947194983`}, {1.2661872339094185`, 
+                1.233572060901945}, {1.4532513612710862`, 
+                0.9068946274612545}, {1.3721904176215585`, 
+                0.7925380435601159}, {1.1715801137970816`, 
+                0.7426512618359438}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$4"], 
+            
+            InsetBox[
+             FormBox["\"3\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$4", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.49944556895469644`, 0.7107402587459368}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$5"], 
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$5", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$3", Automatic, Center], {
+                0.3832129335480799, 0.5110599453486782}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$6"], 
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$6", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$3", Automatic, Center], {
+                0.5005480878478179, 1.0212997052298805`}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$7"], 
+            InsetBox[
+             FormBox["\"3\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$7", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation[
+                "VertexID$3", Automatic, Center], {-0.1724454776055367, 
+                0.747422717300957}, {-0.37269651588156283`, 
+                0.7987326253180023}, {-0.4529434556078141, 
+                0.9136618797811782}, {-0.26356455135602697`, 
+                1.2390028761056062`}, {-0.12399837325238695`, 
+                1.22598032656901}, {0.019509993581533297`, 
+                1.0771900928841167`}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$8"], 
+            
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$8", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            DiskBox[{0.4969222153812606, 0.}, 0.012729919251096006`], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           TagBox[
+            
+            DiskBox[{0.9999936568025142, 0.8642449403459487}, 
+             0.012729919251096006`], "DynamicName", BoxID -> "VertexID$2"], 
+           TagBox[
+            DiskBox[{0., 0.8677950236298684}, 0.012729919251096006`], 
+            "DynamicName", BoxID -> "VertexID$3"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{-0.2393066909899062, 
+           178.2393066909899}, {-63.23930669098991, 56.51754432866277}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None], 
+     TagBox[
+      TagBox[GridBox[{
+         {"6"},
+         {
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "\[ImaginaryI]"}]},
+         {
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "\[ImaginaryI]"}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.5599999999999999]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       Column],
+      Function[BoxForm`e$, 
+       TableForm[BoxForm`e$, TableAlignments -> Center]]]},
+    {
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 3}, {
+          SparseArray[
+           Automatic, {3, 3}, 0, {
+            1, {{0, 3, 6, 9}, {{1}, {2}, {3}, {1}, {2}, {3}, {1}, {2}, {
+              3}}}, {1, 1, 1, 1, 1, 1, 1, 1, 1}}], Null}, {
+          EdgeLabels -> {"EdgeWeight"}, 
+           EdgeWeight -> {1, 4, 1, 1, 2, 3, 2, 3, 1}}]], Typeset`boxes, 
+        Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Arrowheads[0.04158219578146897], 
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.6873904251757703, -0.08915602018494104}, {
+                0.7430802511242329, -0.2882334630989339}, {
+                0.6836720610015965, -0.4151939759099758}, {
+                0.30722904122918515`, -0.413857514310497}, {
+                0.2487238169004704, -0.2864783810384543}, {
+                0.3058257650517279, -0.08780137555297982}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$1"], 
+            
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$1", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.6142573696809985, 0.5102397598812024}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$2"], 
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$2", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.1137092818331808, 0.35673507828119033`}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$3"], 
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$3", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.8826585025027763, 0.3540051804647464}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$4"], 
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$4", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.981970912857964, 1.0737732572347456`}, {1.126532110476953, 
+                1.2215407947194983`}, {1.2661872339094185`, 
+                1.233572060901945}, {1.4532513612710862`, 
+                0.9068946274612545}, {1.3721904176215585`, 
+                0.7925380435601159}, {1.1715801137970816`, 
+                0.7426512618359438}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$5"], 
+            
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$5", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.49944556895469644`, 0.7107402587459368}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$6"], 
+            InsetBox[
+             FormBox["\"3\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$6", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$3", Automatic, Center], {
+                0.3832129335480799, 0.5110599453486782}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$7"], 
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$7", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$3", Automatic, Center], {
+                0.5005480878478179, 1.0212997052298805`}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$8"], 
+            InsetBox[
+             FormBox["\"3\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$8", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation[
+                "VertexID$3", Automatic, Center], {-0.1724454776055367, 
+                0.747422717300957}, {-0.37269651588156283`, 
+                0.7987326253180023}, {-0.4529434556078141, 
+                0.9136618797811782}, {-0.26356455135602697`, 
+                1.2390028761056062`}, {-0.12399837325238695`, 
+                1.22598032656901}, {0.019509993581533297`, 
+                1.0771900928841167`}, 
+                DynamicLocation["VertexID$3", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$9"], 
+            
+            InsetBox[
+             FormBox["\"1\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$9", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            DiskBox[{0.4969222153812606, 0.}, 0.012729919251096006`], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           TagBox[
+            
+            DiskBox[{0.9999936568025142, 0.8642449403459487}, 
+             0.012729919251096006`], "DynamicName", BoxID -> "VertexID$2"], 
+           TagBox[
+            DiskBox[{0., 0.8677950236298684}, 0.012729919251096006`], 
+            "DynamicName", BoxID -> "VertexID$3"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{-0.23930669098990176`, 
+           178.2393066909899}, {-81.2393066909899, 75.2393066909899}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None], 
+     TagBox[
+      TagBox[GridBox[{
+         {"6"},
+         {
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "\[ImaginaryI]"}]},
+         {
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "\[ImaginaryI]"}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.5599999999999999]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       Column],
+      Function[BoxForm`e$, 
+       TableForm[BoxForm`e$, TableAlignments -> Center]]]}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.5767725821438293`*^9, 3.576772608028666*^9}, {
+  3.5767732509389*^9, 3.576773271970181*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1436, 856},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 108, 1, 92, "Title"],
+Cell[690, 25, 180, 4, 30, "Text"],
+Cell[873, 31, 218, 6, 46, "Input"],
+Cell[1094, 39, 129, 3, 30, "Text"],
+Cell[1226, 44, 311, 7, 28, "Input"],
+Cell[1540, 53, 365, 9, 31, "Text"],
+Cell[1908, 64, 549, 12, 28, "Input"],
+Cell[CellGroupData[{
+Cell[2482, 80, 525, 14, 28, "Input"],
+Cell[3010, 96, 17502, 405, 311, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

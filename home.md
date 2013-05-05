@@ -1,6 +1,13 @@
 Research in Orbigraphs
 ======================
 
-This wiki contains results and notes regarding ongoing research at Lewis & Clark college on the subject of [[Orbigraphs | Orbigraph]].
+This wiki contains results and notes regarding ongoing research at Lewis & Clark College on the subject of  spectral graph theory, specifically [[orbigraphs | Orbigraph]].
 
-The [[current work | Current]] page contains information and links about what we're doing now.
+Starting Points
+---------------
+
+- A list of [definitions](pages/Definitions).
+
+- [Theorems](pages/Theorems) that we have proven or are using.
+
+- [[Information | Current]] and links about what we're doing now.

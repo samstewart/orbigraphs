@@ -33,6 +33,7 @@ DeleteIsomorphicGraphs::usage = "DeleteIsomorphicGraphs[gs] returns one represen
 ImportRegularGraphs::usage = "ImportRegularGraphs[n, k] attemts to retrieve the set of k-regular graphs on n vertices from the data hosted at http://www.mathe2.uni-bayreuth.de.";
 ConjugacyClass::usage = "ConjugacyClass[x, g] returns the conjugacy class of the element x in the group g.";
 SunadaQ::usage = "SunadaQ[g, h1, h2] determines whether the triple (g, h1, h2) satisfies the Sunada condition.";
+PartialKTree::usage = "PartialKTree[k, l] builds a k-regular tree up to l levels deep, with only the leaves having degree 1.";
 
 Begin["`Private`"];
 
@@ -158,6 +159,25 @@ ConjugacyClass[x_, \[CapitalGamma]_] := DeleteDuplicates[# \[PermutationProduct]
 SunadaQ[g_, h1_, h2_] := Module[{h1s=GroupElements[h1],h2s=GroupElements[h2]},
 	And@@(Length[Intersection[ConjugacyClass[#, g], h1s]] == Length[Intersection[ConjugacyClass[#, g], h2s]]& /@ GroupElements[g])
 ];
+
+
+(* ::Text:: *)
+(*Building partial k-regular trees*)
+
+
+ExtendVertex[tree_, vert_, n_, idx_] := EdgeAdd[tree, Table[vert \[UndirectedEdge] j, {j, idx, idx + n - 1}]];
+
+ExtendKTree[tree_, k_] := Module[{t = tree, idx = Max[VertexList[tree]] + 1, extend, j, add},
+	extend=Select[VertexList[t], VertexDegree[t,#] < k &];
+	For[j = 1, j <= Length[extend], j++,
+		add = k - VertexDegree[t, extend[[j]]];
+		t = ExtendVertex[t, extend[[j]], add, idx];
+		idx += add;
+	];
+	Return[t];
+];
+
+PartialKTree[k_, l_] := Nest[ExtendKTree[#, k] &, Graph[{1}, {}, VertexLabels -> "Name", GraphLayout -> "RadialDrawing"], l];
 
 
 End[];

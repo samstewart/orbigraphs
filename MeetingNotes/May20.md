@@ -1,7 +1,7 @@
 Meeting Notes for May 20
 ========================
 
-We discussed the goals of the project. In particular, there are 3 existing version of Sunada's theorem for graphs. In general they are all of the form: Let \\(\Gamma\\) be a graph satisfying (some conditions) with a group \\(G\\) that acts by symmetries on \\(\Gamma\\). Then if \\(H_1\\) and \\(H_2\\) are subgroups of \\(G\\) that satisfy the Sunada condition (and possibly others) then \\(spec \Gamma / H_1 = spec \Gamma / H_2 \\) (by some quotient). One common condition for \\(\Gamma\\) is that it must be k-regular. A common condition for the groups is that they must act without fixed points. The following table summarizes the version of the theorem which we have seen.
+We discussed the goals of the project. In particular, there are 3 existing versions of Sunada's theorem for graphs. In general, they are all of the form: Let \\(\Gamma\\) be a graph satisfying (some conditions) with a group \\(G\\) that acts by symmetries on \\(\Gamma\\). Then if \\(H_1\\) and \\(H_2\\) are subgroups of \\(G\\) that satisfy the Sunada condition (and possibly others), then \\(spec \Gamma / H_1 = spec \Gamma / H_2 \\) (by some quotient). One common condition for \\(\Gamma\\) is that it must be k-regular. A common condition for the groups is that they must act without fixed points. The following table summarizes the version of the theorem which we have seen.
 
 <table>
     <tr>

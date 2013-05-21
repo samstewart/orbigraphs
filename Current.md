@@ -11,3 +11,8 @@ Here are some mathematica notebooks giving conjectures and evidence. **You will 
 - [[Non diagonalizable adjacency matrices | /Mathematica/NonDiagonalizable.nb]]
 - [[Sunada's theorem | /Mathematica/SunadaOrbigraphs.nb]]
 
+
+Meeting Notes
+-------------
+
+- [[May 20 | May20]]

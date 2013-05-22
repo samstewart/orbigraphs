@@ -15,4 +15,4 @@ Let \\(\Gamma\\) be a k-regular graph with group \\(G\\) acting on \\(\Gamma\\) 
 
 Spectral Radius of an Orbigraph
 ===============================
-Sam presented his proof that the spectral radius \\(\rho(O\\), where \\(O\\) is an k-orbigraph, is equal to \\(k\\). Previously, he had managed to prove this fact for only strongly connected Orbigraphs but has now generalized it to disconnected orbigraphs as well. He still has a small bound to prove.
+Sam presented his proof that the spectral radius \\(\rho(O)\\), where \\(O\\) is an k-orbigraph, is equal to \\(k\\). Previously, he had managed to prove this fact for only strongly connected Orbigraphs but has now generalized it to disconnected orbigraphs as well. He still has a small bound to prove.

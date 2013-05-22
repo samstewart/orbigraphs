@@ -35,7 +35,7 @@ v_0 = h^{-1} g g_{\alpha_i} g^{-1} v_0.
 $$
 Because \\( h^{-1} g g_{\alpha_i} g^{-1} \in G \\) and \\( G \\) acts freely, it must be that \\( h^{-1} g g_{\alpha_i} g^{-1} = e \\), so \\( g g_{\alpha_i} g^{-1} = h \in H \\).
 
-Hence, the number of n-walks in \\( \Gamma \\) which project to a closed walk in \\( \Gamma / H \\) is equal to \\( \sum_i \\#({g : g g_{\alpha_i}} g^{-1} \in H) \\). By the [[ConjugacyCounting]] we have that \\( \\#({g : g g_{alpha_i}} g^{-1} \in H) = \\#(C(g_{\alpha_i})) \cdot \\#([g_{\alpha_i}] \cap H) \\). Hence the total number of n-walks which project to a closed walk in \\( \Gamma / H \\) is
+Hence, the number of n-walks in \\( \Gamma \\) which project to a closed walk in \\( \Gamma / H \\) is equal to \\( \sum_i \\#({g : g g_{\alpha_i}} g^{-1} \in H) \\). By the [[ConjugacyCounting]] we have that \\( \\#({g : g g_{\alpha_i}} g^{-1} \in H) = \\#(C(g_{\alpha_i})) \cdot \\#([g_{\alpha_i}] \cap H) \\). Hence the total number of n-walks which project to a closed walk in \\( \Gamma / H \\) is
 $$
 \sum_i \\#(C(g_{\alpha_i})) \cdot \\#([g_{\alpha_i}] \cap H).
 $$

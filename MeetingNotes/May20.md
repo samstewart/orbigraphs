@@ -19,7 +19,7 @@ We discussed the goals of the project. In particular, there are 3 existing versi
     <tr>
         <td>Quenell</td>
         <td>Strong</td>
-        <td>No</td>
+        <td>Yes</td>
         <td>Standard</td>
     </tr>
     <tr>

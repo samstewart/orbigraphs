@@ -63,7 +63,7 @@ $$
 \end{align}
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1})\\). To show that \\(\textbf{x} = c \cdot \textbf{1}\\) indeed maximizes \\(f(\textbf{x})\\) for \textit{any} \\(\textbf{x} \in \mathcal{N}\\), we must show the following for all \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two different entries:
+In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1})\\). To show that \\(\textbf{x} = c \cdot \textbf{1}\\) indeed maximizes \\(f(\textbf{x})\\) for \\(\textit{any}\\) \\(\textbf{x} \in \mathcal{N}\\), we must show the following for all \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two different entries:
 
 $$
 \begin{align}

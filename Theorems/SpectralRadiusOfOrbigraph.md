@@ -46,7 +46,7 @@ Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\
 
 $$
 \begin{align}
-	\frac{\left[ A \cdot \textbf{x} \right]_i}{x_i} &= \frac{c \left[ A \cdot \textbf{1} \right]_i}{x_i} \\
+	\frac{\left[ A \cdot \textbf{x} \right]_i}{x_i} &= \frac{c \left[ A \cdot \textbf{1} \right]_i}{x_i} \\\\
 	&= \frac{c \left[ A \cdot \textbf{1} \right]_i}{c} \\\\
 	&= \left[ A \cdot \textbf{1} \right]_i \\\\
 	&= \sum_{j = 1}^{n} a_{i, j} \\\\

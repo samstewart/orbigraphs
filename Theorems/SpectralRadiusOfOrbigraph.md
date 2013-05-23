@@ -64,7 +64,7 @@ $$
 \end{align}
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
+In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\) for any \\(x \in \mathcal{N}\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
 
 $$
 \begin{align}

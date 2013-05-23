@@ -117,6 +117,19 @@ $$
 Since \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x} = c \cdot \textbf{1}\\) but \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k\\) when \\(\textbf{x} \neq c \cdot \textbf{x}\\), then \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x})\\). Thus, assuming \\(\textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 
 ### Lemma 1.3
-**Claim**: If \\(A\\) is a square matrix consisting of block matrices \\(B_1, \ldots, B_m\\) on the diagonal and zeros elsewhere, then \\(\sigma(A) = \lbrace \sigma(B_1) \cup \sigma(B_2) \cup \ldots \cup \sigma(B_m) \rbrace \\).
+**Claim**: If \\(A\\) is a square matrix consisting of square block matrices \\(B_1, \ldots, B_m\\) on the diagonal and zeros elsewhere, then \\(\sigma(A) = \lbrace \sigma(B_1) \cup \sigma(B_2) \cup \ldots \cup \sigma(B_m) \rbrace \\).
 
-**Proof**:
+**Proof**: 
+Meyer p. 475 shows that:
+
+$$
+det \begin{array}{c c}
+A & B \cr
+C & D \cr
+\end{array} 
+= \left\lbrace 
+	\begin{array}{lr}
+	det(A)\times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists }
+	detdet(A)\times det(D - CA^{-1}B)	 &: \text{ when } D^{-1} \text{ exists }
+	\end{array} \right.
+$$

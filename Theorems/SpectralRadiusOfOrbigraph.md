@@ -54,7 +54,7 @@ $$
 \end{align}
 $$
 
-Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the following:
+Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) formula gives us the following:
 
 $$
 \begin{align}

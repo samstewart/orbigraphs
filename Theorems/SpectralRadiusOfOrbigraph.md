@@ -1,6 +1,6 @@
 # Spectral Radius of an Orbigraph
 
-**Claim**: Let \\(O\\) be a k-[[Orbigraph]] and let \\(\rho(O)\\) be the [[spectral radius]] of \\(O\\). Then \\(\rho(O)\\) = k\\).
+**Claim**: Let \\(O\\) be a k-[[Orbigraph]] and let \\(\rho(O)\\) be the [[spectral radius]] of \\(O\\). Then \\(\rho(O) = k\\).
 
 **Proof**: 
 We begin with a definitions followed by a few useful lemmas.
@@ -27,7 +27,7 @@ Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is weakly
 Let \\(O\\) be a k-orbigraph. If \\(O\\) is disconnected, then the disconnected subgraphs of \\(O\\) are also k-orbigraphs.
 
 **Proof**:
-Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Arrange the rows of \\(A\\) so that 
+Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets where membership is determined by the vertex's membership in \\(o_i\\). Re-arrange \\(A\\)
 
 ### Lemma 1.2:
 **Claim**:
@@ -42,7 +42,7 @@ $$
 
 and \\(\mathcal{N} = \lbrace \textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0} \rbrace \\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
 
-Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by \\(\textbf{x}\\) gives us a set of dot products of the rows of \\(A\\). Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \cdot \textbf{x} = \lbrace A_i \cdot \textbf{x} \; | \; i \in \lbrace 1 \ldots n \rbrace \rbrace \\). However, since the \\(\textit{Collatx-Wiedlandt}\\) formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i = c\\) then we have the following:
+Pick \\(\textbf{x} = c\cdot \textbf{1}\\) for some constant \\(c\\) and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by \\(\textbf{x}\\) gives us a set of dot products of the rows of \\(A\\). Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \cdot \textbf{x} = \lbrace A_i \cdot \textbf{x} \; | \; i \in \lbrace 1 \ldots n \rbrace \rbrace \\). However, since the \\(\textit{Collatx-Wiedlandt}\\) formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i = c\\) then we have the following:
 
 $$
 \begin{align}
@@ -58,13 +58,12 @@ Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) formula gives us the
 
 $$
 \begin{align}
-	\rho(A) &= \max_{\textbf{x} \in \mathcal{N}} \min_{i \in \lbrace 1 \ldots n \rbrace} k \\\\
-	&= \max_{\textbf{x} \in \mathcal{N}} k \\\\
+	\min_{i \in \lbrace 1 \ldots n \rbrace} k \\\\
 	&= k
 \end{align}
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\) for \textit{any} \\(\textbf{x} \in \mathcal{N}\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
+In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1})\\). To show that \\(\textbf{x} = c \cdot \textbf{1}\\) indeed maximizes \\(f(\textbf{x})\\) for \textit{any} \\(\textbf{x} \in \mathcal{N}\\), we must show the following for all \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two different entries:
 
 $$
 \begin{align}
@@ -95,3 +94,4 @@ $$
 $$
 Since \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x}\\) has identical entries and \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k\\) when \\(\textbf{x}\\) does not have identical entries, then \\(\textbf{x} = [c \ldots c]\\) maximizes the expression. Thus, assuming \\(textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 
+### Lemma 1.3

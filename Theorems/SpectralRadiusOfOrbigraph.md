@@ -64,7 +64,7 @@ In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \m
 
 $$
 \begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k
+	\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k
 \end{align}
 $$
 

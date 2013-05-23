@@ -39,7 +39,8 @@ By the \textit{Collatx-Wiedlandt} formula (Meyer 673) we know that \\(\rho(A) = 
 $$
 f(\mathbb{X}) = \min_{i \in \{1 \ldots n\}} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}
 $$
-and \\(\mathcal{N} = \{\textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0}\}). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
+
+and \\(\mathcal{N} = \{\textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0}\}\\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
 
 Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by such a vector gives us a set of dot products. Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \textbf{x}) = \{A_i \cdot \textbf{x} | i \in \{1 \ldots n\}\}. However, since the \textit{Collatx-Wiedlandt} formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i) = c\\) then we have the following:
 
@@ -61,6 +62,7 @@ $$
 	\implies \rho(A) &= k
 \end{align}
 $$
+
 In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
 
 $$

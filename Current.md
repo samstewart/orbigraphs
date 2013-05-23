@@ -13,6 +13,7 @@ Here are some mathematica notebooks giving conjectures and evidence. **You will 
 - [[Counting conjugating elements | /Mathematica/ConjugatorCounting.nb]]
 - [[Spectral radius | /Mathematica/PerronFrobenius.nb]]
 
+test
 
 Meeting Notes
 -------------

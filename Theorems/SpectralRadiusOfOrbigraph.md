@@ -123,13 +123,15 @@ Since \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \t
 Meyer p. 475 shows that:
 
 $$
-det \begin{array}{c c}
-A & B \cr
-C & D \cr
-\end{array} 
+det \left[
+	\begin{array}{c c}
+	A & B \cr
+	C & D \cr
+	\end{array} 
+\right]
 = \left\lbrace 
 	\begin{array}{lr}
-	det(A)\times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists }
-	detdet(A)\times det(D - CA^{-1}B)	 &: \text{ when } D^{-1} \text{ exists }
+	det(A) \times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists }
+	det(D) \times det(A - BA^{-1}c)	 &: \text{ when } D^{-1} \text{ exists }
 	\end{array} \right.
 $$

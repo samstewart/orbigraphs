@@ -14,7 +14,7 @@ Now we partition \\( B_n \\) into orbits based on the action of \\( G \\). (\\( 
 Now consider an arbitrary element of \\( B_ni \\) which can be written as \\( g \alpha_i = g v_0 \ldots g v_n \\) for some \\( g \in G \\). I claim that the projection of \\( g \alpha_i \\) is closed if and only if \\( g g_{\alpha_i} g^{-1} \in H \\). First, assume that \\( g g_{\alpha_i} g^{-1} \in H \\). Then we have:
 $$
 \begin{align*}
-(g g_{\alpha_i} g^{-1}) g v_0 =& g g_{\alpha_i} v_0
+(g g_{\alpha_i} g^{-1}) g v_0 =& g g_{\alpha_i} v_0 \\\\
 &= g v_n.
 \end{align*}
 $$

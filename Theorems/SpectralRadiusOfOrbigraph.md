@@ -27,7 +27,28 @@ Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is weakly
 Let \\(O\\) be a k-orbigraph. If \\(O\\) is disconnected, then the disconnected subgraphs of \\(O\\) are also k-orbigraphs.
 
 **Proof**:
-Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets where membership is determined by the vertex's membership in \\(o_i\\). Re-arrange \\(A\\)
+Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets \\(S_i\\) where membership is determined by the vertex's membership in \\(o_i\\). Bundle the entries in \\(A\\), representing edges, into disjoint sets \\(R_i\\) according to each edge's membership in \\(S_i\\). Re-arrange \\(A\\) so that it looks like the following:
+
+$$
+\begin{array}{c c} &
+	\begin{array}{c c c} S_1 & \ldots & S_m \\
+	\end{array} 
+\\
+\begin{array}{c c c}
+S_1 \\
+\vdots \\
+S_m
+\end{array} 
+&
+\left[
+\begin{array}{c c c}
+R_1 & 0 & \ldots \\
+0 & R_2 & \ldots \\
+0 & \ldots & R_m \\
+\end{array}
+\right] 
+\end{array}
+$$
 
 ### Lemma 1.2:
 **Claim**:

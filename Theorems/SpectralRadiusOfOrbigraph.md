@@ -42,7 +42,7 @@ $$
 
 and \\(\mathcal{N} = \{\textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0}\}\\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
 
-Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by such a vector gives us a set of dot products. Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \textbf{x}) = \{A_i \cdot \textbf{x} | i \in \{1 \ldots n\}\}. However, since the \textit{Collatx-Wiedlandt} formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i) = c\\) then we have the following:
+Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by such a vector gives us a set of dot products. Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \textbf{x}) = \{A_i \cdot \textbf{x} | i \in \{1 \ldots n\}\}\\). However, since the \textit{Collatx-Wiedlandt} formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i) = c\\) then we have the following:
 
 $$
 \begin{align}

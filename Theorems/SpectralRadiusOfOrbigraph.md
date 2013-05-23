@@ -74,12 +74,12 @@ $$
 \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{a_{i, 1} x_1 + a_{i, 2} x_2 + \ldots + a_{i, n} x_n}{x_i}
 $$
 
-To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
+To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). We know know that \\(x_i \neq 0\\) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
 $$
 a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k \ldots + \ldots + a_{i, n} x_n/x_i
 $$
 
-We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Picking any other entry besides the largest results in an expression with coefficients \\(x_j/x_i \geq 1\\) if \\(x_i\\) is not the largest element. Thus, \\(x_i\\) minimizes the original expression. Furthermore, we know know that \\(x_i \neq 0\\) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
+We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Picking any other entry besides the largest results in an expression with coefficients \\(x_j/x_i \geq 1\\) if \\(x_i\\) is not the largest element. Thus, \\(x_i\\) minimizes the original expression. Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
 
 $$
 \begin{align}

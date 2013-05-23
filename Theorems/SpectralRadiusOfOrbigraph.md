@@ -89,6 +89,6 @@ $$
 	&= k
 \end{align}
 $$
-Since \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x}\\) has identical entries and \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k\\) when \\(\textbf{x}\\) does not have identical entries, then \\(\textbf{x} = [c \ldots c]\\) maximizes the expression. Thus, assuming \\(\textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
+Since \\f(c \cdot \textbf{1}) = (\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) but when \\(\textbf{x} \neq c \cdot \textbf{x}\\) then \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k\\). Thus, \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\f(\textbf{x}\\). Thus, assuming \\(\textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 
 ### Lemma 1.3

@@ -47,9 +47,9 @@ Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\
 $$
 \begin{align}
 	\frac{\left[ A \cdot \textbf{x} \right]_i}{x_i} &= \frac{c \left[ A \cdot \textbf{1} \right]_i}{x_i} \\
-	&= \frac{c \left[ A \cdot \textbf{1} \right]_i}{c} \\ 
-	&= \left[ A \cdot \textbf{1} \right]_i \\
-	&= \sum_{j = 1}^{n} a_{i, j} \\
+	&= \frac{c \left[ A \cdot \textbf{1} \right]_i}{c} \\\\
+	&= \left[ A \cdot \textbf{1} \right]_i \\\\
+	&= \sum_{j = 1}^{n} a_{i, j} \\\\
 	&= k
 \end{align}
 $$
@@ -58,7 +58,7 @@ Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the followi
 
 $$
 \begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} k &= k \\
+	\min_{i \in \lbrace 1 \ldots n \rbrace} k &= k \\\\
 	\implies \rho(A) &= k
 \end{align}
 $$
@@ -86,8 +86,8 @@ We know that our choice of \\(x_i\\) minimizes the expression because each coeff
 
 $$
 \begin{align}
-	a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i &\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\
-	&= \sum_{j = 1} a_{i,j} \\
+	a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i &\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\\\
+	&= \sum_{j = 1} a_{i,j} \\\\
 	&= k
 \end{align}
 $$

@@ -29,22 +29,51 @@ Let \\(O\\) be a k-orbigraph. If \\(O\\) is disconnected, then the disconnected 
 **Proof**:
 Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets \\(S_i\\) where membership is determined by the vertex's membership in \\(o_i\\). Bundle the entries in \\(A\\), representing edges, into disjoint sets \\(R_i\\) according to each edge's membership in \\(S_i\\). Re-arrange \\(A\\) so that it looks like the following:
 
+
+<table>
+    <tr>
+        <td>\\(S_1\\)</td>
+        <td>\\(\cdots\\)</td>
+        <td>\\(</td>
+        <td>Quotient Process</td>
+    </tr>
+    <tr>
+        <td>Brooks</td>
+        <td>Strong</td>
+        <td>Yes</td>
+        <td>Standard</td>
+    </tr>
+    <tr>
+        <td>Quenell</td>
+        <td>Strong</td>
+        <td>Yes</td>
+        <td>Standard</td>
+    </tr>
+    <tr>
+        <td>Halbeisen</td>
+        <td>Weak</td>
+        <td>No</td>
+        <td>Non-standard / Unclear</td>
+    </tr>
+</table>
+
+
 $$
 \begin{array}{c c} &
-	\begin{array}{c c c} S_1 & \ldots & S_m \\
-	\end{array} 
-\\
+\begin{array}{c c c} S_1 & \ldots & S_m \cr
+\end{array} 
+\cr
 \begin{array}{c c c}
-S_1 \\
-\vdots \\
+S_1 \cr
+\vdots \cr
 S_m
 \end{array} 
 &
 \left[
 \begin{array}{c c c}
-R_1 & 0 & \ldots \\
-0 & R_2 & \ldots \\
-0 & \ldots & R_m \\
+R_1 & 0 & \ldots \cr
+0 & R_2 & \ldots \cr
+0 & \ldots & R_m \cr
 \end{array}
 \right] 
 \end{array}

@@ -10,6 +10,8 @@ Here are some mathematica notebooks giving conjectures and evidence. **You will 
 - [[Cycle spectra | /Mathematica/CycleSpectrum.nb]]
 - [[Non diagonalizable adjacency matrices | /Mathematica/NonDiagonalizable.nb]]
 - [[Sunada's theorem | /Mathematica/SunadaOrbigraphs.nb]]
+- [[Counting conjugating elements | /Mathematica/ConjugatorCounting.nb]]
+- [[Spectral radius | /Mathematica/PerronFrobenius.nb]]
 
 
 Meeting Notes
@@ -17,3 +19,4 @@ Meeting Notes
 
 - [[May 20 | May20]]
 - [[May 21 | May21]]
+- [[May 22 | May22]]

@@ -1,0 +1,255 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6938,        246]
+NotebookOptionsPosition[      6020,        212]
+NotebookOutlinePosition[      6377,        228]
+CellTagsIndexPosition[      6334,        225]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Conjugator Counting Examples", "Title",
+ CellChangeTimes->{{3.57831864079069*^9, 3.5783186490611897`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "\"\<Orbigraphs.m\>\""}]}], "Input"],
+
+Cell[TextData[{
+ "Specify a group and a subgroup. Distinguish an element ",
+ Cell[BoxData[
+  FormBox["g", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " from the group."
+}], "Text",
+ CellChangeTimes->{{3.578318655192046*^9, 3.578318674150959*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"G", "=", 
+   RowBox[{"SymmetricGroup", "[", "6", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"H", "=", 
+   RowBox[{"CyclicGroup", "[", "3", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{
+    RowBox[{"GroupElements", "[", "G", "]"}], "\[LeftDoubleBracket]", "4", 
+    "\[RightDoubleBracket]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.578254949161178*^9, 3.5782549898998213`*^9}, {
+  3.578255167984558*^9, 3.57825517264741*^9}}],
+
+Cell["\<\
+Define the centralizer of a group element.\
+\>", "Text",
+ CellChangeTimes->{{3.578318664885993*^9, 3.578318670748068*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Centralizer", "[", 
+    RowBox[{"g_", ",", "G_"}], "]"}], ":=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"GroupElements", "[", "G", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"PermutationProduct", "[", 
+        RowBox[{"g", ",", "#"}], "]"}], "\[Equal]", 
+       RowBox[{"PermutationProduct", "[", 
+        RowBox[{"#", ",", "g"}], "]"}]}], "&"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{3.57831882335319*^9}],
+
+Cell[TextData[{
+ "Find all the elements ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["A", "g"], "=", 
+    RowBox[{"{", 
+     RowBox[{"l", "\[Element]", 
+      RowBox[{"G", ":", 
+       RowBox[{
+        RowBox[{"l", " ", "g", " ", 
+         SuperscriptBox["l", 
+          RowBox[{"-", "1"}]]}], "\[Element]", "H"}]}]}], "}"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". This is the set that we want to count."
+}], "Text",
+ CellChangeTimes->{
+  3.578318683623789*^9, {3.578318736426216*^9, 3.5783187425622253`*^9}, {
+   3.578319014559079*^9, 3.578319016707796*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"GroupElements", "[", "G", "]"}], ",", 
+     RowBox[{
+      RowBox[{"MemberQ", "[", 
+       RowBox[{
+        RowBox[{"GroupElements", "[", "H", "]"}], ",", 
+        RowBox[{"PermutationProduct", "[", 
+         RowBox[{"#", ",", "g", ",", 
+          RowBox[{"InversePermutation", "[", "#", "]"}]}], "]"}]}], "]"}], 
+      "&"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5783187959299726`*^9, 3.57831882096202*^9}}],
+
+Cell[TextData[{
+ "Find the intersection ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"[", "g", "]"}], "\[Intersection]", "H"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "Text",
+ CellChangeTimes->{3.578318756741778*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"conjugates", "=", 
+   RowBox[{"Intersection", "[", 
+    RowBox[{
+     RowBox[{"ConjugacyClass", "[", 
+      RowBox[{"g", ",", "G"}], "]"}], ",", 
+     RowBox[{"GroupElements", "[", "H", "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{3.578318825633129*^9}],
+
+Cell[TextData[{
+ "Find the centralizer ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"C", "(", "g", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.5783187623631983`*^9, 3.578318788249123*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cg", "=", 
+   RowBox[{"Centralizer", "[", 
+    RowBox[{"g", ",", "G"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.578318790456105*^9, 3.5783188168596897`*^9}}],
+
+Cell[TextData[{
+ "Find the cartesian product ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"C", "(", "g", ")"}], "\[Cross]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"[", "g", "]"}], "\[Intersection]", "H"}], ")"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.578318833224959*^9, 3.578318861472611*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Outer", "[", 
+      RowBox[{"List", ",", "cg", ",", "conjugates"}], "]"}], ",", "1"}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.578318869968977*^9, 3.578318921038818*^9}}],
+
+Cell[TextData[{
+ "We hypothesize that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[LeftBracketingBar]", 
+     SubscriptBox["A", "g"], "\[RightBracketingBar]"}], "=", 
+    RowBox[{"\[LeftBracketingBar]", 
+     RowBox[{
+      RowBox[{"C", "(", "g", ")"}], "\[Cross]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"[", "g", "]"}], "\[Intersection]", "H"}], ")"}]}], 
+     "\[RightBracketingBar]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.578318912962205*^9, 3.5783189430322447`*^9}, {
+  3.578319003986802*^9, 3.578319025526402*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Length", "[", "a", "]"}], "\[Equal]", 
+  RowBox[{"Length", "[", "b", "]"}]}]], "Input",
+ CellChangeTimes->{{3.578319026939741*^9, 3.578319031798657*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.578319034806575*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 756},
+WindowMargins->{{200, Automatic}, {Automatic, 38}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 112, 1, 92, "Title"],
+Cell[694, 25, 218, 6, 46, "Input"],
+Cell[915, 33, 256, 7, 32, "Text"],
+Cell[1174, 42, 520, 14, 63, "Input"],
+Cell[1697, 58, 132, 3, 30, "Text"],
+Cell[1832, 63, 490, 14, 63, "Input"],
+Cell[2325, 79, 596, 19, 36, "Text"],
+Cell[2924, 100, 520, 14, 46, "Input"],
+Cell[3447, 116, 247, 9, 32, "Text"],
+Cell[3697, 127, 297, 8, 28, "Input"],
+Cell[3997, 137, 238, 8, 32, "Text"],
+Cell[4238, 147, 200, 5, 28, "Input"],
+Cell[4441, 154, 370, 13, 32, "Text"],
+Cell[4814, 169, 283, 8, 28, "Input"],
+Cell[5100, 179, 603, 18, 33, "Text"],
+Cell[CellGroupData[{
+Cell[5728, 201, 188, 4, 28, "Input"],
+Cell[5919, 207, 73, 1, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

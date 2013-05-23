@@ -31,13 +31,13 @@ Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is discon
 
 ### Lemma 1.2:
 **Claim**:
-If \\(\textbf{A} \in \mathcal{C}^{n \times n} \geq 0\\) and the rows of \\(A\\) sum to \\(k\\) then \\(\rho(A) = k\\). 
+If \\(A \in \mathcal{C}^{n \times n} \geq 0\\) and the rows of \\(A\\) sum to \\(k\\) then \\(\rho(A) = k\\). 
 
 **Proof**:
 By the \textit{Collatx-Wiedlandt} formula (Meyer 673) we know that \\(\rho(A) = r = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x})\\) where
 
 $$
-f(\mathbb{X}) = \min_{i \in \{1 \ldots n\}} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}
+f(\textbf{x}) = \min_{i \in \{1 \ldots n\}} \frac{\left[ A\textbf{x} \right]_i}{x_i}
 $$
 
 and \\(\mathcal{N} = \{\textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0}\}\\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).

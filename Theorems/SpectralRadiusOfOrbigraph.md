@@ -51,7 +51,7 @@ R_1 & 0 & \ldots \cr
 \end{array}
 $$
 
-Each row contains only zeros besides the block matrix because \\(S_i\\) has no vertices that connect to any other \\(S_j\\). Nevertheless, each row in \\(R_i\\) must still sum to \\(k\\) thus each \\(R_i\\) and corresponding \\(S_i\\) corresponds to a k-orbigraph.
+Each row in \\(A\\) contains only zeros besides the block matrix because \\(S_i\\) has no vertices that connect to any other \\(S_j\\). Nevertheless, each row in \\(R_i\\) must still sum to \\(k\\) thus each \\(R_i\\) and corresponding \\(S_i\\) corresponds to a k-orbigraph.
 
 ### Lemma 1.2:
 **Claim**:

@@ -74,7 +74,7 @@ $$
 \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{a_{i, 1} x_1 + a_{i, 2} x_2 + \ldots + a_{i, n} x_n}{x_i}
 $$
 
-To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). We know know that \\(x_i \neq 0\\) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
+To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). We know know that \\(x_i \neq 0\\) (\\(\textbf{x}\\) is not entirely \\(0\\)) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
 $$
 a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k \ldots + \ldots + a_{i, n} x_n/x_i
 $$

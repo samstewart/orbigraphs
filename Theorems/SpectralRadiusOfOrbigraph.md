@@ -93,5 +93,5 @@ $$
 	&= k
 \end{align}
 $$
-Since \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x}\\) has identical entries and \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k\\) when \\(\textbf{x}\\) does not have identical entries, then \\(\textbf{x} = [c \ldots c]\\) maximizes the expression. Thus, assuming \\(\texbtf{x}\\) contains only identical entries and by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
+Since \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x}\\) has identical entries and \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k\\) when \\(\textbf{x}\\) does not have identical entries, then \\(\textbf{x} = [c \ldots c]\\) maximizes the expression. Thus, assuming \\(textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 

@@ -90,6 +90,6 @@ $$
 \end{align}
 $$
 
-Since \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\texbf{x} = (c \cdot \textbf{1}\\) but when \\(\textbf{x} \neq c \cdot \textbf{x}\\) then \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k\\). Thus, \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x}\\). Thus, assuming \\(\textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
+Since \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k\\) when \\(\textbf{x} = (c \cdot \textbf{1}\\) but when \\(\textbf{x} \neq c \cdot \textbf{x}\\) then \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k\\). Thus, \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x}\\). Thus, assuming \\(\textbf{x}\\) contains identical entries, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 
 ### Lemma 1.3

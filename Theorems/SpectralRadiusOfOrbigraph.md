@@ -58,12 +58,13 @@ Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the followi
 
 $$
 \begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} k &= k \\\\
-	\implies \rho(A) &= k
+	\rho(A) &= \max_{\textbf{x} \in \mathcal{N}} \min_{i \in \lbrace 1 \ldots n \rbrace} k \\\\
+	&= \max_{\textbf{x} \in \mathcal{N}} k \\\\
+	&= k
 \end{align}
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
+In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
 
 $$
 \begin{align}
@@ -79,17 +80,18 @@ $$
 
 To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
 $$
-a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i
+a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k \ldots + \ldots + a_{i, n} x_n/x_i
 $$
 
-We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Picking any other entry results in an expression with coefficients \\(x_j/x_i \geq 1\\) if \\(x_i\\) is not the largest element. Thus, \\(x_i\\) minimizes the original expression. Furthermore, we know know that \\(x_i \neq 0\\) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
+We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Picking any other entry besides the largest results in an expression with coefficients \\(x_j/x_i \geq 1\\) if \\(x_i\\) is not the largest element. Thus, \\(x_i\\) minimizes the original expression. Furthermore, we know know that \\(x_i \neq 0\\) and that \\(x_i\\) is strictly greater than at least one other entry in \\(\textbf{x}\\) because otherwise \\(\textbf{x}\\) would have all identical entries. Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
 
 $$
 \begin{align}
-	a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i &\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\\\
+	a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i &\\\\
+	&\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\\\
 	&= \sum_{j = 1} a_{i,j} \\\\
 	&= k
 \end{align}
 $$
-Hence, if \\(\textbf{x}\\) does not have only identical entries, then it does not maximize \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}\\). Only when \\(\texbf{x}\\) has identical entries, giving \\(\rho(A) = k\\), does it maximize the expression. Thus, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
+Hence, if \\(\textbf{x}\\) does not have identical entries, then it does not maximize \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}\\). Only when \\(\textbf{x}\\) has identical entries, giving \\(\rho(A) = k\\), does it maximize the expression. Thus, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 

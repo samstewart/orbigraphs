@@ -34,7 +34,7 @@ Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is discon
 If \\(A \in \mathcal{C}^{n \times n} \geq 0\\) and the rows of \\(A\\) sum to \\(k\\) then \\(\rho(A) = k\\). 
 
 **Proof**:
-By the \textit{Collatx-Wiedlandt} formula (Meyer 673) we know that \\(\rho(A) = r = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x})\\) where
+By the \\(\textit{Collatx-Wiedlandt}\\) formula (Meyer 673) we know that \\(\rho(A) = r = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x})\\) where
 
 $$
 f(\textbf{x}) = \min_{i \in \{1 \ldots n\}} \frac{\left[ A\textbf{x} \right]_i}{x_i}
@@ -54,7 +54,7 @@ $$
 \end{align}
 $$
 
-Substituting back into the \textit{Collatx-Wiedlandt} gives us the following:
+Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the following:
 
 $$
 \begin{align}

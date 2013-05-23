@@ -131,7 +131,7 @@ det \left[
 \right]
 = \left\lbrace 
 	\begin{array}{lr}
-	det(A) \times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists }
+	det(A) \times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists } \cr
 	det(D) \times det(A - BA^{-1}c)	 &: \text{ when } D^{-1} \text{ exists }
 	\end{array} \right.
 $$

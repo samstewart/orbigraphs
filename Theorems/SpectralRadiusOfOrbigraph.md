@@ -58,8 +58,9 @@ Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the followi
 
 $$
 \begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} k &= k \\\\
-	\implies \rho(A) &= k
+	\rho(A) &= \max_{\textbf{x} \in \mathcal{N}} \min_{i \in \lbrace 1 \ldots n \rbrace} k \\\\
+	&= \max_{\textbf{x} \in \mathcal{N}} k \\\\
+	&= k
 \end{align}
 $$
 

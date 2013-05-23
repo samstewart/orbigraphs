@@ -27,35 +27,7 @@ Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is weakly
 Let \\(O\\) be a k-orbigraph. If \\(O\\) is disconnected, then the disconnected subgraphs of \\(O\\) are also k-orbigraphs.
 
 **Proof**:
-Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets \\(S_i\\) where membership is determined by the vertex's membership in \\(o_i\\). Bundle the entries in \\(A\\), representing edges, into disjoint sets \\(R_i\\) according to each edge's membership in \\(S_i\\). Re-arrange \\(A\\) so that it looks like the following:
-
-
-<table>
-    <tr>
-        <td>\\(S_1\\)</td>
-        <td>\\(\cdots\\)</td>
-        <td>\\(</td>
-        <td>Quotient Process</td>
-    </tr>
-    <tr>
-        <td>Brooks</td>
-        <td>Strong</td>
-        <td>Yes</td>
-        <td>Standard</td>
-    </tr>
-    <tr>
-        <td>Quenell</td>
-        <td>Strong</td>
-        <td>Yes</td>
-        <td>Standard</td>
-    </tr>
-    <tr>
-        <td>Halbeisen</td>
-        <td>Weak</td>
-        <td>No</td>
-        <td>Non-standard / Unclear</td>
-    </tr>
-</table>
+Let \\(A\\) be the adjacency matrix of \\(O\\) and assume that \\(O\\) is disconnected. Call each disconnected subgraph \\(o_i\\). Bundle the vertices of \\(O\\) into disjoint sets \\(S_i\\) where membership is determined by the vertex's membership in \\(o_i\\). Bundle the entries in \\(A\\), representing edges, into block matrices \\(R_i\\) according to each edge's membership in \\(S_i\\). Re-arrange \\(A\\) so that it looks like the following:
 
 
 $$
@@ -79,6 +51,8 @@ R_1 & 0 & \ldots \cr
 \end{array}
 $$
 
+Each row contains only zeros besides the block matrix because \\(S_i\\) has no vertices that connect to any other \\(S_j\\). Nevertheless, each row in \\(R_i\\) must still sum to \\(k\\) thus each \\(R_i\\) and corresponding \\(S_i\\) corresponds to a k-orbigraph.
+
 ### Lemma 1.2:
 **Claim**:
 If \\(A \in \mathcal{C}^{n \times n} \geq 0\\) and the rows of \\(A\\) sum to \\(k\\) then \\(\rho(A) = k\\). 
@@ -96,10 +70,10 @@ Pick \\(\textbf{x} = c\cdot \textbf{1}\\) for some constant \\(c\\) and let \\(\
 
 $$
 \begin{align}
-	\frac{\left[ A \cdot \textbf{x} \right]_i}{x_i} &= \frac{c \left[ A \cdot \textbf{1} \right]_i}{x_i} \\\\
-	&= \frac{c \left[ A \cdot \textbf{1} \right]_i}{c} \\\\
-	&= \left[ A \cdot \textbf{1} \right]_i \\\\
-	&= \sum_{j = 1}^{n} a_{i, j} \\\\
+	\frac{\left[ A \cdot \textbf{x} \right]_i}{x_i} &= \frac{c \left[ A \cdot \textbf{1} \right]_i}{x_i} \cr
+	&= \frac{c \left[ A \cdot \textbf{1} \right]_i}{c} \cr
+	&= \left[ A \cdot \textbf{1} \right]_i \cr
+	&= \sum_{j = 1}^{n} a_{i, j} \cr
 	&= k
 \end{align}
 $$
@@ -133,9 +107,9 @@ We know that our choice of \\(x_i\\) minimizes the expression because each coeff
 
 $$
 \begin{align}
-	&a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i \\\\
-	&\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\\\
-	&= \sum_{j = 1} a_{i,j} \\\\
+	&a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i \cr
+	&\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \cr
+	&= \sum_{j = 1} a_{i,j} \cr
 	&= k
 \end{align}
 $$

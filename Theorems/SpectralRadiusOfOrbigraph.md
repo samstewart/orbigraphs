@@ -37,12 +37,12 @@ If \\(A \in \mathcal{C}^{n \times n} \geq 0\\) and the rows of \\(A\\) sum to \\
 By the \\(\textit{Collatx-Wiedlandt}\\) formula (Meyer 673) we know that \\(\rho(A) = r = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x})\\) where
 
 $$
-f(\textbf{x}) = \min_{i \in \{1 \ldots n\}} \frac{\left[ A\textbf{x} \right]_i}{x_i}
+f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace } \frac{\left[ A\textbf{x} \right]_i}{x_i}
 $$
 
-and \\(\mathcal{N} = \{\textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0}\}\\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
+and \\(\mathcal{N} = \lbrace \textbf{x} \geq \textbf{0}, \textbf{x} \neq \textbf{0} \rbrace \\). In other words, \\(\textbf{x}\\) must be non-negative and not entirely \\(\textbf{0}\\).
 
-Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by such a vector gives us a set of dot products. Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \textbf{x}) = \\{A_i \cdot \textbf{x} | i \in \\{1 \ldots n\\} \\}\\). However, since the \\(\textit{Collatx-Wiedlandt}\\) formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i = c\\) then we have the following:
+Pick \\(\textbf{x} = [c \ldots c]\\) where \\(c\\) is some constant and let \\(\textbf{1}\\) be a vector of \\(1\\)s. Multiplying \\(A\\) by \\(\textbf{x}\\) gives us a set of dot products of the rows of \\(A\\). Let \\(A_i\\) represent the \\(i\\)th row of \\(A\\). Then \\(A \textbf{x}) = \lbrace A_i \cdot \textbf{x} | i \in \lbrace 1 \ldots n \rbrace \rbrace \\). However, since the \\(\textit{Collatx-Wiedlandt}\\) formula normalizes each \\(A_i \cdot \textbf{x}\\) by \\(x_i\\) and all \\(x_i = c\\) then we have the following:
 
 $$
 \begin{align}
@@ -58,7 +58,7 @@ Substituting back into the \\(\textit{Collatx-Wiedlandt}\\) gives us the followi
 
 $$
 \begin{align}
-	\min_{i \in \{1 \ldots n\}} k &= k \\
+	\min_{i \in \lbrace 1 \ldots n \rbrace} k &= k \\
 	\implies \rho(A) &= k
 \end{align}
 $$
@@ -67,14 +67,14 @@ In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = k\
 
 $$
 \begin{align}
-	\min_{i \in \{1 \ldots n\}} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k
+	\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq k
 \end{align}
 $$
 
 Expanding the dot product gives us the following:
 
 $$
-\min_{i \in \{1 \ldots n\}} \frac{a_{i, 1} x_1 + a_{i, 2} x_2 + \ldots + a_{i, n} x_n}{x_i}
+\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{a_{i, 1} x_1 + a_{i, 2} x_2 + \ldots + a_{i, n} x_n}{x_i}
 $$
 
 To minimize this expression, choose \\(i\\) such that \\(x_i\\) is the largest entry in \\(\textbf{x}\\). Let \\(k = i\\) so that we get the following after dividing the above expression by \\(x_i\\):
@@ -91,5 +91,5 @@ $$
 	&= k
 \end{align}
 $$
-Hence, if \\(\textbf{x}\\) does not have only identical entries, then it does not maximize \\(\min_{i \in \{1 \ldots n\}} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}\\). Only when \\(\texbf{x}\\) has identical entries, giving \\(\rho(A) = k\\), does it maximize the expression. Thus, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
+Hence, if \\(\textbf{x}\\) does not have only identical entries, then it does not maximize \\(\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i}\\). Only when \\(\texbf{x}\\) has identical entries, giving \\(\rho(A) = k\\), does it maximize the expression. Thus, by the \\(\textit{Collatx-Wiedlandt}\\) formula we know that \\(\rho(A) = k\\).
 

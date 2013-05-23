@@ -64,7 +64,7 @@ $$
 \end{align}
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\) for any \\(x \in \mathcal{N}\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
+In other words, picking a constant vector \\(\textbf{x}\\) forces \\(\rho(A) = k\\). To show that this choice of \\(\textbf{x}\\) indeed maximizes \\(f(\textbf{x})\\) for \textit{any} \\(\textbf{x} \in \mathcal{N}\\), we wish to show the following for all choices of \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two entries that are different:
 
 $$
 \begin{align}
@@ -87,7 +87,7 @@ We know that our choice of \\(x_i\\) minimizes the expression because each coeff
 
 $$
 \begin{align}
-	a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i &\\\\
+	&a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i \\\\
 	&\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \\\\
 	&= \sum_{j = 1} a_{i,j} \\\\
 	&= k

@@ -1,7 +1,7 @@
 Meeting Notes for May 21
 ========================
 
-We discussed two subjects today: Quinell's proof of the Sunada condition on graphs and the fact that the [[spectral radius]] of *any* [[Orbigraph]] of degree \\(k\\) is \\(k\\). We had hoped to cover our poster on fundamental groups but decided to postpone it until we delve into Bass-Serre theory. 
+We discussed two subjects today: Quinell's proof of the Sunada condition on graphs and the fact that the [[SpectralRadius]] of *any* [[Orbigraph]] of degree \\(k\\) is \\(k\\). We had hoped to cover our poster on fundamental groups but decided to postpone it until we delve into Bass-Serre theory. 
 
 Quninell's Proof
 ----------------

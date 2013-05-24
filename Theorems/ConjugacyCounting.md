@@ -1,7 +1,7 @@
 Counting Conjugating Elements
 =============================
 
-**Claim:** If \\( G \\) is a finite group with element \\( g \\) and subgroup \\( H \\). The subset \\( A_g = \\{  l : lgl^{-1} \in H \\} \subset G \\) has exactly \\( \\#(C(g)) \cdot \\#([g] \cap H) \\) elements.
+**Claim:** If \\( G \\) is a finite group with element \\( g \\) and subgroup \\( H \\), then the subset \\( A_g = \\{  l : lgl^{-1} \in H \\} \subset G \\) has exactly \\( \\#(C(g)) \cdot \\#([g] \cap H) \\) elements.
 
 **Proof:** First, I will show that for any element \\( g \in G \\) we have a bijection \\( F : [g] \to \\{a C(g) : a \in G \\} \\). Let \\( X \\) be a left coset of \\( C(g) \\), then for some representative \\( a \in X \\), let \\( F(X) = a g a^{-1} \\). First, I must show that \\( F \\) is well-defined. To do this, suppose that \\( x, y \in X \\), then there is a \\( c \in C(g) \\) such that \\( y = x c \\). Hence we have
 $$

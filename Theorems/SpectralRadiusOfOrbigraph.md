@@ -3,7 +3,7 @@
 **Claim**: Let \\(O\\) be a k-[[Orbigraph]] and let \\(\rho(O)\\) be the [[SpectralRadius]] of \\(O\\). Then \\(\rho(O) = k\\).
 
 **Proof**: 
-We begin with a definitions followed by a few useful lemmas.
+We begin with several definitions followed by a few useful lemmas.
 
 ### Connected
 [[GraphConnectedness]]
@@ -132,4 +132,4 @@ det \left[
 = det(A) \times det(D)
 $$
 
-In our case, we have multiple square block matrices \\(B_1, \ldots, B_m\\) and zeros elsewhere. Note that any of these matrices can be combined into a larger block matrix that is also square since every \\(B_i\\) contributes \\(n\\) rows and \\(n\\) columns. Since the block matrices are on the diagonal, the added rows do not overlap any 
+In our case, we have multiple square block matrices \\(B_1, \ldots, B_m\\) and zeros elsewhere. Note that any of these matrices can be combined into a larger block matrix that is also square since every \\(B_i\\) contributes \\(n\\) rows and \\(n\\) columns. Since the block matrices are on the diagonal, the added rows do not overlap.

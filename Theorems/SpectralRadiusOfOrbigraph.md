@@ -103,7 +103,7 @@ $$
 a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k \ldots + \ldots + a_{i, n} x_n/x_i
 $$
 
-We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Picking any other entry besides the largest results in an expression with coefficients \\(x_j/x_i \geq 1\\) if \\(x_i\\) is not the largest element. Thus, \\(x_i\\) minimizes the original expression. Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
+We know that our choice of \\(x_i\\) minimizes the expression because each coefficient \\(x_j/x_i \leq 1\\), excluding the coefficient of \\(a_k\\) which is \\(1\\). Thus, there is at least one coefficient \\(x_j/x_i \leq 1\\) in \\(a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i\\) so that:
 
 $$
 \begin{align}
@@ -120,18 +120,16 @@ Since \\(f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \t
 **Claim**: If \\(A\\) is a square matrix consisting of square block matrices \\(B_1, \ldots, B_m\\) on the diagonal and zeros elsewhere, then \\(\sigma(A) = \lbrace \sigma(B_1) \cup \sigma(B_2) \cup \ldots \cup \sigma(B_m) \rbrace \\).
 
 **Proof**: 
-Meyer p. 475 shows that:
+Meyer p. 475 shows that if \\(A\\) and \\(D\\) are square matrices then:
 
 $$
 det \left[
 	\begin{array}{c c}
 	A & B \cr
-	C & D \cr
+	0 & D \cr
 	\end{array} 
 \right]
-= \left\lbrace 
-	\begin{array}{lr}
-	det(A) \times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists } \cr
-	det(D) \times det(A - BA^{-1}c)	 &: \text{ when } D^{-1} \text{ exists }
-	\end{array} \right.
+= det(A) \times det(D)
 $$
+
+In our case, we have multiple square block matrices \\(B_1, \ldots, B_m\\) and zeros elsewhere. Note that any of these matrices can be combined into a larger block matrix that is also square since every \\(B_i\\) contributes \\(n\\) rows and \\(n\\) columns. Since the block matrices are on the diagonal, the added rows do not overlap any 

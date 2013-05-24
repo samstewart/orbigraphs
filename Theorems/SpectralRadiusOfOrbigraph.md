@@ -1,6 +1,6 @@
 # Spectral Radius of an Orbigraph
 
-**Claim**: Let \\(O\\) be a k-[[Orbigraph]] and let \\(\rho(O)\\) be the [[spectral radius]] of \\(O\\). Then \\(\rho(O) = k\\).
+**Claim**: Let \\(O\\) be a k-[[Orbigraph]] and let \\(\rho(O)\\) be the [[SpectralRadius]] of \\(O\\). Then \\(\rho(O) = k\\).
 
 **Proof**: 
 We begin with a definitions followed by a few useful lemmas.

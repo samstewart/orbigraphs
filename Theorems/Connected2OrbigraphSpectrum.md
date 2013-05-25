@@ -16,7 +16,7 @@ To show that none are cospectral, I will use [[CyclesCospectrality]]. First, I w
 Notes
 -----
 
-This theorem is interest because it agrees with a possible statement (and converse) of Sunada's Theorem for Orbigraphs. 
+This theorem is interesting because it agrees with a possible statement (and converse) of Sunada's Theorem for Orbigraphs. 
 
 First observe that the automorphism group of the \\(2\\)-tree is isomorphic to \\(\mathbb{Z}\\). Any subgroup \\(H\\) is an infinite cyclic group with elements \\(\\{\ldots, -2k, -k, 0, k, 2k, \ldots\\}\\), where \\(k \in \mathbb{Z}\\). Suppose \\(H_1\\) and \\(H_2\\) are subgroups with generators \\(k_1\\) and \\(k_2\\) respectively, and consider \\( s = \\#([n] \cap H_1) \\) and \\( t = \\#([n] \cap H_2) \\) for \\(n \in \mathbb{Z}\\). Because \\(\mathbb{Z}\\) is Abelian, we have \\( [n] = \\{n\\} \\). Therefore \\( s = 1 \\) if \\(n \in H_1 \\) and \\( s = 0 \\) otherwise, and likewise for \\(t\\). But \\(n \in H_1 \\) only if \\( k_1 \mid n \\) and likewise for \\(H_2\\). Thus \\(s = t \\) for all \\(n\\) only if \\( k_1 \mid n \Leftrightarrow k_2 \mid n \\). But this is only true if \\( k_1 = k_2 \\). Hence \\( \mathbb{Z} \\) has pair of distinct subgroups that satisfy the Sunada condition. 
 

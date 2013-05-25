@@ -84,20 +84,13 @@ $$
 \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A\textbf{x} \right]_i}{x_i} = \min_{i \in \lbrace 1 \ldots n \rbrace} k = k
 $$
 
-In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1}) = k\\). To show that \\(\rho(A) = k\\), we must show that \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x})\\). Thus, we must show the following for all \\(\textbf{x}\\) such that \\(\textbf{x}\\) contains at least two different entries:
-
-$$
-\begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A \textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k
-\end{align}
-$$
+In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1}) = k\\). To show that \\(\rho(A) = k\\), we must show that \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x})\\).
 
 Pick \\(x_j\\) to be the largest entry in \\(\textbf{x}\\). We know that \\(x_j \neq 0\\) and that \\(x_j\\) is larger than at least one other entry because the entries of \\(\textbf{x}\\) are not identical. We know that
 
 $$
 \begin{align}
-	\frac{\left[ A \cdot \textbf{x} \right]_j}{x_j} \cr
-	&= a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots + a_{j, n} x_n/x_j \cr 
+	\frac{\left[ A \cdot \textbf{x} \right]_j}{x_j} = a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots + a_{j, n} x_n/x_j \cr 
 	&\geq f(\textbf{x}) \cr
 	&= \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A \cdot \textbf{x} \right]_i}{x_i}
 \end{align}
@@ -108,7 +101,7 @@ $$
 a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots a_k + \ldots + a_{j, n} x_n/x_j \leq k
 $$
 
-because every \\(x_m / x_j \leq 1\\). Thus, for any \\(\textbf{x}\\) with non-identical entries, \\(f(\textbf{x}) \leq k\\). Hence, \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\f(\textbf{x})\\) showing that \\(\rho(A) = f(c \cdot \textbf{1}) = k\\).
+because every \\(x_m / x_j \leq 1\\). Thus, for any \\(\textbf{x}\\) with non-identical entries, \\(f(\textbf{x}) \leq k\\). Hence, \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x})\\) showing that \\(\rho(A) = f(c \cdot \textbf{1}) = k\\).
 
 ### Lemma 1.3
 **Claim**: If \\(A\\) is a square matrix consisting of square block matrices \\(B_1, \ldots, B_m\\) on the diagonal and zeros elsewhere, then \\(\sigma(A) = \lbrace \sigma(B_1) \cup \sigma(B_2) \cup \ldots \cup \sigma(B_m) \rbrace \\).

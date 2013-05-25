@@ -86,7 +86,7 @@ $$
 
 In other words, picking a constant vector \\(\textbf{x}\\) makes \\(\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1}) = k\\). To show that \\(\rho(A) = k\\), we must show that \\(\textbf{x} = c \cdot \textbf{1}\\) maximizes \\(f(\textbf{x})\\).
 
-Pick \\(x_j\\) to be the largest entry in \\(\textbf{x}\\). We know that \\(x_j \neq 0\\) and that \\(x_j\\) is larger than at least one other entry because the entries of \\(\textbf{x}\\) are not identical. We know that
+Choose \\(\textbf{x}\\) to be a vector with at least two different entries then choose \\(x_j\\) to be the largest entry in \\(\textbf{x}\\). We know that \\(x_j \neq 0\\) and that \\(x_j\\) is larger than at least one other entry because the entries of \\(\textbf{x}\\) are not identical. We also know that
 
 $$
 \begin{align}

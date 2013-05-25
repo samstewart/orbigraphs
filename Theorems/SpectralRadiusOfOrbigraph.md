@@ -90,7 +90,7 @@ Pick \\(x_j\\) to be the largest entry in \\(\textbf{x}\\). We know that \\(x_j 
 
 $$
 \begin{align}
-	\frac{\left[ A \cdot \textbf{x} \right]_j}{x_j} = a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots + a_{j, n} x_n/x_j \cr 
+	\frac{\left[ A \cdot \textbf{x} \right]_j}{x_j} &= a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots + a_{j, n} x_n/x_j \cr 
 	&\geq f(\textbf{x}) \cr
 	&= \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A \cdot \textbf{x} \right]_i}{x_i}
 \end{align}

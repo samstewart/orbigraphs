@@ -1,9 +1,9 @@
 # Spectral Radius of an Orbigraph
 
-**Claim**: Let $O$ be a k-[[Orbigraph]] and let $\rho(O)$ be the [[spectral radius]] of $O$. Then $\rho(O) = k$.
+**Claim**: Let $O$ be a k-[[Orbigraph]] and let $\rho(O)$ be the [[SpectralRadius]] of $O$. Then $\rho(O) = k$.
 
 **Proof**: 
-We begin with a definitions followed by a few useful lemmas.
+We begin with several definitions followed by a few useful lemmas.
 
 ### Connected
 [[GraphConnectedness]]
@@ -81,57 +81,47 @@ $$
 Substituting back into the $\textit{Collatx-Wiedlandt}$ formula gives us the following:
 
 $$
-\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = \min_{i \in \lbrace 1 \ldots n \rbrace} k = k
+\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A\textbf{x} \right]_i}{x_i} = \min_{i \in \lbrace 1 \ldots n \rbrace} k = k
 $$
 
-In other words, picking a constant vector $\textbf{x}$ makes $\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1}) = k$. To show that $\rho(A) = k$, we must show that $\textbf{x} = c \cdot \textbf{1}$ maximizes $f(\textbf{x})$. Thus, we must show the following for all $\textbf{x}$ such that $\textbf{x}$ contains at least two different entries:
+In other words, picking a constant vector $\textbf{x}$ makes $\rho(A) = \max_{\textbf{x} \in \mathcal{N}} f(\textbf{x}) \geq f(c \cdot \textbf{1}) = k$. To show that $\rho(A) = k$, we must show that $\textbf{x} = c \cdot \textbf{1}$ maximizes $f(\textbf{x})$.
 
-$$
-\begin{align}
-	\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k
-\end{align}
-$$
-
-Expanding the dot product gives us the following:
-
-$$
-\min_{i \in \lbrace 1 \ldots n \rbrace} \frac{a_{i, 1} x_1 + a_{i, 2} x_2 + \ldots + a_{i, n} x_n}{x_i}
-$$
-
-To minimize this expression, choose $i$ such that $x_i$ is the largest entry in $\textbf{x}$. We know know that $x_i \neq 0$ ($\textbf{x}$ is not entirely $0$) and that $x_i$ is strictly greater than at least one other entry in $\textbf{x}$ because otherwise $\textbf{x}$ would have all identical entries. Let $k = i$ so that we get the following after dividing the above expression by $x_i$:
-$$
-a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k \ldots + \ldots + a_{i, n} x_n/x_i
-$$
-
-We know that our choice of $x_i$ minimizes the expression because each coefficient $x_j/x_i \leq 1$, excluding the coefficient of $a_k$ which is $1$. Picking any other entry besides the largest results in an expression with coefficients $x_j/x_i \geq 1$ if $x_i$ is not the largest element. Thus, $x_i$ minimizes the original expression. Thus, there is at least one coefficient $x_j/x_i \leq 1$ in $a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i$ so that:
+Choose $\textbf{x}$ to be a vector with at least two different entries then choose $x_j$ to be the largest entry in $\textbf{x}$. We know that $x_j \neq 0$ and that $x_j$ is larger than at least one other entry because the entries of $\textbf{x}$ are not identical. We also know that
 
 $$
 \begin{align}
-	&a_{i, 1} x_1/x_i + a_{i, 2} x_2/x_i + \ldots a_k + \ldots + a_{i, n} x_n/x_i \cr
-	&\leq a_{i, 1} c/c + a_{i, 2} c/c + \ldots a_k + \ldots + a_{i, n} c/c \cr
-	&= \sum_{j = 1} a_{i,j} \cr
-	&= k
+	\frac{\left[ A \cdot \textbf{x} \right]_j}{x_j} &= a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots + a_{j, n} x_n/x_j \cr 
+	&\geq f(\textbf{x}) \cr
+	&= \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ A \cdot \textbf{x} \right]_i}{x_i}
 \end{align}
 $$
 
-Since $f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} = k$ when $\textbf{x} = c \cdot \textbf{1}$ but $f(\textbf{x}) = \min_{i \in \lbrace 1 \ldots n \rbrace} \frac{\left[ \textbf{A}\textbf{x} \right]_i}{x_i} \leq f(c \cdot \textbf{1}) = k$ when $\textbf{x} \neq c \cdot \textbf{x}$, then $\textbf{x} = c \cdot \textbf{1}$ maximizes $f(\textbf{x})$. Thus, assuming $\textbf{x}$ contains identical entries, by the $\textit{Collatx-Wiedlandt}$ formula we know that $\rho(A) = k$.
+Furthermore, we know that
+$$
+a_{j, 1} x_1/x_j + a_{j, 2} x_2/x_j + \ldots a_k + \ldots + a_{j, n} x_n/x_j \leq k
+$$
+
+because every $x_m / x_j \leq 1$. Thus, for any $\textbf{x}$ with non-identical entries, $f(\textbf{x}) \leq k$. Hence, $\textbf{x} = c \cdot \textbf{1}$ maximizes $f(\textbf{x})$ showing that $\rho(A) = f(c \cdot \textbf{1}) = k$.
 
 ### Lemma 1.3
 **Claim**: If $A$ is a square matrix consisting of square block matrices $B_1, \ldots, B_m$ on the diagonal and zeros elsewhere, then $\sigma(A) = \lbrace \sigma(B_1) \cup \sigma(B_2) \cup \ldots \cup \sigma(B_m) \rbrace $.
 
 **Proof**: 
-Meyer p. 475 shows that:
+Meyer p. 475 shows that if $E$ and $G$ are square matrices then:
 
 $$
 det \left[
 	\begin{array}{c c}
-	A & B \cr
-	C & D \cr
+	E & F \cr
+	0 & G \cr
 	\end{array} 
 \right]
-= \left\lbrace 
-	\begin{array}{lr}
-	det(A) \times det(D - CA^{-1}B)		 &: \text{ when } A^{-1} \text{ exists } \cr
-	det(D) \times det(A - BA^{-1}c)	 &: \text{ when } D^{-1} \text{ exists }
-	\end{array} \right.
+= det(E) \times det(G)
 $$
+
+In our case, we have multiple square block matrices $B_1, \ldots, B_m$ and zeros elsewhere. Let $A = B_1 \oplus \ldots \oplus B_m$ where $\oplus$ is the direct sum operator on matrices. The direct sum is associative so that $A = B_1 \oplus M$ where $M = B_2 \oplus \ldots \oplus B_m$. We also know that $M$ is square because the direct sum of square matrices is always square. Thus, we can recursively apply Meyer's fact so that $det(A) = det(B_1) det(B_2) \cdots det(B_m)$.
+
+The characteristic equation $det(A - \lambda I) = 0$ gives us the eigenvalues for $A$. Since $B_1, \ldots, B_m$ are on the diagonal, then $A - \lambda I) = B_1 - \lambda I, \ldots, B_m - \lambda I$ (the dimension of $I$ changes accordingly). Then we we know that $ \\det(A - \lambda I) = det(B_1 - \lambda I) det(B_2 - \lambda I) \cdots = det(B_m - \lambda I) = 0$. If any $det(B_i - \lambda I) = 0 $ then the entire product is zero. Thus, $\sigma(A) = \sigma(B_1) \cup \ldots \sigma(B_m)$.
+
+In our case, we have multiple square block matrices $B_1, \ldots, B_m$ and zeros elsewhere. Note that any of these matrices can be combined into a larger block matrix that is also square since every $B_i$ contributes $n$ rows and $n$ columns. Since the block matrices are on the diagonal, the added rows do not overlap.
+

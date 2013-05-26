@@ -9,9 +9,10 @@ _This is a revised version of Quenell's proof of the Sunada theorem for Graphs (
 
 Let $ \gamma = v_0 e_0 \ldots e_n v_n $ be an n-walk in $ \Gamma $. Clearly, if there is no element $ g \in G $ such that $ g v_0 = v_n $, then $ \gamma $ will not project to a closed walk. Therefore, we select a subset of the closed n-walks in $ \Gamma $ for which there is an element of $ G $ which maps the first vertex to the last vertex. Let $ B_n $ be this subset.
 
-Now we partition $ B_n $ into orbits based on the action of $ G $. ($ G $ acts on walks by the standard action on their vertices.) We can write $ B_n = B_{n1} \cup B_{n2} \ldots B_{nm} $ where the $ B_ni $ are the orbits of $ B_n $ by $ G $. Let $ \alpha_i \in B_ni $ be any walk. By the definition of $ B_n $ there exists a $ g_{\alpha_i} $ such that if $ \alpha_i = v_0 \ldots v_n $ then $ g_{\alpha_i} v_0 = v_n $. 
+Now we partition $ B_n $ into orbits based on the action of $ G $. ($ G $ acts on walks by the standard action on their vertices.) We can write $ B_n = B_{n1} \cup B_{n2} \ldots B_{nm} $ where the $ B_{ni} $ are the orbits of $ B_n $ by $ G $. Let $ \alpha_i \in B_{ni} $ be any walk. By the definition of $ B_n $ there exists a $ g_{\alpha_i} $ such that if $ \alpha_i = v_0 \ldots v_n $ then $ g_{\alpha_i} v_0 = v_n $. 
 
-Now consider an arbitrary element of $ B_ni $ which can be written as $ g \alpha_i = g v_0 \ldots g v_n $ for some $ g \in G $. I claim that the projection of $ g \alpha_i $ is closed if and only if $ g g_{\alpha_i} g^{-1} \in H $. First, assume that $ g g_{\alpha_i} g^{-1} \in H $. Then we have:
+Now consider an arbitrary element of $ B_{ni} $ which can be written as $ g \alpha_i = g v_0 \ldots g v_n $ for some $ g \in G $. I claim that the projection of $ g \alpha_i $ is closed if and only if $ g g_{\alpha_i} g^{-1} \in H $. First, assume that $ g g_{\alpha_i} g^{-1} \in H $. Then we have:
+
 $$
 \begin{align*}
 (g g_{\alpha_i} g^{-1}) g v_0 &= g g_{\alpha_i} v_0 \\\\

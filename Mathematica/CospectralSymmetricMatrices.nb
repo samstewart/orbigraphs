@@ -1,0 +1,165 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5634,        156]
+NotebookOptionsPosition[      5198,        136]
+NotebookOutlinePosition[      5556,        152]
+CellTagsIndexPosition[      5513,        149]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Cospectral Symmetric Adjacency Matrix\
+\>", "Title",
+ CellChangeTimes->{{3.5784282321003437`*^9, 3.578428269359919*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "\"\<Orbigraphs.m\>\""}]}], "Input",
+ CellChangeTimes->{{3.57842827536484*^9, 3.57842827708827*^9}}],
+
+Cell["\<\
+Now we start by looking for orbigraphs with adjacent matrices.\
+\>", "Text",
+ CellChangeTimes->{{3.57842827536484*^9, 3.57842829464697*^9}, {
+  3.578428347637969*^9, 3.578428358933694*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"symm", " ", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"EnumerateOrbigraphs", "[", 
+      RowBox[{"3", ",", " ", "3"}], "]"}], ",", " ", "SymmetricMatrixQ"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"asym", " ", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"EnumerateOrbigraphs", "[", 
+      RowBox[{"3", ",", " ", "3"}], "]"}], ",", 
+     RowBox[{"Composition", "[", 
+      RowBox[{"Not", ",", " ", "SymmetricMatrixQ"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"symmetric", " ", "=", "  ", 
+   RowBox[{"Eigenvalues", "  ", "/@", " ", "symm"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"asymmetric", " ", "=", "  ", 
+   RowBox[{"Eigenvalues", " ", "/@", " ", "asym"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"indices", " ", "=", " ", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Outer", "[", 
+      RowBox[{"List", ",", " ", 
+       RowBox[{"Range", " ", "@", 
+        RowBox[{"Length", "[", "symmetric", "]"}]}], ",", " ", 
+       RowBox[{"Range", " ", "@", " ", 
+        RowBox[{"Length", "[", "asymmetric", "]"}]}]}], "]"}], ",", " ", 
+     "1"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5784283831936398`*^9, 3.578428394154468*^9}, {
+   3.578428546607012*^9, 3.578428547676036*^9}, {3.578428629674334*^9, 
+   3.578428743528199*^9}, {3.578428796883676*^9, 3.5784288483835297`*^9}, {
+   3.578428913356863*^9, 3.578428915379662*^9}, {3.578428950659296*^9, 
+   3.578428959987303*^9}, {3.578429002418342*^9, 3.5784292787098*^9}, {
+   3.578429317441127*^9, 3.5784293204214067`*^9}, {3.57842938288379*^9, 
+   3.5784293945970917`*^9}, {3.578429447091518*^9, 3.5784295934147167`*^9}, 
+   3.578429948209937*^9, 3.5784300072875433`*^9, {3.578430366388999*^9, 
+   3.578430370274852*^9}, {3.578430425957513*^9, 3.5784304270547037`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"p", " ", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"indices", ",", " ", 
+     RowBox[{"(", 
+      RowBox[{"l", "\[Function]", " ", 
+       RowBox[{
+        RowBox[{"symmetric", "\[LeftDoubleBracket]", 
+         RowBox[{"First", "[", "l", "]"}], "\[RightDoubleBracket]"}], " ", 
+        "\[Equal]", " ", 
+        RowBox[{"asymmetric", "\[LeftDoubleBracket]", 
+         RowBox[{"Last", "[", "l", "]"}], "\[RightDoubleBracket]"}]}]}], 
+      ")"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"l", "\[Function]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"AdjacencyOrbigraph", "[", 
+          RowBox[{"symm", "\[LeftDoubleBracket]", 
+           RowBox[{"First", "[", "l", "]"}], "\[RightDoubleBracket]"}], "]"}],
+          ",", " ", 
+         RowBox[{"symmetric", "\[LeftDoubleBracket]", 
+          RowBox[{"First", "[", "l", "]"}], "\[RightDoubleBracket]"}], ",", 
+         "  ", 
+         RowBox[{"AdjacencyOrbigraph", "[", 
+          RowBox[{"asym", "\[LeftDoubleBracket]", 
+           RowBox[{"First", "[", "l", "]"}], "\[RightDoubleBracket]"}], "]"}],
+          ",", " ", 
+         RowBox[{"asymmetric", "\[LeftDoubleBracket]", 
+          RowBox[{"Last", "[", "l", "]"}], "\[RightDoubleBracket]"}]}], 
+        "}"}]}], ")"}], ",", " ", "p"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5784283831936398`*^9, 3.578428394154468*^9}, {
+  3.578428546607012*^9, 3.578428547676036*^9}, {3.578428629674334*^9, 
+  3.578428743528199*^9}, {3.578428796883676*^9, 3.5784288483835297`*^9}, {
+  3.578428913356863*^9, 3.578428915379662*^9}, {3.578428950659296*^9, 
+  3.578428959987303*^9}, {3.578429002418342*^9, 3.5784292787098*^9}, {
+  3.578429317441127*^9, 3.5784293204214067`*^9}, {3.57842938288379*^9, 
+  3.5784293945970917`*^9}, {3.578429447091518*^9, 3.578429628697001*^9}, {
+  3.578429707440959*^9, 3.578429734748756*^9}, {3.578430431150394*^9, 
+  3.578430432766061*^9}}]
+}, Open  ]]
+},
+WindowSize->{1245, 761},
+WindowMargins->{{12, Automatic}, {12, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 130, 3, 92, "Title"],
+Cell[712, 27, 282, 7, 46, "Input"],
+Cell[997, 36, 199, 4, 30, "Text"],
+Cell[1199, 42, 1912, 44, 97, "Input"],
+Cell[3114, 88, 2068, 45, 80, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

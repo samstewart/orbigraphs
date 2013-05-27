@@ -30,6 +30,9 @@ CycleCount::usage = "CycleCount[g, n] returns the number of cycles of length n i
 CycleSpectrum::usage = "CycleSpectrum[g, n] returns the first n elements of the cycle spectrum of g.";
 CycleCospectralQ::usage = "CycleCospectral[g1, g2] determines if the graphs g1 and g2 have the same length spectrum.";
 DeleteIsomorphicGraphs::usage = "DeleteIsomorphicGraphs[gs] returns one representative from each equivalence class of gs with equivalence determined by graph isomorphism.";
+GraphQuotient::usage = "GraphQuotient[g, h] gives the standard quotient graph g/h.";
+CollapseOrbigraph::usage = "CollapseOrbigraph[g] returns a new graph by removing weights from all but self loops.";
+GraphAutomorphismGroup::usage = "GraphAutomorphismGroup[g] finds the group of automorphisms of the graph g."
 ImportRegularGraphs::usage = "ImportRegularGraphs[n, k] attemts to retrieve the set of k-regular graphs on n vertices from the data hosted at http://www.mathe2.uni-bayreuth.de.";
 ConjugacyClass::usage = "ConjugacyClass[x, g] returns the conjugacy class of the element x in the group g.";
 SunadaQ::usage = "SunadaQ[g, h1, h2] determines whether the triple (g, h1, h2) satisfies the Sunada condition.";
@@ -107,6 +110,35 @@ DeleteIsomorphicGraphs[gs_] := Module[{k,i,j, cleaned={}, found},
 	];
 	Return[cleaned]
 ];
+
+GraphAutomorphismGroup[g_Graph] := Block[{$ContextPath, cg},
+	Needs["Combinatorica`"];
+	Needs["GraphUtilities`"];
+	cg = GraphUtilities`ToCombinatoricaGraph[g];
+	PermutationGroup[FindPermutation /@ Combinatorica`Automorphisms[cg]]
+];
+
+
+(* ::Text:: *)
+(*Manipulating the standard graph quotient*)
+
+
+CartesianProduct[xs_List,ys_List]:=Flatten[Outer[List, xs, ys], 1];
+
+OrbitEdges[e_,H_]:=Flatten[Outer[List, (PermutationReplace[e[[1]], H] // Flatten), e[[2]]], 1];
+
+OrbitConnected[es_, \[CapitalGamma]_] := Or@@(EdgeQ[\[CapitalGamma], UndirectedEdge@@##]& /@ es);
+
+GraphQuotient[\[CapitalGamma]_, H_] := Module[{os, ocount, pairs, oes},
+	os = GroupOrbits[H, VertexList[\[CapitalGamma]]];
+	ocount = Length[os];
+	pairs = Flatten[Outer[List, Range[ocount], Range[ocount]], 1] /. n_Integer :> os[[n]];
+	Graph[UndirectedEdge@@@DeleteDuplicates[Sort /@ Select[pairs, OrbitConnected[OrbitEdges[#, H], \[CapitalGamma]]&]], VertexLabels -> "Name"]
+];
+
+CollapseOrbigraph[\[CapitalGamma]_] := WeightedAdjacencyGraph[
+	(MapIndexed[If[#2[[1]] == #2[[2]], #1, Boole[#1 > 0]] &, WeightedAdjacencyMatrix[\[CapitalGamma]], {2}]) /. {0 -> \[Infinity]}, 
+	DirectedEdges -> False, EdgeLabels -> "EdgeWeight"];
 
 
 (* ::Text:: *)

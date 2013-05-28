@@ -1,0 +1,289 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11159,        280]
+NotebookOptionsPosition[     10827,        263]
+NotebookOutlinePosition[     11184,        279]
+CellTagsIndexPosition[     11141,        276]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"width", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"height", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"DynamicModule", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"Show", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", " ", "White", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "2"}], "*", "width"}], ",", " ", 
+               RowBox[{
+                RowBox[{"-", "2"}], "*", "height"}]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"2", "*", "width"}], ",", " ", 
+               RowBox[{"2", "*", "height"}]}], "}"}]}], "]"}]}], "}"}], "]"}],
+         ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", " ", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", " ", 
+                RowBox[{
+                 RowBox[{"-", "2"}], "*", "height"}]}], "}"}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", " ", 
+                RowBox[{"2", "*", "height"}]}], "}"}]}], "}"}], "]"}], ",", 
+           " ", 
+           RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", " ", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "2"}], "*", "width"}], ",", " ", "0"}], "}"}], 
+              ",", " ", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"2", "*", "width"}], ",", " ", "0"}], "}"}]}], "}"}], 
+            "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "Thin", "]"}], ",", " ", "Gray", ",", " ", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"width", ",", " ", 
+                RowBox[{
+                 RowBox[{"-", "2"}], "*", "height"}]}], "}"}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"width", ",", " ", 
+                RowBox[{"2", "*", "height"}]}], "}"}]}], "}"}], "]"}], ",", 
+           " ", 
+           RowBox[{"EdgeForm", "[", "Thin", "]"}], ",", " ", "Gray", ",", " ", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "2"}], "*", "width"}], ",", " ", "height"}], 
+               "}"}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"2", "*", "width"}], ",", " ", "height"}], "}"}]}], 
+             "}"}], "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Orange", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{"-", "p"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Blue", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{"p", " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", " ", "1"}], "}"}]}], "]"}], "]"}]}], "}"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Pink", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{"p", " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", " ", "0"}], "}"}]}], "]"}], "]"}]}], "}"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Yellow", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{
+              RowBox[{"-", "p"}], " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", " ", "0"}], "}"}]}], "]"}], "]"}]}], "}"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Purple", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{
+              RowBox[{"-", "p"}], " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", " ", "0"}], "}"}], " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", " ", "1"}], "}"}]}], "]"}], "]"}]}], "}"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Green", ",", 
+           " ", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Point", "[", 
+             RowBox[{
+              RowBox[{"-", "p"}], " ", "+", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", " ", "1"}], "}"}]}], "]"}], "]"}]}], "}"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "300"}], "p"}], ",", " ", 
+             RowBox[{"200", "p"}]}], "}"}], "]"}], "]"}], "]"}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"Locator", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "p", "]"}], ",", " ", "None"}], "]"}], 
+         "]"}]}], "]"}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.578582712582127*^9, 3.578582736128002*^9}, {
+  3.5785828366469183`*^9, 3.578582861315853*^9}, {3.578582895236186*^9, 
+  3.5785829082610188`*^9}, {3.578582991037472*^9, 3.578583003378756*^9}, {
+  3.578583037966464*^9, 3.578583059233424*^9}, {3.578583124353129*^9, 
+  3.5785831536848183`*^9}, {3.5785833278298492`*^9, 3.578583483698097*^9}, {
+  3.5785835522230883`*^9, 3.5785836727829733`*^9}, {3.578583708167921*^9, 
+  3.578583886231512*^9}, {3.578583944666298*^9, 3.578584039192436*^9}, {
+  3.5785840815212727`*^9, 3.578584082317026*^9}, {3.578584147289434*^9, 
+  3.578584157541753*^9}, {3.5785843828047857`*^9, 3.5785844532195597`*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`p$$ = {0.9904968676560939, 
+  0.5525150599547741}}, 
+  RowBox[{"{", 
+   GraphicsBox[{
+     {GrayLevel[1], EdgeForm[Thickness[Large]], 
+      RectangleBox[{-2, -2}, {2, 2}]}, {
+      {EdgeForm[Thickness[Large]], LineBox[{{0, -2}, {0, 2}}]}, 
+      {EdgeForm[Thickness[Large]], LineBox[{{-2, 0}, {2, 0}}]}}, {
+      {GrayLevel[0.5], EdgeForm[Thickness[Tiny]], LineBox[{{1, -2}, {1, 2}}]}, 
+      {GrayLevel[0.5], EdgeForm[Thickness[Tiny]], 
+       LineBox[{{-2, 1}, {2, 1}}]}}, 
+     {RGBColor[1, 0.5, 0], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[-$CellContext`p$$], StandardForm, Graphics],
+       ImageSizeCache->{{104.32812500000009`, 111.32812500000009`}, {
+        48.24532500000017, 55.24532500000017}}]}, 
+     {RGBColor[0, 0, 1], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[$CellContext`p$$ + {0, 1}], StandardForm, Graphics],
+       ImageSizeCache->{{299.7890624999999, 
+        306.7890624999999}, {-159.45405000000008`, -152.45405000000008`}}]}, 
+     {RGBColor[1, 0.5, 0.5], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[$CellContext`p$$ + {1, 0}], StandardForm, Graphics],
+       ImageSizeCache->{{398.4571874999999, 
+        405.4571874999999}, {-60.78592500000011, -53.78592500000011}}]}, 
+     {RGBColor[1, 1, 0], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[-$CellContext`p$$ + {1, 0}], StandardForm, Graphics],
+       ImageSizeCache->{{202.99625000000006`, 209.99625000000006`}, {
+        48.24532500000017, 55.24532500000017}}]}, 
+     {RGBColor[0.5, 0, 0.5], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[-$CellContext`p$$ + {1, 0} + {0, 1}], StandardForm, Graphics],
+       ImageSizeCache->{{202.99625000000006`, 
+        209.99625000000006`}, {-50.42279999999982, -43.42279999999982}}]}, 
+     {RGBColor[0, 1, 0], PointSize[Large], 
+      DynamicBox[Typeset`ToBoxes[
+        Point[-$CellContext`p$$ + {0, 1}], StandardForm, Graphics],
+       ImageSizeCache->{{104.32812500000009`, 
+        111.32812500000009`}, {-50.42279999999982, -43.42279999999982}}]}, 
+     DynamicBox[Typeset`ToBoxes[
+       Line[{(-300) $CellContext`p$$, 200 $CellContext`p$$}], StandardForm, 
+       Graphics],
+      ImageSizeCache->{{-29115.414213562373`, 
+       19753.414213562373`}, {-10907.414213562373`, 16353.414213562373`}}], 
+     LocatorBox[Dynamic[$CellContext`p$$], None]},
+    ImagePadding->{{0., 1.}, {1., 0.}},
+    ImageSize->{412.1171875, Automatic},
+    PlotRange->{{-2.0833333333333335`, 2.0833333333333335`}, {-2.08, 2.08}},
+    PlotRangePadding->Automatic], "}"}],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{{3.578583825461145*^9, 3.5785838536178303`*^9}, 
+   3.5785838865382843`*^9, 3.578583998327078*^9, 3.5785840404597807`*^9, 
+   3.578584082665031*^9, {3.578584148490192*^9, 3.578584157871476*^9}, {
+   3.5785844059985857`*^9, 3.578584453494137*^9}, 3.578686799712515*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 697},
+WindowMargins->{{Automatic, 214}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 7264, 180, 335, "Input"],
+Cell[7846, 204, 2965, 56, 428, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

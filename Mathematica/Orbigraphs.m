@@ -37,7 +37,7 @@ ImportRegularGraphs::usage = "ImportRegularGraphs[n, k] attemts to retrieve the 
 ConjugacyClass::usage = "ConjugacyClass[x, g] returns the conjugacy class of the element x in the group g.";
 SunadaQ::usage = "SunadaQ[g, h1, h2] determines whether the triple (g, h1, h2) satisfies the Sunada condition.";
 PartialKTree::usage = "PartialKTree[k, l] builds a k-regular tree up to l levels deep, with only the leaves having degree 1.";
-
+IsomorphicPermutationGroup::usage = "IsomorphicPermutationGroup[g, p] Constructs a permutation group that is isomorphic to group g using product p.";
 Begin["`Private`"];
 
 
@@ -210,6 +210,13 @@ ExtendKTree[tree_, k_] := Module[{t = tree, idx = Max[VertexList[tree]] + 1, ext
 ];
 
 PartialKTree[k_, l_] := Nest[ExtendKTree[#, k] &, Graph[{1}, {}, VertexLabels -> "Name", GraphLayout -> "RadialDrawing"], l];
+
+
+(* ::Text:: *)
+(*Useful group tools*)
+
+
+IsomorphicPermutationGroup[g_, p_] := Map[(a \[Function] FindPermutation[g, Map[p[a, #] &, g]]), g];
 
 
 End[];

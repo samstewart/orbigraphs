@@ -1,3 +1,6 @@
+Spectral Radius of Square Matrix with Constant Row Sums
+=======================================================
+
 **Claim**:
 If $A \in \mathcal{C}^{n \times n} \geq 0$ and $A$ is irreducible, the rows of $A$ sum to $k$ then $\rho(A) = k$. 
 

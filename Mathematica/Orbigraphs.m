@@ -216,7 +216,7 @@ PartialKTree[k_, l_] := Nest[ExtendKTree[#, k] &, Graph[{1}, {}, VertexLabels ->
 (*Useful group tools*)
 
 
-IsomorphicPermutationGroup[g_, p_] := Map[(a \[Function] FindPermutation[g, Map[p[a, #] &, g]]), g];
+IsomorphicPermutationGroup[g_, p_] := PermutationGroup[Map[(a \[Function] FindPermutation[g, Map[p[a, #] &, g]]), g]];
 
 
 End[];

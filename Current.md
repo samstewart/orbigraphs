@@ -16,6 +16,13 @@ Here are some mathematica notebooks giving conjectures and evidence. **You will 
 Meeting Notes
 -------------
 
-- [[May 20 | May20]]
-- [[May 21 | May21]]
-- [[May 22 | May22]]
+- Week 1
+    - [[May 20 | May20]]
+    - [[May 21 | May21]]
+    - [[May 22 | May22]]
+    - [[May 23 | May23]]
+    - [[May 24 | May24]]
+- Week 2
+    - [[May 28 | May28]]
+    - [[May 29 | May29]]
+    - [[May 30 | May30]]

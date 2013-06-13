@@ -1,0 +1,285 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11239,        276]
+NotebookOptionsPosition[     10803,        255]
+NotebookOutlinePosition[     11160,        271]
+CellTagsIndexPosition[     11117,        268]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Laplacian on a Graph", "Title",
+ CellChangeTimes->{{3.579006450861224*^9, 3.5790064563730373`*^9}}],
+
+Cell["\<\
+We start by evaluating the laplacian on a graph and then solve the heat \
+equation and the black schoales equation.\
+\>", "Text",
+ CellChangeTimes->{{3.5790064605975847`*^9, 3.579006480795298*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", " ", "=", " ", 
+    RowBox[{"Graph", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"1", "\[UndirectedEdge]", "2"}], ",", 
+        RowBox[{"3", "\[UndirectedEdge]", "2"}], ",", 
+        RowBox[{"4", "\[UndirectedEdge]", "3"}], ",", " ", 
+        RowBox[{"1", "\[UndirectedEdge]", "5"}], ",", " ", 
+        RowBox[{"5", "\[UndirectedEdge]", "4"}], ",", " ", 
+        RowBox[{"5", "\[UndirectedEdge]", "2"}], ",", " ", 
+        RowBox[{"4", "\[UndirectedEdge]", "6"}]}], "}"}], ",", " ", 
+      RowBox[{"VertexLabels", "\[Rule]", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", " ", "\[Rule]", " ", "i"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", "1", ",", " ", "6"}], "}"}]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", " ", 
+      RowBox[{"VertexSize", "\[Rule]", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", " ", "\[Rule]", " ", "Large"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", "1", ",", " ", "6"}], "}"}]}], "]"}]}], ",", 
+      " ", 
+      RowBox[{"VertexStyle", "\[Rule]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", " ", "\[Rule]", " ", 
+          RowBox[{"RGBColor", "[", 
+           RowBox[{
+            RowBox[{"i", "/", "6"}], ",", " ", "0", ",", "0"}], "]"}]}], ",", 
+         " ", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", "1", ",", " ", "6"}], "}"}]}], "]"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"DegreeMatrix", "[", "g_", "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ad", " ", "=", " ", 
+        RowBox[{"AdjacencyMatrix", "[", "g", "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"DiagonalMatrix", "[", 
+       RowBox[{"Total", " ", "/@", "ad"}], "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LaplacianMatrix", "[", "g_", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"DegreeMatrix", "[", "g", "]"}], " ", "-", " ", 
+     RowBox[{"AdjacencyMatrix", "[", "g", "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolveHeatEquation", "[", 
+    RowBox[{"g_", ",", " ", "t_", ",", " ", "init_List"}], "]"}], " ", ":=", 
+   " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"L", ",", " ", "\[Psi]", ",", " ", "\[Lambda]", ",", " ", "n"}],
+       "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"L", " ", "=", " ", 
+       RowBox[{"KirchhoffMatrix", "[", "g", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[Lambda]", ",", " ", "\[Psi]"}], "}"}], " ", "=", " ", 
+       RowBox[{"N", "[", 
+        RowBox[{"Eigensystem", "[", "L", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Convert", " ", "into", " ", "a", " ", "basis"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"\[Psi]", " ", "=", " ", 
+       RowBox[{"Orthogonalize", "[", "\[Psi]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"n", " ", "=", " ", 
+       RowBox[{"VertexCount", "[", "g", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Now", " ", "construct", " ", "solution", " ", "via", " ", "linear", 
+        " ", "combination", " ", "of", " ", "general", " ", 
+        RowBox[{"solutions", ".", " ", "We"}], " ", "have", " ", "n", " ", 
+        "eigenvalues", " ", "so", " ", "we", " ", "go", " ", "from", " ", "1",
+         " ", "to", " ", 
+        RowBox[{"n", ".", " ", "We"}]}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"init", ".", "\[Psi]"}], "  ", "*", " ", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{
+            "\[Lambda]", "\[LeftDoubleBracket]", "i", 
+             "\[RightDoubleBracket]"}]}], " ", "*", "t"}], "]"}], "*", 
+         RowBox[{
+         "\[Psi]", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        " ", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"init", " ", "=", " ", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{"30", ",", " ", 
+     RowBox[{"VertexCount", "[", "g", "]"}]}], "]"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RefreshGraph", "[", 
+   RowBox[{"dist_List", ",", " ", "g_Graph"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Fold", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SetProperty", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"#1", ",", " ", "#2"}], "}"}], ",", " ", 
+       RowBox[{"VertexStyle", "\[Rule]", " ", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{
+          RowBox[{
+          "dist", "\[LeftDoubleBracket]", "#2", "\[RightDoubleBracket]"}], 
+          ",", " ", "0", ",", "0"}], "]"}]}]}], "]"}], " ", "&"}], " ", ",", 
+    "g", ",", 
+    RowBox[{"Range", "[", 
+     RowBox[{"VertexCount", "[", "g", "]"}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"RefreshGraph", "[", 
+    RowBox[{
+     RowBox[{"SolveHeatEquation", "[", 
+      RowBox[{"g", ",", " ", "t", ",", " ", "init"}], "]"}], ",", " ", "g"}], 
+    "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "0", ",", " ", "3"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.579008808732188*^9, 3.579008995026271*^9}, {
+   3.57900905888267*^9, 3.579009126138713*^9}, {3.579009202769503*^9, 
+   3.5790092628686743`*^9}, {3.5790094538063383`*^9, 3.57900945550112*^9}, {
+   3.579010227684565*^9, 3.579010258681342*^9}, {3.5790102965925922`*^9, 
+   3.579010313592861*^9}, {3.57901042768713*^9, 3.5790104550675583`*^9}, {
+   3.579010508552702*^9, 3.579010533008361*^9}, 3.57901057070194*^9, {
+   3.57901066653939*^9, 3.5790107599689837`*^9}, {3.579010816460004*^9, 
+   3.579010920077005*^9}, {3.57901232607691*^9, 3.579012433715746*^9}, {
+   3.5790128952647047`*^9, 3.579012906149119*^9}, {3.579101045376075*^9, 
+   3.579101061844903*^9}, {3.579101107334659*^9, 3.579101140000969*^9}, {
+   3.579101212390901*^9, 3.57910131099055*^9}, 3.579101364997129*^9, {
+   3.5791016305763702`*^9, 3.579101640823962*^9}, {3.579102125869516*^9, 
+   3.579102244119952*^9}, 3.579102381181632*^9, {3.579102417188571*^9, 
+   3.5791024367960997`*^9}, {3.57910309167691*^9, 3.5791031011946163`*^9}, {
+   3.579119478408064*^9, 3.5791196261425056`*^9}, {3.579119665368492*^9, 
+   3.579119733563643*^9}, {3.5791197988014183`*^9, 3.579119800821136*^9}, {
+   3.579119866098105*^9, 3.579119868594338*^9}, {3.579119908342471*^9, 
+   3.5791200073344812`*^9}, {3.579120239538213*^9, 3.5791202717144947`*^9}, {
+   3.579120352786598*^9, 3.579120406598864*^9}, {3.579120854824173*^9, 
+   3.579120880070304*^9}, {3.579120934493462*^9, 3.5791211162374477`*^9}, {
+   3.5793597011934834`*^9, 3.579359707366762*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 1.685, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 3}}, Typeset`size$$ = {360., {78., 82.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$246057$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$246057$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> $CellContext`RefreshGraph[
+        $CellContext`SolveHeatEquation[$CellContext`g, $CellContext`t$$, \
+$CellContext`init], $CellContext`g], 
+      "Specifications" :> {{$CellContext`t$$, 0, 3}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {122., 127.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.57900882584787*^9, 3.579008828517392*^9}, {
+   3.57900887234781*^9, 3.579008893365679*^9}, {3.579008988730155*^9, 
+   3.579008995413666*^9}, 3.5790090676232243`*^9, {3.579010440643326*^9, 
+   3.579010455387113*^9}, {3.5790105185660467`*^9, 3.579010533367331*^9}, 
+   3.579010570993952*^9, {3.579010706518489*^9, 3.5790107548389482`*^9}, 
+   3.5790108270389967`*^9, {3.579010879539134*^9, 3.579010891126091*^9}, {
+   3.579012348775744*^9, 3.579012402801298*^9}, 3.579012434168461*^9, {
+   3.579012898485066*^9, 3.579012906557027*^9}, 3.579119476045404*^9, 
+   3.5791195515633*^9, {3.579119583156332*^9, 3.579119626672339*^9}, {
+   3.5791196660361147`*^9, 3.579119677775024*^9}, 3.579119869053672*^9, {
+   3.579119986968217*^9, 3.579120008099263*^9}, {3.57912037924629*^9, 
+   3.57912038662705*^9}, {3.579120855348413*^9, 3.5791208804875793`*^9}, {
+   3.5791209357394333`*^9, 3.579120980786439*^9}, {3.5791210202530127`*^9, 
+   3.5791211167118177`*^9}, {3.5793596812742033`*^9, 3.579359708736575*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1136, 791},
+WindowMargins->{{29, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 105, 1, 92, "Title"],
+Cell[687, 25, 207, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[919, 33, 7273, 170, 420, "Input"],
+Cell[8195, 205, 2580, 46, 300, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

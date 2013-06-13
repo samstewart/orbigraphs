@@ -1,0 +1,93 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2749,         84]
+NotebookOptionsPosition[      2389,         66]
+NotebookOutlinePosition[      2746,         82]
+CellTagsIndexPosition[      2703,         79]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Orbigraph Covers", "Title",
+ CellChangeTimes->{{3.579716408248844*^9, 3.579716412005764*^9}}],
+
+Cell["\<\
+This is my first attempt at a decent algorithm for unfolding an orbigraph. It\
+\[CloseCurlyQuote]s not easy and I think the problem is undecidable: we don\
+\[CloseCurlyQuote]t know if the unfolding is taking a really long time or if \
+there is no valid unfolding. I need to try my algorithm on orbigraphs with no \
+finite covers to understand why it breaks down. My first attempt simply makes \
+the first step.\
+\>", "Text",
+ CellChangeTimes->{{3.579716415654297*^9, 3.579716467206355*^9}, {
+  3.579716679097391*^9, 3.5797166866483*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sampleOrbigraph", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UnwindOrbigraph", "[", "orbi_", "]"}], " ", ":=", " ", 
+  RowBox[{"(", 
+   RowBox[{"row", " ", "\[Function]", 
+    RowBox[{"Fold", "[", "\[IndentingNewLine]", "\t\t\t", 
+     RowBox[{"VertexAdd", "[", 
+      RowBox[{"#1", ",", " ", "\[IndentingNewLine]", "\t\t\t\t", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"#2", ",", "#"}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", "\t\t\t", 
+        RowBox[{
+        "EdgeAdd", "[", "\[IndentingNewLine]"}]}]}]}]}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.579716486215836*^9, 3.5797165766479673`*^9}, {
+   3.5797166748083353`*^9, 3.5797167690635*^9}, {3.5797168990547047`*^9, 
+   3.579716900093171*^9}, {3.579717303125861*^9, 3.579717363454693*^9}, {
+   3.5797174227334146`*^9, 3.579717469426262*^9}, 3.579717588690221*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 699},
+WindowMargins->{{36, Automatic}, {16, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 99, 1, 92, "Title"],
+Cell[681, 25, 547, 9, 87, "Text"],
+Cell[1231, 36, 1142, 27, 148, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

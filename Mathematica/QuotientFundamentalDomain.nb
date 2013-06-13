@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     11159,        280]
-NotebookOptionsPosition[     10827,        263]
-NotebookOutlinePosition[     11184,        279]
-CellTagsIndexPosition[     11141,        276]
+NotebookDataLength[     11167,        281]
+NotebookOptionsPosition[     10835,        264]
+NotebookOutlinePosition[     11192,        280]
+CellTagsIndexPosition[     11149,        277]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -203,8 +203,8 @@ Cell[BoxData[
   3.578584157541753*^9}, {3.5785843828047857`*^9, 3.5785844532195597`*^9}}],
 
 Cell[BoxData[
- DynamicModuleBox[{$CellContext`p$$ = {0.9904968676560939, 
-  0.5525150599547741}}, 
+ DynamicModuleBox[{$CellContext`p$$ = {0.4956823378780244, 
+  0.48908619370779194`}}, 
   RowBox[{"{", 
    GraphicsBox[{
      {GrayLevel[1], EdgeForm[Thickness[Large]], 
@@ -217,48 +217,49 @@ Cell[BoxData[
      {RGBColor[1, 0.5, 0], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[-$CellContext`p$$], StandardForm, Graphics],
-       ImageSizeCache->{{104.32812500000009`, 111.32812500000009`}, {
-        48.24532500000017, 55.24532500000017}}]}, 
+       ImageSizeCache->{{239.0742187500001, 246.0742187500001}, {
+        68.02586250000029, 75.02586250000029}}]}, 
      {RGBColor[0, 0, 1], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[$CellContext`p$$ + {0, 1}], StandardForm, Graphics],
-       ImageSizeCache->{{299.7890624999999, 
-        306.7890624999999}, {-159.45405000000008`, -152.45405000000008`}}]}, 
+       ImageSizeCache->{{390.5429687499998, 
+        397.5429687499998}, {-234.21538750000033`, -227.21538750000033`}}]}, 
      {RGBColor[1, 0.5, 0.5], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[$CellContext`p$$ + {1, 0}], StandardForm, Graphics],
-       ImageSizeCache->{{398.4571874999999, 
-        405.4571874999999}, {-60.78592500000011, -53.78592500000011}}]}, 
+       ImageSizeCache->{{543.3310937499998, 
+        550.3310937499998}, {-81.42726250000034, -74.42726250000034}}]}, 
      {RGBColor[1, 1, 0], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[-$CellContext`p$$ + {1, 0}], StandardForm, Graphics],
-       ImageSizeCache->{{202.99625000000006`, 209.99625000000006`}, {
-        48.24532500000017, 55.24532500000017}}]}, 
+       ImageSizeCache->{{391.8623437500001, 398.8623437500001}, {
+        68.02586250000029, 75.02586250000029}}]}, 
      {RGBColor[0.5, 0, 0.5], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[-$CellContext`p$$ + {1, 0} + {0, 1}], StandardForm, Graphics],
-       ImageSizeCache->{{202.99625000000006`, 
-        209.99625000000006`}, {-50.42279999999982, -43.42279999999982}}]}, 
+       ImageSizeCache->{{391.8623437500001, 
+        398.8623437500001}, {-84.7622624999997, -77.7622624999997}}]}, 
      {RGBColor[0, 1, 0], PointSize[Large], 
       DynamicBox[Typeset`ToBoxes[
         Point[-$CellContext`p$$ + {0, 1}], StandardForm, Graphics],
-       ImageSizeCache->{{104.32812500000009`, 
-        111.32812500000009`}, {-50.42279999999982, -43.42279999999982}}]}, 
+       ImageSizeCache->{{239.0742187500001, 
+        246.0742187500001}, {-84.7622624999997, -77.7622624999997}}]}, 
      DynamicBox[Typeset`ToBoxes[
        Line[{(-300) $CellContext`p$$, 200 $CellContext`p$$}], StandardForm, 
        Graphics],
-      ImageSizeCache->{{-29115.414213562373`, 
-       19753.414213562373`}, {-10907.414213562373`, 16353.414213562373`}}], 
+      ImageSizeCache->{{-22404.414213562373`, 
+       15466.414213562373`}, {-14950.414213562373`, 22416.414213562373`}}], 
      LocatorBox[Dynamic[$CellContext`p$$], None]},
     ImagePadding->{{0., 1.}, {1., 0.}},
-    ImageSize->{412.1171875, Automatic},
+    ImageSize->{637.6171875, Automatic},
     PlotRange->{{-2.0833333333333335`, 2.0833333333333335`}, {-2.08, 2.08}},
     PlotRangePadding->Automatic], "}"}],
   DynamicModuleValues:>{}]], "Output",
  CellChangeTimes->{{3.578583825461145*^9, 3.5785838536178303`*^9}, 
    3.5785838865382843`*^9, 3.578583998327078*^9, 3.5785840404597807`*^9, 
    3.578584082665031*^9, {3.578584148490192*^9, 3.578584157871476*^9}, {
-   3.5785844059985857`*^9, 3.578584453494137*^9}, 3.578686799712515*^9}]
+   3.5785844059985857`*^9, 3.578584453494137*^9}, 3.578686799712515*^9, 
+   3.578773561165064*^9}]
 }, Open  ]]
 },
 WindowSize->{740, 697},
@@ -280,7 +281,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[579, 22, 7264, 180, 335, "Input"],
-Cell[7846, 204, 2965, 56, 428, "Output"]
+Cell[7846, 204, 2973, 57, 654, "Output"]
 }, Open  ]]
 }
 ]

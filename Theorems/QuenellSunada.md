@@ -36,7 +36,7 @@ $$
 h = g (g_{\alpha_i} s) g^{-1}.
 $$
 
-Thus the number of n-walks in $ B_{ni} $ which project to closed walks in $ \Gamma / H $ is equal to
+Thus the number of translates $ g \alpha_i $ in $ B_{ni} $ which project to closed walks in $ \Gamma / H $ is equal to
 
 $$
 \begin{align*}
@@ -47,16 +47,18 @@ $$
 
 by [[ConjugacyCounting]]. 
 
+To determine the total number of n-walks in $B_{ni}$ which project to closed walks in $ \Gamma / H $ we must divide out those walks which are translates of each other by elements of $ G $. Let this multiplicity factor be $ F(\alpha_i) $ and note that it is independent of $ H $.
+
 Hence the total number of n-walks which project to closed walks in $ \Gamma / H $ is given by
 
 $$
-\sum_i N(B_{ni}).
+\sum_i \frac{N(B_{ni})}{F(\alpha_i)}.
 $$
 
 To determine how many closed n-walks there are in $ \Gamma / H $ we must divide this number by $ \\#(H) $ because each walk in $ \Gamma / H $ lifts to exactly $ \\#(H) $ walks in $ \Gamma $. (This is because the action of $ H $ is free, so acting on a walk by any element of $H$ gives a unique new walk.)
 
 Therefore the number of closed walks in $ \Gamma / H $ is 
 $$
-\frac{1}{\\#(H)} \sum_i N(B_{ni}) = \frac{1}{\\#(H)} \sum_i \sum_{s \in G_{v_0}} \\#(C(g_{\alpha_i} s)) \cdot \\#([g_{\alpha_i} s] \cap H).
+\frac{1}{\\#(H)} \sum_i N(B_{ni}) = \frac{1}{\\#(H)} \sum_i \sum_{s \in G_{v_0}} \frac{\\#(C(g_{\alpha_i} s)) \cdot \\#([g_{\alpha_i} s] \cap H)}{F(\alpha_i)}.
 $$
 By [[SunadaImpliesSameOrder]], the two Sunada subgroups $ H_1 $ and $ H_2 $ have the same order and the numbers $ \\#([g_{\alpha_i}] \cap H_1) $ and $ \\#([g_{\alpha_i}] \cap H_2) $ are equal for all $ g_{\alpha_i} $ by the Sunada condition. Therefore, $ \Gamma / H_1 $ and $ \Gamma / H_2 $ have the same number of closed n-walks for all $ n $ and are cospectral by [[CyclesCospectrality]].

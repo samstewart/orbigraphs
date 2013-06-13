@@ -29,14 +29,14 @@ $$
 where $A$ is the integer-valued adjacency matrix of $O$. Next, we "denormalize" $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (citation needed, do we want to prove it this way?) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ in the undirected and $W$ is the total number of edge weights. Thus, we can multiply both sides of the detailed balance equation by some $W$ to "denomalize" $\pi_i$ and $\pi_j$. Let $d_i$ and $d_j$ be these new integer values.
 
 $$
-\d_i A_{i, j} = \d_j A_{j, i}
+d_i A_{i, j} = d_j A_{j, i}
 $$
 
-We wish to construct a k-regular covering using this equation. To be a valid covering, partition $i$ in the covering must have enough vertices so that each vertex in partition $j$ can connect to exactly $A_{j, i}$ vertices in $i$. Conversely, partition $j$ should have enough vertices so that each vertex in partition $i$ can connect to exactly $A_{i, j} vertices in $j$. Using the detailed balance equation, we can pick the number of vertices in parition $i$, call it $N_i$, to be $d_i$ and the number of vertices in partition $j$, call it $N_j$, to be $d_j$. We know that $d_i = A_{j,i}$ and $d_j = A_{i, j}$ because this choice satisfies the equality:
+We wish to construct a k-regular covering using this equation. To be a valid covering, partition $i$ in the covering must have enough vertices so that each vertex in partition $j$ can connect to exactly $A_{j, i}$ vertices in $i$. Conversely, partition $j$ should have enough vertices so that each vertex in partition $i$ can connect to exactly $A_{i, j}$ vertices in $j$. Using the detailed balance equation, we can pick the number of vertices in parition $i$, call it $N_i$, to be $d_i$ and the number of vertices in partition $j$, call it $N_j$, to be $d_j$. We know that $d_i = A_{j,i}$ and $d_j = A_{i, j}$ because this choice satisfies the equality:
 
 $$
 \begin{align}
-	\d_i A_{i, j} 	  &= \d_j A_{j, i} \cr
+	d_i A_{i, j} 	  &= d_j A_{j, i} \cr
 	A_{j, i} A_{i, j} &= A_{i, j} A_{j, i} \cr
 	A_{i, j} A_{j, i} &= A_{i, j} A_{j, i}
 \end{align}

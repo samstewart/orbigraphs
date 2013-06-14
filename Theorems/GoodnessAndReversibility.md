@@ -38,7 +38,7 @@ $$
 c d_i A_{i, j} = c d_j A_{j, i}
 $$
 
-To construct our cover, we place $c d_i$ vertices in partition $i$ and $c d_j$ vertices in partition $j$. Each vertex in partition $i$ connects to $A_{i, j}$ vertices in partition $j$ and each veretx in partition $j$ connects to $A_{i, j}$ vertices in partition $i$. Thus, we must choose $c$ such that $A_{j, i} | c d_i$ and $A_{i, j} | c d_j$. However, regardless of what $c$ we choose, the total balance equation implies:
+To construct our cover, we place $c d_i$ vertices in partition $i$ and $c d_j$ vertices in partition $j$. Each vertex in partition $i$ connects to $A_{i, j}$ vertices in partition $j$ and each vertex in partition $j$ connects to $A_{i, j}$ vertices in partition $i$. Thus, we must choose $c$ such that $A_{j, i} | c d_i$ and $A_{i, j} | c d_j$. However, regardless of what $c$ we choose, the total balance equation implies:
 
 $$
 (c d_i) A_{i, j} = (c d_j) A_{j, i}

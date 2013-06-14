@@ -1,5 +1,5 @@
 Characterization of Good/Bad Orbigraphs
-=========================================================
+=======================================
 
 Definitions needed:
 Markov chain
@@ -12,7 +12,7 @@ Reversibility
 If $O$ is k-orbigraph, then $O$ has a finite k-regular cover if an only if, when converted to a Markov chain, $O$ is reversible.
 
 **Proof**:
-We start with the first direction: if $O$, when converted to a Markov chain, is reversible, then $O$ has a finite k-regular cover. Let $\mathcal{M}(O)$ denote the Markov chain associated with orbigraph $O$ which can be constructed by simply normalizing the rows of the adjacency matrix of $O$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(O)$ and $P_{i,j}$ denote the probability of moving from 
+We start with the first direction: if $O$, when converted to a Markov chain, is reversible, then $O$ has a finite k-regular cover. Let $\mathcal{M}(O)$ denote the Markov chain, associated with orbigraph $O$, which can be constructed by simply normalizing the rows of the adjacency matrix of $O$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(O)$ and $P_{i,j}$ denote the probability of moving from 
 
 If $\mathcal{M}(O)$ is reversible, then by definition, there exists a stationary distribution $\pi$, such that for any two states $i$ and $j$, $\pi$ satisfies the $\textit{detailed balance equation}$:
 
@@ -26,24 +26,26 @@ $$
 \pi_i A_{i, j} = \pi_j A_{j,i}
 $$
 
-where $A$ is the integer-valued adjacency matrix of $O$. Next, we "denormalize" $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (citation needed, do we want to prove it this way?) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ in the undirected and $W$ is the total number of edge weights. Thus, we can multiply both sides of the detailed balance equation by some $W$ to "denomalize" $\pi_i$ and $\pi_j$. Let $d_i$ and $d_j$ be these new integer values.
+where $A$ is the integer-valued adjacency matrix of $O$. Next, we "denormalize" $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (citation needed, do we want to prove it this way?) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ in the undirected graph and $W$ is the total outgoing edge weights. Thus, we can multiply both sides of the detailed balance equation by some $W$ to "denomalize" $\pi_i$ and $\pi_j$ to new integer values $d_i$ and $d_j$.
 
 $$
 d_i A_{i, j} = d_j A_{j, i}
 $$
 
-We wish to construct a k-regular covering using this equation. To be a valid covering, partition $i$ in the covering must have enough vertices so that each vertex in partition $j$ can connect to exactly $A_{j, i}$ vertices in $i$. Conversely, partition $j$ should have enough vertices so that each vertex in partition $i$ can connect to exactly $A_{i, j}$ vertices in $j$. Using the detailed balance equation, we can pick the number of vertices in parition $i$, call it $N_i$, to be $d_i$ and the number of vertices in partition $j$, call it $N_j$, to be $d_j$. We know that $d_i = A_{j,i}$ and $d_j = A_{i, j}$ because this choice satisfies the equality:
+We wish to construct a k-regular covering using this equation. Multiply both sides of the equation by a new constant integer $c$.
 
 $$
-\begin{align}
-	d_i A_{i, j} 	  &= d_j A_{j, i} \cr
-	A_{j, i} A_{i, j} &= A_{i, j} A_{j, i} \cr
-	A_{i, j} A_{j, i} &= A_{i, j} A_{j, i}
-\end{align}
+c d_i A_{i, j} = c d_j A_{j, i}
 $$
 
-Moreover, we can pick any multiple $c$ of so that $N_i = c d_i$ and $N_j = c d_j$ because $c d_i = c A_{j, i}$. In other words, each vertex in partition $i$ connects to $c A_{j, i}$ vertices in $j$, or equivalently, there are $c A_{j, i}$ vertices in partition $i$ that $\textit{each}$ connect to $A_{j, i}$ vertices in partition $j$ (likewise for partition $j$ to partition $i$). 
+To construct our cover, we place $c d_i$ vertices in partition $i$ and $c d_j$ vertices in partition $j$. Each vertex in partition $i$ connects to $A_{i, j}$ vertices in partition $j$ and each veretx in partition $j$ connects to $A_{i, j}$ vertices in partition $i$. Thus, we must choose $c$ such that $A_{j, i} | c d_i$ and $A_{i, j} | c d_j$. However, regardless of what $c$ we choose, the total balance equation implies:
 
-This construction handles the cross-partition connections so that each partition $k$ has $N_k = c d_k$ vertices. Now we handle the connections $\textit{within}$ each partition. The underlying orbigraph $O$ represents these connections with self-loops $A_{i, i}$. In general, to construct a regular graph with $m$ edges then one needs a $\textit{multiple}$ of $m + 1$ vertices because each vertex must connect to $m$ other vertices. Any multiple of $m + 1$ is also valid (better explanation for this without intuition?). Thus, we need a multiple of $A_{i, i} + 1$ vertices for each partition $i$. In other words, $A_{i, j} + 1$ must divide $N_i = c d_i$. Since we can pick any $c$ and still maintain valid $\textit{cross}$ partition connections, we simply pick $c$ to be a multiple of $A_{i, j} + 1$. In order to guarantee $c$ works for $\textit{all}$ partitions, we simply pick $c = LCM(A_{1, 1} + 1, A_{2,2} + 1, A_{3,3} + 1, \ldots, A_{n,n} + 1)$.
+$$
+(c d_i) A_{i, j} = (c d_j) A_{j, i}
+$$
 
-This choice of $c$ and $N_i = c d_i$ guarantees that every vertex in partition $i$ has $A_{i, i}$ self connections and $A_{i, j}$ connections to every other partition $j$ so that the covering has an equitable partition. Because $\sum_{j} A_{i, j} = k$ this covering is also k-regular.
+In other words, the total number of edges exiting partition $i$ is the same as the total number of edges exiting partition $j$. Moreover, because of the way we chose $c$, these edges can be equally distributed among the $c d_i$ vertices in partition $i$ and $c d_j$ vertices in partition $j$.
+
+Now we handle the connections $\textit{within}$ each partition. Each partition $i$ needs a multiple of $A_{i, i} + 1$ vertices since each vertex must connect to $A_{i, i}$ other vertices. Thus, we choose $c$ such that $(A_{i, i} + 1) | c d_i$. To satisfy the constraints for all partitions, we chose $c = LCM(\lbrace A_{i,j} | A_{i, j} \neq 0 \rbrace)$.
+
+This construction produces a k-regular cover with an equitable partition. To ensure it is connected, simply swap any two outgoing edges from a partition with more than a single element.

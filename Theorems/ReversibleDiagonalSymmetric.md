@@ -5,7 +5,7 @@ Reversible iff product of Diagonal and Symmetric Matrices
 A Markov chain $M$ with transition matrix $P$ is reversible if and only if $P = DS$ where $D$ is a diagonal matrix and $S$ is a symmetric matrix.
 
 **Proof**:
-Assume that $M$ is reversible so that $P$ and the stationary distribution $\pi$ satisfy the $\textit{detailed}$ balance equation:
+Assume that $M$ is reversible so that $P$ and the stationary distribution $\pi$ satisfy the $\textit{detailed balance equation}$:
 
 $$
 \pi_i P_{i, j} = \pi_j P_{j, i}

@@ -9,10 +9,10 @@ Irreducible markov chain
 Reversibility
 
 **Claim**:
-If $O$ is k-orbigraph, then $O$ has a finite k-regular cover if an only if, when converted to a Markov chain, $O$ is reversible.
+If $\mathcal{O}$ is k-orbigraph, then $\mathcal{O}$ has a finite k-regular cover if an only if, when converted to a Markov chain, $\mathcal{O}$ is reversible.
 
 **Proof**:
-We start with the first direction: if $O$, when converted to a Markov chain, is reversible, then $O$ has a finite k-regular cover. Let $\mathcal{M}(O)$ denote the Markov chain, associated with orbigraph $O$, which can be constructed by simply normalizing the rows of the adjacency matrix of $O$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(O)$ and $P_{i,j}$ denote the probability of moving from 
+We start with the first direction: if $\mathcal{O}$, when converted to a Markov chain, is reversible, then $\mathcal{O}$ has a finite k-regular cover. Let $\mathcal{M}(O)$ denote the Markov chain, associated with orbigraph $\mathcal{O}$, which can be constructed by simply normalizing the rows of the adjacency matrix of $\mathcal{O}$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(O)$ and $P_{i,j}$ denote the probability of moving from 
 
 If $\mathcal{M}(O)$ is reversible, then by definition, there exists a stationary distribution $\pi$, such that for any two states $i$ and $j$, $\pi$ satisfies the $\textit{detailed balance equation}$:
 
@@ -20,13 +20,13 @@ $$
 \pi_i P_{i, j} = \pi_j P_{j, i}
 $$
 
-We will use this equality to produce a finite k-regular cover for $O$. We start by "denormalizing" $P_{i,j}$ and $P_{j, i}$ by multiplying both sides of the quality by $k$ giving us the following:
+We will use this equality to produce a finite k-regular cover for $\mathcal{O}$. We start by "denormalizing" $P_{i,j}$ and $P_{j, i}$ by multiplying both sides of the quality by $k$ giving us the following:
 
 $$
 \pi_i A_{i, j} = \pi_j A_{j,i}
 $$
 
-where $A$ is the integer-valued adjacency matrix of $O$. Next, we "denormalize" $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (citation needed, do we want to prove it this way?) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ in the undirected graph and $W$ is the total outgoing edge weights. Thus, we can multiply both sides of the detailed balance equation by some $W$ to "denomalize" $\pi_i$ and $\pi_j$ to new integer values $d_i$ and $d_j$.
+where $A$ is the integer-valued adjacency matrix of $\mathcal{O}$. Next, we "denormalize" $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (citation needed, do we want to prove it this way?) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ in the undirected graph and $W$ is the total outgoing edge weights. Thus, we can multiply both sides of the detailed balance equation by some $W$ to "denomalize" $\pi_i$ and $\pi_j$ to new integer values $d_i$ and $d_j$.
 
 $$
 d_i A_{i, j} = d_j A_{j, i}

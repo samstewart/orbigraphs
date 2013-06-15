@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    149016,       3339]
-NotebookOptionsPosition[    147334,       3281]
-NotebookOutlinePosition[    147690,       3297]
-CellTagsIndexPosition[    147647,       3294]
+NotebookDataLength[    276661,       6070]
+NotebookOptionsPosition[    274864,       6010]
+NotebookOutlinePosition[    275220,       6026]
+CellTagsIndexPosition[    275177,       6023]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -264,6 +264,35 @@ Cell[BoxData[
            RowBox[{"proc", ",", " ", "\"\<TransitionMatrix\>\""}], "]"}]}], 
          "\[IndentingNewLine]", "]"}]}], ",", " ", "Total"}], "]"}]}]}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"BadOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
+    RowBox[{"MarkovProcessProperties", "[", 
+     RowBox[{
+      RowBox[{"MarkovProcessFromOrbigraph", "/@", "orbi"}], ",", " ", 
+      "\"\<Reversible\>\""}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"GoodOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
+    RowBox[{"Not", "[", 
+     RowBox[{"BadOrbigraphQ", "[", "orbi", "]"}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"EnumerateBadOrbigraphs", "[", 
+      RowBox[{"n_Integer", ",", " ", "k_Integer"}], "]"}], " ", ":=", " ", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"EnumerateConnectedOrbigraphs", "[", 
+        RowBox[{"n", ",", " ", "k"}], "]"}], ",", " ", "BadOrbigraphQ"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"EnumerateGoodOrbigraphs", "[", 
+      RowBox[{"n_Integer", ",", " ", "k_Integer"}], "]"}], " ", ":=", " ", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"EnumerateConnectedOrbigraphs", "[", 
+        RowBox[{"n", ",", " ", "k"}], "]"}], ",", " ", "GoodOrbigraphQ"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"ComputeStationaryVector", "/@", " ", 
     RowBox[{
     "MarkovProcessFromOrbigraph", "/@", "goodOrbi", 
@@ -283,7 +312,8 @@ Cell[BoxData[
    3.5799649473440447`*^9}, {3.5799649791363792`*^9, 
    3.5799649955295267`*^9}, {3.579975183158083*^9, 3.579975278859131*^9}, {
    3.58004550137243*^9, 3.58004550879074*^9}, {3.58013290124972*^9, 
-   3.580132907583428*^9}, 3.580133372336231*^9}],
+   3.580132907583428*^9}, 3.580133372336231*^9, {3.580247302161798*^9, 
+   3.580247457072136*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -369,7 +399,8 @@ Cell[BoxData[
    3.5802196502491093`*^9, {3.5802198157400827`*^9, 3.5802198262285*^9}, 
    3.580219888681439*^9, 3.58022000465139*^9, 3.580220082940419*^9, 
    3.580222723977846*^9, 3.580222870179689*^9, 3.580223957307477*^9, 
-   3.58022404316435*^9, {3.58022619702059*^9, 3.580226226686067*^9}}]
+   3.58022404316435*^9, {3.58022619702059*^9, 3.580226226686067*^9}, 
+   3.580247378127369*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -2902,7 +2933,7 @@ Cell[BoxData[{
  RowBox[{"Length", "@", "goodOrbi"}], "\[IndentingNewLine]", 
  RowBox[{"dummyOrbi", "=", 
   RowBox[{
-  "goodOrbi", "\[LeftDoubleBracket]", "2", 
+  "goodOrbi", "\[LeftDoubleBracket]", "16", 
    "\[RightDoubleBracket]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -2977,7 +3008,8 @@ Cell[BoxData[{
    3.580225567371756*^9, 3.580225583838974*^9}, {3.580225638102745*^9, 
    3.580225662299471*^9}, {3.580225692864314*^9, 3.580225817174663*^9}, {
    3.5802258577665863`*^9, 3.5802259132215347`*^9}, {3.580226054154917*^9, 
-   3.580226064896894*^9}, 3.5802262027238827`*^9}],
+   3.580226064896894*^9}, 3.5802262027238827`*^9, {3.5802262344008636`*^9, 
+   3.580226234710162*^9}, {3.580237531303562*^9, 3.580237540774026*^9}}],
 
 Cell[BoxData["17"], "Output",
  CellChangeTimes->{{3.580157495044776*^9, 3.58015750932199*^9}, 
@@ -2996,15 +3028,16 @@ Cell[BoxData["17"], "Output",
    3.580225663250937*^9}, {3.580225694570279*^9, 3.580225703852706*^9}, {
    3.5802257426321783`*^9, 3.580225817439287*^9}, {3.580225858356842*^9, 
    3.580225913564538*^9}, {3.5802260591226*^9, 3.580226065366762*^9}, {
-   3.5802261975718822`*^9, 3.580226227137864*^9}}],
+   3.5802261975718822`*^9, 3.580226235029901*^9}, {3.580237532608865*^9, 
+   3.580237541181916*^9}, 3.5802376591188583`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
    RowBox[{"{", 
-    RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"2", ",", "4"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"2", ",", "0"}], "}"}]}], "}"}]], "Output",
+    RowBox[{"4", ",", "2"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.580157495044776*^9, 3.58015750932199*^9}, 
    3.58015771085772*^9, 3.580157757808563*^9, 3.580157810979208*^9, {
    3.580157910784281*^9, 3.58015802882128*^9}, 3.580158077619975*^9, {
@@ -3021,13 +3054,24 @@ Cell[BoxData[
    3.580225663250937*^9}, {3.580225694570279*^9, 3.580225703852706*^9}, {
    3.5802257426321783`*^9, 3.580225817439287*^9}, {3.580225858356842*^9, 
    3.580225913564538*^9}, {3.5802260591226*^9, 3.580226065366762*^9}, {
-   3.5802261975718822`*^9, 3.5802262271410093`*^9}}],
+   3.5802261975718822`*^9, 3.580226235029901*^9}, {3.580237532608865*^9, 
+   3.580237541181916*^9}, 3.580237659124687*^9}],
 
 Cell[BoxData[
  TagBox[
   RowBox[{"(", "\[NoBreak]", GridBox[{
-     {"0", "0"},
-     {"0", "0"}
+     {"0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "0", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "1"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0"}
     },
     GridBoxAlignment->{
      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
@@ -3041,7 +3085,12 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
    MatrixForm[
-   SparseArray[Automatic, {2, 2}, 0, {1, {{0, 0, 0}, {}}, {}}]]]]], "Output",
+   SparseArray[
+    Automatic, {12, 12}, 0, {
+     1, {{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24}, {{2}, {3}, {1}, {
+       3}, {1}, {2}, {6}, {5}, {4}, {6}, {5}, {4}, {8}, {9}, {7}, {9}, {7}, {
+       8}, {12}, {11}, {12}, {10}, {11}, {10}}}, {1, 1, 1, 1, 1, 1, 1, 1, 1, 
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}}]]]]], "Output",
  CellChangeTimes->{{3.580157495044776*^9, 3.58015750932199*^9}, 
    3.58015771085772*^9, 3.580157757808563*^9, 3.580157810979208*^9, {
    3.580157910784281*^9, 3.58015802882128*^9}, 3.580158077619975*^9, {
@@ -3058,7 +3107,8 @@ Cell[BoxData[
    3.580225663250937*^9}, {3.580225694570279*^9, 3.580225703852706*^9}, {
    3.5802257426321783`*^9, 3.580225817439287*^9}, {3.580225858356842*^9, 
    3.580225913564538*^9}, {3.5802260591226*^9, 3.580226065366762*^9}, {
-   3.5802261975718822`*^9, 3.58022622714354*^9}}],
+   3.5802261975718822`*^9, 3.580226235029901*^9}, {3.580237532608865*^9, 
+   3.580237541181916*^9}, 3.580237659130612*^9}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3066,24 +3116,100 @@ Cell[BoxData[
      GraphicsBox[
       NamespaceBox["NetworkGraphics",
        DynamicModuleBox[{Typeset`graph = HoldComplete[
-         Graph[{1, 2, 3, 4, 5, 6}, {Null, 
+         Graph[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+           19, 20, 21, 22, 23, 24}, {Null, 
            SparseArray[
-           Automatic, {6, 6}, 0, {
-            1, {{0, 2, 4, 6, 8, 10, 12}, {{2}, {6}, {1}, {5}, {4}, {6}, {3}, {
-              5}, {2}, {4}, {1}, {3}}}, Pattern}]}, {
-          VertexSize -> {0.2}, GraphHighlight -> {3, 1, 
-             UndirectedEdge[1, 2], 5, 
-             UndirectedEdge[3, 4], 4, 2, 6}, 
+           Automatic, {24, 24}, 0, {
+            1, {{0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90,
+               96, 102, 108, 114, 120, 126, 132, 138, 144}, {{2}, {3}, {21}, {
+              22}, {23}, {24}, {1}, {3}, {13}, {14}, {15}, {16}, {1}, {2}, {
+              13}, {14}, {15}, {16}, {5}, {6}, {13}, {14}, {15}, {16}, {4}, {
+              6}, {17}, {18}, {19}, {20}, {4}, {5}, {17}, {18}, {19}, {20}, {
+              8}, {9}, {17}, {18}, {19}, {20}, {7}, {9}, {17}, {18}, {19}, {
+              20}, {7}, {8}, {21}, {22}, {23}, {24}, {11}, {12}, {21}, {22}, {
+              23}, {24}, {10}, {12}, {21}, {22}, {23}, {24}, {10}, {11}, {
+              13}, {14}, {15}, {16}, {2}, {3}, {4}, {12}, {14}, {15}, {2}, {
+              3}, {4}, {12}, {13}, {15}, {2}, {3}, {4}, {12}, {13}, {14}, {
+              2}, {3}, {4}, {12}, {17}, {18}, {5}, {6}, {7}, {8}, {16}, {
+              18}, {5}, {6}, {7}, {8}, {16}, {17}, {5}, {6}, {7}, {8}, {20}, {
+              21}, {5}, {6}, {7}, {8}, {19}, {21}, {1}, {9}, {10}, {11}, {
+              19}, {20}, {1}, {9}, {10}, {11}, {23}, {24}, {1}, {9}, {10}, {
+              11}, {22}, {24}, {1}, {9}, {10}, {11}, {22}, {23}}}, 
+             Pattern}]}, {VertexSize -> {0.2}, GraphHighlight -> {17, 6, 8, 
+             UndirectedEdge[13, 15], 
+             UndirectedEdge[13, 14], 
+             UndirectedEdge[8, 9], 
+             UndirectedEdge[5, 6], 14, 
+             UndirectedEdge[1, 2], 
+             UndirectedEdge[19, 21], 
+             UndirectedEdge[22, 24], 11, 
+             UndirectedEdge[23, 24], 
+             UndirectedEdge[4, 6], 16, 
+             UndirectedEdge[7, 9], 22, 
+             UndirectedEdge[22, 23], 5, 1, 20, 15, 10, 
+             UndirectedEdge[17, 18], 
+             UndirectedEdge[16, 17], 18, 
+             UndirectedEdge[4, 5], 3, 
+             UndirectedEdge[11, 12], 4, 
+             UndirectedEdge[2, 3], 
+             UndirectedEdge[1, 3], 13, 7, 21, 2, 12, 24, 
+             UndirectedEdge[7, 8], 19, 
+             UndirectedEdge[10, 12], 
+             UndirectedEdge[19, 20], 9, 
+             UndirectedEdge[10, 11], 
+             UndirectedEdge[16, 18], 23, 
+             UndirectedEdge[20, 21], 
+             UndirectedEdge[14, 15]}, 
            GraphHighlightStyle -> {
-            6 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
-             UndirectedEdge[1, 2] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
-             4 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
-             UndirectedEdge[3, 4] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
-             5 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
-             2 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+            UndirectedEdge[22, 24] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             9 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[7, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             18 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[2, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[22, 23] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[17, 18] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[8, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             3 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             22 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             24 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
              1 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
-             3 -> {VertexStyle -> Hue[0, 1, 0.8]}}}]], Typeset`boxes, 
-        Typeset`boxes$s2d = GraphicsGroupBox[{{
+             15 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[5, 6] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[4, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             12 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[4, 6] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             23 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[1, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 17] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             4 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             13 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             5 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             6 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             14 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[1, 2] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[23, 24] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[19, 21] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             21 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             19 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[7, 8] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[14, 15] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             20 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             17 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[13, 14] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[10, 12] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             7 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             11 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 18] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             8 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[11, 12] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             16 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[20, 21] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[19, 20] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[10, 11] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             2 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             10 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[13, 15] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}}}]], 
+        Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
            Directive[
             Opacity[0.7], 
             Hue[0.6, 0.7, 0.5]], 
@@ -3092,23 +3218,265 @@ Cell[BoxData[
               DynamicLocation["VertexID$1", Automatic, Center], 
               DynamicLocation["VertexID$2", Automatic, Center]}], 
             Hue[0, 1, 0.8], StripOnInput -> False], 
-           LineBox[{
-             DynamicLocation["VertexID$1", Automatic, Center], 
-             DynamicLocation["VertexID$6", Automatic, Center]}], 
-           LineBox[{
-             DynamicLocation["VertexID$2", Automatic, Center], 
-             DynamicLocation["VertexID$5", Automatic, Center]}], 
            StyleBox[
             LineBox[{
-              DynamicLocation["VertexID$3", Automatic, Center], 
-              DynamicLocation["VertexID$4", Automatic, Center]}], 
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
             Hue[0, 1, 0.8], StripOnInput -> False], 
            LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$2", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           LineBox[{
              DynamicLocation["VertexID$3", Automatic, Center], 
-             DynamicLocation["VertexID$6", Automatic, Center]}], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$4", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$4", Automatic, Center], 
+              DynamicLocation["VertexID$6", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
            LineBox[{
              DynamicLocation["VertexID$4", Automatic, Center], 
-             DynamicLocation["VertexID$5", Automatic, Center]}]}, {
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$5", Automatic, Center], 
+              DynamicLocation["VertexID$6", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$8", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$8", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$10", Automatic, Center], 
+              DynamicLocation["VertexID$11", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$10", Automatic, Center], 
+              DynamicLocation["VertexID$12", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$12", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$14", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$14", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$17", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$17", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$19", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$19", Automatic, Center], 
+              DynamicLocation["VertexID$21", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$20", Automatic, Center], 
+              DynamicLocation["VertexID$21", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$23", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$23", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False]}, {
            Directive[
             Hue[0.6, 0.2, 0.8], 
             EdgeForm[
@@ -3118,41 +3486,167 @@ Cell[BoxData[
            TagBox[
             StyleBox[
              
-             DiskBox[{-0.8660254037844389, 0.5000000000000008}, 
-              0.09999999999999994], 
+             DiskBox[{2.258790074793888, 2.7465581023573225`}, 
+              0.03282505971812596], 
              Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
             "VertexID$1"], 
            TagBox[
             StyleBox[
              
-             DiskBox[{-0.8660254037844384, -0.4999999999999994}, 
-              0.09999999999999994], 
+             DiskBox[{0.8382657556992426, 2.609183181704166}, 
+              0.03282505971812596], 
              Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
             "VertexID$2"], 
            TagBox[
             StyleBox[
-             DiskBox[{3.8285686989269494`*^-16, -1.}, 0.09999999999999994], 
+             
+             DiskBox[{0.8060891227617114, 2.977274694267747}, 
+              0.03282505971812596], 
              Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
             "VertexID$3"], 
            TagBox[
             StyleBox[
              
-             DiskBox[{0.8660254037844389, -0.5000000000000012}, 
-              0.09999999999999994], 
+             DiskBox[{0.24151437074597726`, 1.4470357791903186`}, 
+              0.03282505971812596], 
              Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
             "VertexID$4"], 
            TagBox[
             StyleBox[
              
-             DiskBox[{0.8660254037844386, 0.4999999999999993}, 
-              0.09999999999999994], 
-             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+             DiskBox[{0.9318160417073632, 0.39138538919688104`}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
             "VertexID$5"], 
            TagBox[
             StyleBox[
-             DiskBox[{1.8369701987210297`*^-16, 1.}, 0.09999999999999994], 
+             
+             DiskBox[{0.9757632132581132, 0.0658781858520665}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$6"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.6310581067022607`, 0.18015098837896737`}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$7"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.5944288867599723`, 0.5063514708989554}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$8"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{3.3410870300465616`, 1.5125235307951335`}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$9"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.750733027169275, 2.5158728429411594`}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$10"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.7492291246352547`, 2.884397180034404}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$11"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{1.3242112702110829`, 2.716853376554622}, 
+              0.03282505971812596], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$12"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.1965906137255955, 2.867728769669625}, 
+              0.03282505971812596], 
              Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
-            "VertexID$6"]}}], $CellContext`flag}, 
+            "VertexID$13"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.27314133013056763`, 2.3846869389347605`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$14"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{0., 2.581714416531333}, 0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$15"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{1.01161628111721, 1.6658300977588265`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$16"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{1.5317275278282707`, 0.26592821872868133`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$17"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{1.5992473626629335`, 0.6302764176994009}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$18"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{2.001891153330686, 0.}, 0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$19"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.0095881626837535`, 0.36322029833277525`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$20"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{2.5527855517943356`, 1.5321262234341315`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$21"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{3.5742110501785307`, 2.6478132058334705`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$22"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{3.3370017250999267`, 2.9033301668066454`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$23"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{3.3428986742303133`, 2.4019521639116364`}, 
+              0.03282505971812596], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$24"]}}], $CellContext`flag}, 
         TagBox[
          DynamicBox[GraphComputation`NetworkGraphicsBox[
           3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
@@ -3160,23 +3654,24 @@ Cell[BoxData[
            SynchronousUpdating -> False, 
            TrackedSymbols :> {$CellContext`flag}},
           
-          ImageSizeCache->{{2.58, 176.42000000000002`}, {-101.56320000000001`,
-            96.10867287155362}}],
+          ImageSizeCache->{{11.118671875, 594.8149218750001}, {-247.366075, 
+           240.93212998095956`}}],
          MouseAppearanceTag["NetworkGraphics"]],
         AllowKernelInitialization->False,
         UnsavedVariables:>{$CellContext`flag}]],
       DefaultBaseStyle->{
        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
         Hue[0.8, 1., 0.6]},
-      FrameTicks->None], 
+      FrameTicks->None,
+      ImageSize->{606.93359375, Automatic}], 
      GraphicsBox[
       NamespaceBox["NetworkGraphics",
        DynamicModuleBox[{Typeset`graph = HoldComplete[
          Graph[{1, 2}, {
           SparseArray[
            Automatic, {2, 2}, 0, {
-            1, {{0, 2, 3}, {{1}, {2}, {1}}}, {1, 1, 1}}], Null}, {
-          EdgeLabels -> {"EdgeWeight"}, EdgeWeight -> {1, 1, 2}}]], 
+            1, {{0, 2, 4}, {{1}, {2}, {1}, {2}}}, {1, 1, 1, 1}}], Null}, {
+          EdgeLabels -> {"EdgeWeight"}, EdgeWeight -> {2, 4, 4, 2}}]], 
         Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
            Arrowheads[0.041582132564841494`], 
            Directive[
@@ -3196,7 +3691,2238 @@ Cell[BoxData[
                SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$1"], 
             
             InsetBox[
-             FormBox["\"1\"", TraditionalForm], 
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$1", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.4999999999999999, -0.15528070821816992`}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$2"], 
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$2", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.5000000000000002, 0.15528070821816992`}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$3"], 
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$3", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation[
+                "VertexID$2", Automatic, 
+                 Center], {-0.08847925546776056, -0.19078353238530235`}, \
+{-0.2873577330053514, -0.24717977484589643`}, {-0.41452835747980865`, \
+-0.18822269607102315`}, {-0.41452835747980865`, 
+                0.18822269607102307`}, {-0.2873577330053514, 
+                0.24717977484589637`}, {-0.08847925546776059, 
+                0.1907835323853023}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$4"], 
+            
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$4", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            DiskBox[{1., 0.}, 0.01273], "DynamicName", BoxID -> "VertexID$1"], 
+           TagBox[
+            DiskBox[{0., 5.677710618986984*^-18}, 0.01273], "DynamicName", 
+            BoxID -> "VertexID$2"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{-0.2393066909899053, 
+           179.2393066909899}, {-29.239306690989906`, 24.239306690989906`}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None]}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.580157495044776*^9, 3.58015750932199*^9}, 
+   3.58015771085772*^9, 3.580157757808563*^9, 3.580157810979208*^9, {
+   3.580157910784281*^9, 3.58015802882128*^9}, 3.580158077619975*^9, {
+   3.580158142234899*^9, 3.580158197769081*^9}, 3.580159512786701*^9, {
+   3.58021897514923*^9, 3.580219020655055*^9}, 3.580219083096315*^9, {
+   3.580219136547773*^9, 3.580219193214601*^9}, 3.580219255863171*^9, {
+   3.580219287469652*^9, 3.5802193691520557`*^9}, 3.580219520499713*^9, 
+   3.580219591772317*^9, {3.580219650832451*^9, 3.580219674821588*^9}, {
+   3.580219816204259*^9, 3.580219826738164*^9}, {3.580219889195737*^9, 
+   3.580219894800699*^9}, 3.580220005120121*^9, {3.580220048666692*^9, 
+   3.5802200834957037`*^9}, {3.580222724518601*^9, 3.580222760879018*^9}, 
+   3.580222870659527*^9, {3.580223957770185*^9, 3.580224012516328*^9}, 
+   3.580224043633547*^9, 3.580225584621852*^9, {3.580225649229596*^9, 
+   3.580225663250937*^9}, {3.580225694570279*^9, 3.580225703852706*^9}, {
+   3.5802257426321783`*^9, 3.580225817439287*^9}, {3.580225858356842*^9, 
+   3.580225913564538*^9}, {3.5802260591226*^9, 3.580226065366762*^9}, {
+   3.5802261975718822`*^9, 3.580226235029901*^9}, {3.580237532608865*^9, 
+   3.580237541181916*^9}, 3.580237659158279*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+           19, 20, 21, 22, 23, 24}, {Null, 
+           SparseArray[
+           Automatic, {24, 24}, 0, {
+            1, {{0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90,
+               96, 102, 108, 114, 120, 126, 132, 138, 144}, {{2}, {3}, {21}, {
+              22}, {23}, {24}, {1}, {3}, {13}, {14}, {15}, {16}, {1}, {2}, {
+              13}, {14}, {15}, {16}, {5}, {6}, {13}, {14}, {15}, {16}, {4}, {
+              6}, {17}, {18}, {19}, {20}, {4}, {5}, {17}, {18}, {19}, {20}, {
+              8}, {9}, {17}, {18}, {19}, {20}, {7}, {9}, {17}, {18}, {19}, {
+              20}, {7}, {8}, {21}, {22}, {23}, {24}, {11}, {12}, {21}, {22}, {
+              23}, {24}, {10}, {12}, {21}, {22}, {23}, {24}, {10}, {11}, {
+              13}, {14}, {15}, {16}, {2}, {3}, {4}, {12}, {14}, {15}, {2}, {
+              3}, {4}, {12}, {13}, {15}, {2}, {3}, {4}, {12}, {13}, {14}, {
+              2}, {3}, {4}, {12}, {17}, {18}, {5}, {6}, {7}, {8}, {16}, {
+              18}, {5}, {6}, {7}, {8}, {16}, {17}, {5}, {6}, {7}, {8}, {20}, {
+              21}, {5}, {6}, {7}, {8}, {19}, {21}, {1}, {9}, {10}, {11}, {
+              19}, {20}, {1}, {9}, {10}, {11}, {23}, {24}, {1}, {9}, {10}, {
+              11}, {22}, {24}, {1}, {9}, {10}, {11}, {22}, {23}}}, 
+             Pattern}]}, {GraphHighlight -> {17, 6, 8, 
+             UndirectedEdge[13, 15], 
+             UndirectedEdge[13, 14], 
+             UndirectedEdge[8, 9], 
+             UndirectedEdge[5, 6], 14, 
+             UndirectedEdge[1, 2], 
+             UndirectedEdge[19, 21], 
+             UndirectedEdge[22, 24], 11, 
+             UndirectedEdge[23, 24], 
+             UndirectedEdge[4, 6], 16, 
+             UndirectedEdge[7, 9], 22, 
+             UndirectedEdge[22, 23], 5, 1, 20, 15, 10, 
+             UndirectedEdge[17, 18], 
+             UndirectedEdge[16, 17], 18, 
+             UndirectedEdge[4, 5], 3, 
+             UndirectedEdge[11, 12], 4, 
+             UndirectedEdge[2, 3], 
+             UndirectedEdge[1, 3], 13, 7, 21, 2, 12, 24, 
+             UndirectedEdge[7, 8], 19, 
+             UndirectedEdge[10, 12], 
+             UndirectedEdge[19, 20], 9, 
+             UndirectedEdge[10, 11], 
+             UndirectedEdge[16, 18], 23, 
+             UndirectedEdge[20, 21], 
+             UndirectedEdge[14, 15]}, 
+           GraphHighlightStyle -> {
+            UndirectedEdge[22, 24] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             9 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[7, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             18 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[2, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[22, 23] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[17, 18] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[8, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             3 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             22 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             24 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             1 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             15 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[5, 6] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[4, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             12 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[4, 6] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             23 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[1, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 17] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             4 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             13 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             5 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             6 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             14 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[1, 2] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[23, 24] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[19, 21] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             21 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             19 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[7, 8] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[14, 15] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             20 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             17 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[13, 14] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[10, 12] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             7 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             11 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 18] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             8 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[11, 12] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[20, 21] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             16 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[19, 20] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[10, 11] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             2 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             10 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[13, 15] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}}, 
+           GraphLayout -> "CircularEmbedding", GraphStyle -> Automatic, 
+           ImageSize -> {704.5390625, Automatic}}]], Typeset`boxes, 
+        Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$2", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$2", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$4", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$4", Automatic, Center], 
+              DynamicLocation["VertexID$6", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$5", Automatic, Center], 
+              DynamicLocation["VertexID$6", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$8", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$8", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$17", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$18", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$19", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$20", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$10", Automatic, Center], 
+              DynamicLocation["VertexID$11", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$10", Automatic, Center], 
+              DynamicLocation["VertexID$12", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$12", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$21", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$22", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$23", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$24", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$13", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$14", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$15", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$16", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$14", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$14", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$17", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$17", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$19", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$19", Automatic, Center], 
+              DynamicLocation["VertexID$21", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$20", Automatic, Center], 
+              DynamicLocation["VertexID$21", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$23", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$23", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False]}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.2588190451025214, 0.9659258262890685}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.5000000000000004, 0.8660254037844389}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.7071067811865479, 0.7071067811865482}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8660254037844389, 0.5000000000000008}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$4"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9659258262890684, 0.25881904510252146`}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$5"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{-1., 1.0106430996148606`*^-15}, 0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$6"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9659258262890681, -0.2588190451025199}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$7"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8660254037844384, -0.4999999999999994}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$8"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.7071067811865472, -0.7071067811865468}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$9"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.4999999999999995, -0.8660254037844379}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$10"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.2588190451025205, -0.9659258262890679}, 
+              0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$11"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{3.8285686989269494`*^-16, -1.}, 0.02261146496815286], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$12"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.25881904510252124`, -0.9659258262890684}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$13"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.5000000000000002, -0.866025403784439}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$14"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.7071067811865478, -0.7071067811865483}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$15"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8660254037844387, -0.5000000000000012}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$16"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9659258262890683, -0.2588190451025224}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$17"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{1., -2.021286199229721*^-15}, 0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$18"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9659258262890682, 0.25881904510252024`}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$19"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8660254037844386, 0.4999999999999993}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$20"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.7071067811865477, 0.7071067811865467}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$21"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{0.4999999999999996, 0.8660254037844379}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$22"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.25881904510252063`, 0.9659258262890679}, 
+              0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$23"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{1.8369701987210297`*^-16, 1.}, 0.02261146496815286], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$24"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{13.070781250000032`, 690.46828125}, {-341.49205, 
+           335.90545000000003`}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None,
+      ImageSize->{704.5390625, Automatic}], 
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2}, {
+          SparseArray[
+           Automatic, {2, 2}, 0, {
+            1, {{0, 2, 4}, {{1}, {2}, {1}, {2}}}, {1, 1, 1, 1}}], Null}, {
+          EdgeLabels -> {"EdgeWeight"}, EdgeWeight -> {2, 4, 4, 2}}]], 
+        Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Arrowheads[0.041582132564841494`], 
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                1.0884792554677603`, 0.1907835323853024}, {
+                1.2873577330053512`, 0.24717977484589673`}, {
+                1.4145283574798084`, 0.18822269607102357`}, {
+                1.4145283574798089`, -0.18822269607102265`}, {
+                1.2873577330053516`, -0.2471797748458961}, {
+                1.0884792554677607`, -0.19078353238530207`}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$1"], 
+            
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$1", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                0.4999999999999999, -0.15528070821816992`}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$2"], 
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$2", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$2", Automatic, Center], {
+                0.5000000000000002, 0.15528070821816992`}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}]], 
+             "DynamicName", BoxID -> "EdgeLabelID$3"], 
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$3", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation[
+                "VertexID$2", Automatic, 
+                 Center], {-0.08847925546776056, -0.19078353238530235`}, \
+{-0.2873577330053514, -0.24717977484589643`}, {-0.41452835747980865`, \
+-0.18822269607102315`}, {-0.41452835747980865`, 
+                0.18822269607102307`}, {-0.2873577330053514, 
+                0.24717977484589637`}, {-0.08847925546776059, 
+                0.1907835323853023}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$4"], 
+            
+            InsetBox[
+             FormBox["\"2\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$4", Automatic, 
+               Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            DiskBox[{1., 0.}, 0.01273], "DynamicName", BoxID -> "VertexID$1"], 
+           TagBox[
+            DiskBox[{0., 5.677710618986984*^-18}, 0.01273], "DynamicName", 
+            BoxID -> "VertexID$2"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{-0.2393066909899053, 
+           179.2393066909899}, {-29.239306690989906`, 24.239306690989906`}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None]}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Input",
+ CellChangeTimes->{{3.580237622169664*^9, 3.580237649028132*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+           19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
+           36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52,
+           53, 54, 55, 56, 57, 58, 59, 60}, {Null, 
+           SparseArray[
+           Automatic, {60, 60}, 0, {
+            1, {{0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75,
+               80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 
+              145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200, 205,
+               210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 
+              270, 275, 280, 285, 290, 295, 300}, {{2}, {3}, {4}, {5}, {60}, {
+              1}, {3}, {4}, {5}, {41}, {1}, {2}, {4}, {5}, {42}, {1}, {2}, {
+              3}, {5}, {42}, {1}, {2}, {3}, {4}, {43}, {7}, {8}, {9}, {10}, {
+              43}, {6}, {8}, {9}, {10}, {44}, {6}, {7}, {9}, {10}, {44}, {
+              6}, {7}, {8}, {10}, {45}, {6}, {7}, {8}, {9}, {45}, {12}, {
+              13}, {14}, {15}, {46}, {11}, {13}, {14}, {15}, {46}, {11}, {
+              12}, {14}, {15}, {47}, {11}, {12}, {13}, {15}, {47}, {11}, {
+              12}, {13}, {14}, {48}, {17}, {18}, {19}, {20}, {48}, {16}, {
+              18}, {19}, {20}, {49}, {16}, {17}, {19}, {20}, {49}, {16}, {
+              17}, {18}, {20}, {50}, {16}, {17}, {18}, {19}, {50}, {22}, {
+              23}, {24}, {25}, {51}, {21}, {23}, {24}, {25}, {51}, {21}, {
+              22}, {24}, {25}, {52}, {21}, {22}, {23}, {25}, {52}, {21}, {
+              22}, {23}, {24}, {53}, {27}, {28}, {29}, {30}, {53}, {26}, {
+              28}, {29}, {30}, {54}, {26}, {27}, {29}, {30}, {54}, {26}, {
+              27}, {28}, {30}, {55}, {26}, {27}, {28}, {29}, {55}, {32}, {
+              33}, {34}, {35}, {56}, {31}, {33}, {34}, {35}, {56}, {31}, {
+              32}, {34}, {35}, {57}, {31}, {32}, {33}, {35}, {57}, {31}, {
+              32}, {33}, {34}, {58}, {37}, {38}, {39}, {40}, {58}, {36}, {
+              38}, {39}, {40}, {59}, {36}, {37}, {39}, {40}, {59}, {36}, {
+              37}, {38}, {40}, {60}, {36}, {37}, {38}, {39}, {41}, {2}, {
+              40}, {42}, {43}, {44}, {3}, {4}, {41}, {43}, {44}, {5}, {6}, {
+              41}, {42}, {44}, {7}, {8}, {41}, {42}, {43}, {9}, {10}, {46}, {
+              47}, {48}, {11}, {12}, {45}, {47}, {48}, {13}, {14}, {45}, {
+              46}, {48}, {15}, {16}, {45}, {46}, {47}, {17}, {18}, {50}, {
+              51}, {52}, {19}, {20}, {49}, {51}, {52}, {21}, {22}, {49}, {
+              50}, {52}, {23}, {24}, {49}, {50}, {51}, {25}, {26}, {54}, {
+              55}, {56}, {27}, {28}, {53}, {55}, {56}, {29}, {30}, {53}, {
+              54}, {56}, {31}, {32}, {53}, {54}, {55}, {33}, {34}, {58}, {
+              59}, {60}, {35}, {36}, {57}, {59}, {60}, {37}, {38}, {57}, {
+              58}, {60}, {1}, {39}, {57}, {58}, {59}}}, Pattern}]}, {
+          GraphHighlight -> {17, 46, 6, 8, 27, 
+             UndirectedEdge[9, 10], 
+             UndirectedEdge[46, 47], 
+             UndirectedEdge[33, 34], 
+             UndirectedEdge[45, 48], 
+             UndirectedEdge[8, 10], 
+             UndirectedEdge[51, 52], 
+             UndirectedEdge[13, 15], 
+             UndirectedEdge[57, 60], 
+             UndirectedEdge[41, 43], 
+             UndirectedEdge[59, 60], 55, 
+             UndirectedEdge[21, 25], 
+             UndirectedEdge[36, 40], 
+             UndirectedEdge[13, 14], 54, 
+             UndirectedEdge[53, 54], 
+             UndirectedEdge[58, 59], 
+             UndirectedEdge[8, 9], 
+             UndirectedEdge[31, 33], 42, 25, 34, 14, 
+             UndirectedEdge[1, 2], 28, 
+             UndirectedEdge[31, 32], 44, 
+             UndirectedEdge[55, 56], 
+             UndirectedEdge[21, 23], 49, 35, 
+             UndirectedEdge[11, 14], 
+             UndirectedEdge[16, 19], 
+             UndirectedEdge[11, 15], 48, 
+             UndirectedEdge[47, 48], 31, 
+             UndirectedEdge[50, 52], 
+             UndirectedEdge[28, 30], 
+             UndirectedEdge[38, 40], 
+             UndirectedEdge[22, 24], 
+             UndirectedEdge[36, 38], 
+             UndirectedEdge[17, 19], 36, 
+             UndirectedEdge[36, 37], 
+             UndirectedEdge[3, 5], 
+             UndirectedEdge[11, 13], 11, 29, 47, 
+             UndirectedEdge[23, 24], 
+             UndirectedEdge[50, 51], 
+             UndirectedEdge[46, 48], 
+             UndirectedEdge[12, 13], 
+             UndirectedEdge[37, 38], 
+             UndirectedEdge[42, 44], 
+             UndirectedEdge[37, 40], 16, 
+             UndirectedEdge[18, 19], 
+             UndirectedEdge[12, 15], 
+             UndirectedEdge[38, 39], 
+             UndirectedEdge[7, 9], 
+             UndirectedEdge[45, 47], 
+             UndirectedEdge[31, 34], 22, 
+             UndirectedEdge[22, 23], 5, 
+             UndirectedEdge[27, 28], 1, 
+             UndirectedEdge[34, 35], 
+             UndirectedEdge[21, 24], 20, 
+             UndirectedEdge[6, 10], 51, 
+             UndirectedEdge[21, 22], 
+             UndirectedEdge[7, 10], 
+             UndirectedEdge[17, 18], 15, 10, 
+             UndirectedEdge[16, 17], 
+             UndirectedEdge[41, 44], 38, 
+             UndirectedEdge[39, 40], 
+             UndirectedEdge[45, 46], 
+             UndirectedEdge[16, 20], 30, 
+             UndirectedEdge[49, 52], 18, 
+             UndirectedEdge[4, 5], 
+             UndirectedEdge[27, 30], 
+             UndirectedEdge[17, 20], 
+             UndirectedEdge[53, 55], 
+             UndirectedEdge[24, 25], 3, 
+             UndirectedEdge[2, 5], 
+             UndirectedEdge[42, 43], 57, 
+             UndirectedEdge[3, 4], 
+             UndirectedEdge[11, 12], 4, 
+             UndirectedEdge[2, 3], 
+             UndirectedEdge[58, 60], 
+             UndirectedEdge[6, 8], 37, 
+             UndirectedEdge[1, 3], 58, 43, 13, 45, 7, 26, 
+             UndirectedEdge[26, 28], 21, 39, 2, 12, 
+             UndirectedEdge[49, 50], 
+             UndirectedEdge[32, 35], 
+             UndirectedEdge[32, 34], 
+             UndirectedEdge[54, 56], 
+             UndirectedEdge[26, 29], 32, 24, 
+             UndirectedEdge[26, 27], 
+             UndirectedEdge[1, 5], 40, 59, 
+             UndirectedEdge[7, 8], 
+             UndirectedEdge[12, 14], 
+             UndirectedEdge[57, 58], 
+             UndirectedEdge[36, 39], 
+             UndirectedEdge[31, 35], 53, 19, 33, 
+             UndirectedEdge[37, 39], 
+             UndirectedEdge[53, 56], 
+             UndirectedEdge[41, 42], 
+             UndirectedEdge[28, 29], 
+             UndirectedEdge[18, 20], 
+             UndirectedEdge[43, 44], 
+             UndirectedEdge[19, 20], 9, 
+             UndirectedEdge[27, 29], 
+             UndirectedEdge[54, 55], 
+             UndirectedEdge[32, 33], 56, 
+             UndirectedEdge[33, 35], 
+             UndirectedEdge[57, 59], 
+             UndirectedEdge[29, 30], 
+             UndirectedEdge[6, 7], 
+             UndirectedEdge[16, 18], 
+             UndirectedEdge[26, 30], 
+             UndirectedEdge[49, 51], 60, 50, 
+             UndirectedEdge[22, 25], 23, 
+             UndirectedEdge[1, 4], 
+             UndirectedEdge[23, 25], 
+             UndirectedEdge[2, 4], 52, 41, 
+             UndirectedEdge[6, 9], 
+             UndirectedEdge[14, 15]}, 
+           GraphHighlightStyle -> {
+            UndirectedEdge[45, 48] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[22, 24] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[3, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             36 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[6, 10] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[28, 30] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[53, 56] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             9 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[54, 56] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             47 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             42 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             28 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[7, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[50, 52] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             18 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[57, 60] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             29 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[3, 4] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[6, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[49, 51] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             48 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[16, 19] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[28, 29] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[31, 33] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[2, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[47, 48] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[41, 43] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[22, 23] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[17, 18] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[41, 42] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[49, 52] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[43, 44] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[8, 9] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             3 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             22 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             45 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             24 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             1 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[38, 40] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             31 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[36, 37] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[1, 4] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             56 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[42, 44] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             15 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[18, 20] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             34 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[53, 55] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[4, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             12 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             52 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[26, 29] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[18, 19] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[1, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             43 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[37, 40] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             23 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             49 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[21, 22] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 17] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[1, 3] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             44 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             37 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             4 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[42, 43] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             13 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             5 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             6 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             14 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             51 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             38 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             57 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[1, 2] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[26, 27] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[36, 38] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[11, 13] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[51, 52] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[23, 24] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[57, 58] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[2, 4] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             30 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[33, 35] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[45, 46] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[29, 30] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[8, 10] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[46, 47] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             21 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[2, 5] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             19 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[12, 13] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[59, 60] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[39, 40] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[12, 14] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[11, 15] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             60 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             54 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[21, 23] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[14, 15] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[7, 8] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[53, 54] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[27, 29] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[36, 40] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[41, 44] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[32, 35] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 20] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             20 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             17 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[13, 14] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[54, 55] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[31, 35] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[27, 30] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[27, 28] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[46, 48] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             26 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[49, 50] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[33, 34] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[6, 7] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             58 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[26, 28] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[58, 60] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             46 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[26, 30] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[23, 25] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[17, 19] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             53 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             7 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[32, 34] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[6, 8] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[24, 25] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[31, 34] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             11 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[34, 35] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[17, 20] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             27 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             33 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[7, 10] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[58, 59] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             35 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[16, 18] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[32, 33] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             32 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[57, 59] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[36, 39] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[12, 15] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[21, 25] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[9, 10] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[38, 39] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             8 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[37, 39] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[45, 47] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[11, 12] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             16 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[37, 38] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[11, 14] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[55, 56] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[22, 25] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             41 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             40 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[19, 20] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             59 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             50 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             25 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[50, 51] -> {EdgeStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[31, 32] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             2 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             10 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             55 -> {VertexStyle -> Hue[0.14, 1, 0.9]}, 
+             UndirectedEdge[13, 15] -> {EdgeStyle -> Hue[0, 1, 0.8]}, 
+             39 -> {VertexStyle -> Hue[0, 1, 0.8]}, 
+             UndirectedEdge[21, 24] -> {EdgeStyle -> Hue[0, 1, 0.8]}}, 
+           GraphLayout -> "CircularEmbedding", 
+           ImageSize -> {813.80078125, Automatic}, VertexSize -> {0.2}}]], 
+        Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$2", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$4", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$1", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$60", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$2", Automatic, Center], 
+              DynamicLocation["VertexID$3", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$2", Automatic, Center], 
+              DynamicLocation["VertexID$4", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$2", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$41", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$3", Automatic, Center], 
+              DynamicLocation["VertexID$4", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$3", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$42", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$4", Automatic, Center], 
+              DynamicLocation["VertexID$5", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$42", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$43", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$6", Automatic, Center], 
+              DynamicLocation["VertexID$7", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$6", Automatic, Center], 
+              DynamicLocation["VertexID$8", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$6", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$6", Automatic, Center], 
+              DynamicLocation["VertexID$10", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$6", Automatic, Center], 
+             DynamicLocation["VertexID$43", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$8", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$7", Automatic, Center], 
+              DynamicLocation["VertexID$10", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$7", Automatic, Center], 
+             DynamicLocation["VertexID$44", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$8", Automatic, Center], 
+              DynamicLocation["VertexID$9", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$8", Automatic, Center], 
+              DynamicLocation["VertexID$10", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$8", Automatic, Center], 
+             DynamicLocation["VertexID$44", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$9", Automatic, Center], 
+              DynamicLocation["VertexID$10", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$9", Automatic, Center], 
+             DynamicLocation["VertexID$45", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$10", Automatic, Center], 
+             DynamicLocation["VertexID$45", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$12", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$13", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$14", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$11", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$11", Automatic, Center], 
+             DynamicLocation["VertexID$46", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$12", Automatic, Center], 
+              DynamicLocation["VertexID$13", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$12", Automatic, Center], 
+              DynamicLocation["VertexID$14", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$12", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$12", Automatic, Center], 
+             DynamicLocation["VertexID$46", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$14", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$13", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$13", Automatic, Center], 
+             DynamicLocation["VertexID$47", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$14", Automatic, Center], 
+              DynamicLocation["VertexID$15", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$14", Automatic, Center], 
+             DynamicLocation["VertexID$47", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$15", Automatic, Center], 
+             DynamicLocation["VertexID$48", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$17", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$19", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$16", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$16", Automatic, Center], 
+             DynamicLocation["VertexID$48", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$17", Automatic, Center], 
+              DynamicLocation["VertexID$18", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$17", Automatic, Center], 
+              DynamicLocation["VertexID$19", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$17", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$17", Automatic, Center], 
+             DynamicLocation["VertexID$49", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$18", Automatic, Center], 
+              DynamicLocation["VertexID$19", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$18", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$18", Automatic, Center], 
+             DynamicLocation["VertexID$49", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$19", Automatic, Center], 
+              DynamicLocation["VertexID$20", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$19", Automatic, Center], 
+             DynamicLocation["VertexID$50", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$20", Automatic, Center], 
+             DynamicLocation["VertexID$50", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$21", Automatic, Center], 
+              DynamicLocation["VertexID$22", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$21", Automatic, Center], 
+              DynamicLocation["VertexID$23", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$21", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$21", Automatic, Center], 
+              DynamicLocation["VertexID$25", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$21", Automatic, Center], 
+             DynamicLocation["VertexID$51", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$23", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$22", Automatic, Center], 
+              DynamicLocation["VertexID$25", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$22", Automatic, Center], 
+             DynamicLocation["VertexID$51", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$23", Automatic, Center], 
+              DynamicLocation["VertexID$24", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$23", Automatic, Center], 
+              DynamicLocation["VertexID$25", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$23", Automatic, Center], 
+             DynamicLocation["VertexID$52", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$24", Automatic, Center], 
+              DynamicLocation["VertexID$25", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$24", Automatic, Center], 
+             DynamicLocation["VertexID$52", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$25", Automatic, Center], 
+             DynamicLocation["VertexID$53", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$26", Automatic, Center], 
+              DynamicLocation["VertexID$27", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$26", Automatic, Center], 
+              DynamicLocation["VertexID$28", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$26", Automatic, Center], 
+              DynamicLocation["VertexID$29", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$26", Automatic, Center], 
+              DynamicLocation["VertexID$30", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$26", Automatic, Center], 
+             DynamicLocation["VertexID$53", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$27", Automatic, Center], 
+              DynamicLocation["VertexID$28", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$27", Automatic, Center], 
+              DynamicLocation["VertexID$29", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$27", Automatic, Center], 
+              DynamicLocation["VertexID$30", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$27", Automatic, Center], 
+             DynamicLocation["VertexID$54", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$28", Automatic, Center], 
+              DynamicLocation["VertexID$29", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$28", Automatic, Center], 
+              DynamicLocation["VertexID$30", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$28", Automatic, Center], 
+             DynamicLocation["VertexID$54", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$29", Automatic, Center], 
+              DynamicLocation["VertexID$30", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$29", Automatic, Center], 
+             DynamicLocation["VertexID$55", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$30", Automatic, Center], 
+             DynamicLocation["VertexID$55", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$31", Automatic, Center], 
+              DynamicLocation["VertexID$32", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$31", Automatic, Center], 
+              DynamicLocation["VertexID$33", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$31", Automatic, Center], 
+              DynamicLocation["VertexID$34", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$31", Automatic, Center], 
+              DynamicLocation["VertexID$35", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$31", Automatic, Center], 
+             DynamicLocation["VertexID$56", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$32", Automatic, Center], 
+              DynamicLocation["VertexID$33", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$32", Automatic, Center], 
+              DynamicLocation["VertexID$34", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$32", Automatic, Center], 
+              DynamicLocation["VertexID$35", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$32", Automatic, Center], 
+             DynamicLocation["VertexID$56", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$33", Automatic, Center], 
+              DynamicLocation["VertexID$34", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$33", Automatic, Center], 
+              DynamicLocation["VertexID$35", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$33", Automatic, Center], 
+             DynamicLocation["VertexID$57", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$34", Automatic, Center], 
+              DynamicLocation["VertexID$35", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$34", Automatic, Center], 
+             DynamicLocation["VertexID$57", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$35", Automatic, Center], 
+             DynamicLocation["VertexID$58", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$36", Automatic, Center], 
+              DynamicLocation["VertexID$37", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$36", Automatic, Center], 
+              DynamicLocation["VertexID$38", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$36", Automatic, Center], 
+              DynamicLocation["VertexID$39", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$36", Automatic, Center], 
+              DynamicLocation["VertexID$40", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$36", Automatic, Center], 
+             DynamicLocation["VertexID$58", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$37", Automatic, Center], 
+              DynamicLocation["VertexID$38", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$37", Automatic, Center], 
+              DynamicLocation["VertexID$39", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$37", Automatic, Center], 
+              DynamicLocation["VertexID$40", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$37", Automatic, Center], 
+             DynamicLocation["VertexID$59", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$38", Automatic, Center], 
+              DynamicLocation["VertexID$39", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$38", Automatic, Center], 
+              DynamicLocation["VertexID$40", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$38", Automatic, Center], 
+             DynamicLocation["VertexID$59", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$39", Automatic, Center], 
+              DynamicLocation["VertexID$40", Automatic, Center]}], 
+            Hue[0, 1, 0.8], StripOnInput -> False], 
+           LineBox[{
+             DynamicLocation["VertexID$39", Automatic, Center], 
+             DynamicLocation["VertexID$60", Automatic, Center]}], 
+           LineBox[{
+             DynamicLocation["VertexID$40", Automatic, Center], 
+             DynamicLocation["VertexID$41", Automatic, Center]}], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$41", Automatic, Center], 
+              DynamicLocation["VertexID$42", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$41", Automatic, Center], 
+              DynamicLocation["VertexID$43", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$41", Automatic, Center], 
+              DynamicLocation["VertexID$44", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$42", Automatic, Center], 
+              DynamicLocation["VertexID$43", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$42", Automatic, Center], 
+              DynamicLocation["VertexID$44", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$43", Automatic, Center], 
+              DynamicLocation["VertexID$44", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$45", Automatic, Center], 
+              DynamicLocation["VertexID$46", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$45", Automatic, Center], 
+              DynamicLocation["VertexID$47", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$45", Automatic, Center], 
+              DynamicLocation["VertexID$48", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$46", Automatic, Center], 
+              DynamicLocation["VertexID$47", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$46", Automatic, Center], 
+              DynamicLocation["VertexID$48", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$47", Automatic, Center], 
+              DynamicLocation["VertexID$48", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$49", Automatic, Center], 
+              DynamicLocation["VertexID$50", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$49", Automatic, Center], 
+              DynamicLocation["VertexID$51", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$49", Automatic, Center], 
+              DynamicLocation["VertexID$52", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$50", Automatic, Center], 
+              DynamicLocation["VertexID$51", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$50", Automatic, Center], 
+              DynamicLocation["VertexID$52", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$51", Automatic, Center], 
+              DynamicLocation["VertexID$52", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$53", Automatic, Center], 
+              DynamicLocation["VertexID$54", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$53", Automatic, Center], 
+              DynamicLocation["VertexID$55", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$53", Automatic, Center], 
+              DynamicLocation["VertexID$56", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$54", Automatic, Center], 
+              DynamicLocation["VertexID$55", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$54", Automatic, Center], 
+              DynamicLocation["VertexID$56", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$55", Automatic, Center], 
+              DynamicLocation["VertexID$56", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$57", Automatic, Center], 
+              DynamicLocation["VertexID$58", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$57", Automatic, Center], 
+              DynamicLocation["VertexID$59", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$57", Automatic, Center], 
+              DynamicLocation["VertexID$60", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$58", Automatic, Center], 
+              DynamicLocation["VertexID$59", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$58", Automatic, Center], 
+              DynamicLocation["VertexID$60", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False], 
+           StyleBox[
+            LineBox[{
+              DynamicLocation["VertexID$59", Automatic, Center], 
+              DynamicLocation["VertexID$60", Automatic, Center]}], 
+            Hue[0.14, 1, 0.9], StripOnInput -> False]}, {
+           Directive[
+            Hue[0.6, 0.2, 0.8], 
+            EdgeForm[
+             Directive[
+              GrayLevel[0], 
+              Opacity[0.7]]]], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.10452846326765412`, 0.9945218953682734}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.2079116908177599, 0.9781476007338058}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.3090169943749481, 0.9510565162951538}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.40673664307580076`, 0.9135454576426012}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$4"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.5000000000000004, 0.8660254037844389}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$5"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.5877852522924736, 0.809016994374948}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$6"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.6691306063588587, 0.7431448254773948}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$7"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.7431448254773946, 0.6691306063588587}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$8"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8090169943749478, 0.5877852522924739}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$9"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8660254037844389, 0.5000000000000008}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$10"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9135454576426011, 0.4067366430758008}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$11"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9510565162951538, 0.3090169943749484}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$12"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9781476007338058, 0.20791169081776018`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$13"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9945218953682734, 0.10452846326765418`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$14"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{-1., 1.0106430996148606`*^-15}, 0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$15"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9945218953682733, -0.10452846326765261`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$16"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9781476007338056, -0.20791169081775862`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$17"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9510565162951534, -0.30901699437494645`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$18"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.9135454576426006, -0.40673664307579943`}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$19"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8660254037844384, -0.4999999999999994}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$20"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.8090169943749472, -0.5877852522924722}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$21"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.7431448254773939, -0.6691306063588576}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$22"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.669130606358858, -0.7431448254773935}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$23"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{-0.5877852522924728, -0.8090169943749468}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$24"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.4999999999999995, -0.8660254037844379}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$25"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.4067366430758, -0.9135454576426005}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$26"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.30901699437494706`, -0.9510565162951532}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$27"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.20791169081775882`, -0.9781476007338054}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$28"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{-0.10452846326765323`, -0.9945218953682733}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$29"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{3.8285686989269494`*^-16, -1.}, 0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$30"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.104528463267654, -0.9945218953682735}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$31"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.20791169081775956`, -0.9781476007338058}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$32"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.3090169943749478, -0.9510565162951539}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$33"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.40673664307580065`, -0.9135454576426014}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$34"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.5000000000000002, -0.866025403784439}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$35"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.5877852522924735, -0.8090169943749481}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$36"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.6691306063588586, -0.7431448254773951}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$37"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.7431448254773944, -0.6691306063588588}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$38"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8090169943749477, -0.587785252292474}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$39"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8660254037844389, -0.5000000000000012}, 
+              0.01046719124858865], 
+             Hue[0, 1, 0.8], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$40"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.913545457642601, -0.40673664307580093`}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$41"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9510565162951535, -0.30901699437494934`}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$42"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9781476007338057, -0.20791169081776073`}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$43"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9945218953682734, -0.1045284632676543}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$44"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{1., -2.021286199229721*^-15}, 0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$45"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9945218953682733, 0.10452846326765204`}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$46"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9781476007338056, 0.2079116908177585}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$47"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9510565162951536, 0.3090169943749455}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$48"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.9135454576426008, 0.4067366430757989}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$49"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8660254037844386, 0.4999999999999993}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$50"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.8090169943749476, 0.5877852522924715}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$51"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.7431448254773939, 0.6691306063588571}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$52"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.6691306063588581, 0.7431448254773937}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$53"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.5877852522924732, 0.8090169943749462}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$54"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.4999999999999996, 0.8660254037844379}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$55"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.4067366430758001, 0.9135454576426005}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$56"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.30901699437494756`, 0.951056516295153}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$57"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.20791169081775893`, 0.9781476007338054}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$58"], 
+           TagBox[
+            StyleBox[
+             
+             DiskBox[{0.10452846326765336`, 0.9945218953682733}, 
+              0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$59"], 
+           TagBox[
+            StyleBox[
+             DiskBox[{1.8369701987210297`*^-16, 1.}, 0.01046719124858865], 
+             Hue[0.14, 1, 0.9], StripOnInput -> False], "DynamicName", BoxID -> 
+            "VertexID$60"]}}], $CellContext`flag}, 
+        TagBox[
+         DynamicBox[GraphComputation`NetworkGraphicsBox[
+          3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+          CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+           SynchronousUpdating -> False, 
+           TrackedSymbols :> {$CellContext`flag}},
+          
+          ImageSizeCache->{{13.266796875000065`, 
+           700.073046875}, {-346.30387499999995`, 340.50237500000003`}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False,
+        UnsavedVariables:>{$CellContext`flag}]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FrameTicks->None,
+      ImageSize->{714.33984375, Automatic}], 
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2}, {
+          SparseArray[
+           Automatic, {2, 2}, 0, {
+            1, {{0, 2, 4}, {{1}, {2}, {1}, {2}}}, {1, 1, 1, 1}}], Null}, {
+          EdgeLabels -> {"EdgeWeight"}, EdgeWeight -> {4, 1, 2, 3}}]], 
+        Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+           Arrowheads[0.041582132564841494`], 
+           Directive[
+            Opacity[0.7], 
+            Hue[0.6, 0.7, 0.5]], {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation["VertexID$1", Automatic, Center], {
+                1.0884792554677603`, 0.1907835323853024}, {
+                1.2873577330053512`, 0.24717977484589673`}, {
+                1.4145283574798084`, 0.18822269607102357`}, {
+                1.4145283574798089`, -0.18822269607102265`}, {
+                1.2873577330053516`, -0.2471797748458961}, {
+                1.0884792554677607`, -0.19078353238530207`}, 
+                DynamicLocation["VertexID$1", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$1"], 
+            
+            InsetBox[
+             FormBox["\"4\"", TraditionalForm], 
              Offset[{0, 2}, 
               DynamicLocation["EdgeLabelID$1", Automatic, 
                Scaled[0.5]]], 
@@ -3226,6 +5952,26 @@ Cell[BoxData[
              Offset[{0, 2}, 
               DynamicLocation["EdgeLabelID$3", Automatic, 
                Scaled[0.5]]], 
+             ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}, {
+            TagBox[
+             ArrowBox[
+              BezierCurveBox[{
+                DynamicLocation[
+                "VertexID$2", Automatic, 
+                 Center], {-0.08847925546776056, -0.19078353238530235`}, \
+{-0.2873577330053514, -0.24717977484589643`}, {-0.41452835747980865`, \
+-0.18822269607102315`}, {-0.41452835747980865`, 
+                0.18822269607102307`}, {-0.2873577330053514, 
+                0.24717977484589637`}, {-0.08847925546776059, 
+                0.1907835323853023}, 
+                DynamicLocation["VertexID$2", Automatic, Center]}, 
+               SplineDegree -> 7]], "DynamicName", BoxID -> "EdgeLabelID$4"], 
+            
+            InsetBox[
+             FormBox["\"3\"", TraditionalForm], 
+             Offset[{0, 2}, 
+              DynamicLocation["EdgeLabelID$4", Automatic, 
+               Scaled[0.5]]], 
              ImageScaled[{0.5, 0}], BaseStyle -> "Graphics"]}}, {
            Directive[
             Hue[0.6, 0.2, 0.8], 
@@ -3245,8 +5991,8 @@ Cell[BoxData[
            SynchronousUpdating -> False, 
            TrackedSymbols :> {$CellContext`flag}},
           
-          ImageSizeCache->{{0.340693309010093, 
-           178.2393066909899}, {-36.23930669098989, 30.239306690989906`}}],
+          ImageSizeCache->{{-0.2393066909899053, 
+           179.2393066909899}, {-29.239306690989906`, 24.239306690989906`}}],
          MouseAppearanceTag["NetworkGraphics"]],
         AllowKernelInitialization->False,
         UnsavedVariables:>{$CellContext`flag}]],
@@ -3258,25 +6004,8 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-  "Grid"]], "Output",
- CellChangeTimes->{{3.580157495044776*^9, 3.58015750932199*^9}, 
-   3.58015771085772*^9, 3.580157757808563*^9, 3.580157810979208*^9, {
-   3.580157910784281*^9, 3.58015802882128*^9}, 3.580158077619975*^9, {
-   3.580158142234899*^9, 3.580158197769081*^9}, 3.580159512786701*^9, {
-   3.58021897514923*^9, 3.580219020655055*^9}, 3.580219083096315*^9, {
-   3.580219136547773*^9, 3.580219193214601*^9}, 3.580219255863171*^9, {
-   3.580219287469652*^9, 3.5802193691520557`*^9}, 3.580219520499713*^9, 
-   3.580219591772317*^9, {3.580219650832451*^9, 3.580219674821588*^9}, {
-   3.580219816204259*^9, 3.580219826738164*^9}, {3.580219889195737*^9, 
-   3.580219894800699*^9}, 3.580220005120121*^9, {3.580220048666692*^9, 
-   3.5802200834957037`*^9}, {3.580222724518601*^9, 3.580222760879018*^9}, 
-   3.580222870659527*^9, {3.580223957770185*^9, 3.580224012516328*^9}, 
-   3.580224043633547*^9, 3.580225584621852*^9, {3.580225649229596*^9, 
-   3.580225663250937*^9}, {3.580225694570279*^9, 3.580225703852706*^9}, {
-   3.5802257426321783`*^9, 3.580225817439287*^9}, {3.580225858356842*^9, 
-   3.580225913564538*^9}, {3.5802260591226*^9, 3.580226065366762*^9}, {
-   3.5802261975718822`*^9, 3.5802262271478033`*^9}}]
-}, Open  ]]
+  "Grid"]], "Input",
+ CellChangeTimes->{{3.580237047493086*^9, 3.580237062273786*^9}}]
 }, Open  ]]
 },
 WindowSize->{1440, 793},
@@ -3307,39 +6036,41 @@ Cell[8043, 212, 527, 8, 28, "Output"]
 }, Open  ]],
 Cell[8585, 223, 161, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[8771, 230, 2749, 55, 182, "Input"],
-Cell[11523, 287, 2588, 84, 48, "Output"]
+Cell[8771, 230, 3993, 85, 250, "Input"],
+Cell[12767, 317, 2614, 85, 48, "Output"]
 }, Open  ]],
-Cell[14126, 374, 176, 4, 30, "Text"],
+Cell[15396, 405, 176, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[14327, 382, 142, 2, 28, "Input"],
-Cell[14472, 386, 70775, 1658, 376, "Output"]
+Cell[15597, 413, 142, 2, 28, "Input"],
+Cell[15742, 417, 70775, 1658, 376, "Output"]
 }, Open  ]],
-Cell[85262, 2047, 158, 3, 30, "Text"],
+Cell[86532, 2078, 158, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[85445, 2054, 2660, 55, 131, "Input"],
-Cell[88108, 2111, 604, 13, 28, "Output"]
+Cell[86715, 2085, 2660, 55, 131, "Input"],
+Cell[89378, 2142, 604, 13, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[88749, 2129, 970, 27, 80, "Input"],
-Cell[89722, 2158, 677, 13, 28, "Output"],
-Cell[90402, 2173, 1089, 24, 58, "Output"],
-Cell[91494, 2199, 533, 7, 28, "Output"]
+Cell[90019, 2160, 970, 27, 80, "Input"],
+Cell[90992, 2189, 677, 13, 28, "Output"],
+Cell[91672, 2204, 1089, 24, 58, "Output"],
+Cell[92764, 2230, 533, 7, 28, "Output"]
 }, Open  ]],
-Cell[92042, 2209, 3262, 62, 131, "Input"],
-Cell[95307, 2273, 23183, 462, 1746, "Input"],
+Cell[93312, 2240, 3262, 62, 131, "Input"],
+Cell[96577, 2304, 23183, 462, 1746, "Input"],
 Cell[CellGroupData[{
-Cell[118515, 2739, 3720, 51, 28, "Input"],
-Cell[122238, 2792, 909, 18, 28, "Output"]
+Cell[119785, 2770, 3720, 51, 28, "Input"],
+Cell[123508, 2823, 909, 18, 28, "Output"]
 }, Open  ]],
-Cell[123162, 2813, 4480, 72, 114, "Input"],
+Cell[124432, 2844, 4480, 72, 114, "Input"],
 Cell[CellGroupData[{
-Cell[127667, 2889, 5427, 90, 114, "Input"],
-Cell[133097, 2981, 1229, 17, 28, "Output"],
-Cell[134329, 3000, 1373, 23, 28, "Output"],
-Cell[135705, 3025, 1837, 35, 58, "Output"],
-Cell[137545, 3062, 9761, 215, 265, "Output"]
-}, Open  ]]
+Cell[128937, 2920, 5526, 91, 114, "Input"],
+Cell[134466, 3013, 1303, 18, 28, "Output"],
+Cell[135772, 3033, 1443, 24, 28, "Output"],
+Cell[137218, 3059, 2948, 51, 228, "Output"],
+Cell[140169, 3112, 31934, 681, 571, "Output"]
+}, Open  ]],
+Cell[172118, 3796, 30755, 661, 729, InheritFromParent],
+Cell[202876, 4459, 71972, 1548, 739, InheritFromParent]
 }, Open  ]]
 }
 ]

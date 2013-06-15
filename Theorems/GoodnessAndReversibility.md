@@ -49,3 +49,19 @@ In other words, the total number of edges exiting partition $i$ is the same as t
 Now we handle the connections $\textit{within}$ each partition. Each partition $i$ needs a multiple of $A_{i, i} + 1$ vertices since each vertex must connect to $A_{i, i}$ other vertices. Thus, we choose $c$ such that $(A_{i, i} + 1) | c d_i$. To satisfy the constraints for all partitions, we chose $c = LCM(\lbrace A_{i,j} | A_{i, j} \neq 0 \rbrace)$.
 
 This construction produces a k-regular cover with an equitable partition. To ensure it is connected, simply swap any two outgoing edges from a partition with more than a single element.
+
+For the other direction, assume that $\mathcal{O}$ has a finite k-regular cover $C$ with an equitable partition. We wish to show that $\mathcal{M} ( \mathcal{O} )$ is reversible. We start by constructing a Markov model $\mathcal{M} ( \mathcal{C} )$, representing a random walk on the k-regular cover, using the construction outlined in [symmetric]. Hence, $\mathcal{M} ( \mathcal{C} )$ is trivially reversible since every random walk on an undirected graph is equivalent to a reversible Markov chain. If we now apply the "lumping" process described in [symmetric] we get a Markov model which is equivalent to $\mathcal{M}( \mathcal{O} )$ because we are simply summing "edge weights" already normalized by $k$. Thus, if the Markov chain produced by "lumping" $\mathcal{M} (\mathcal{C})$ is reversible then $\mathcal{M} ( \mathcal{O} )$ is also reversible. 
+
+We use the same notation as Boyd. Let $O_v$ be the partition in the cover $C$ containing a representative vertex $v$. By our quotienting process, we know that each partition corresponds to a vertex in $\mathcal{O}$. We know that $O_v$ is independent of choice of $v$ because the partition on $C$ is equitable. Choose stationary distribution for $\mathcal{O}$ with entries $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ and the transition matrix for $\mathcal{O}$ K(O_v, O_{v'}) = \sum_{u \in O_{v'}} P(v, u)$ where $P$ is the transition matrix of the cover $C$. To check that $\mathcal{M} ( \mathcal{O} )$ is reversible:
+
+$$
+\begin{align}
+	\pi(O_v) K(O_v, O_{v'}) &= \sum_{u \in O_v} \pi(u) K(u, O_{v'}) \cr
+							&= \sum_{u \in O_v} \sum_{u' \in O_{v'}} \pi(u) K(u, u') \cr
+							&= \sum_{u \in O_v} \sum_{u' \in O_{v'}} \pi(u') K(u', u) \cr
+							&= \sum_{u \in O_v} \pi(O_{v'}) K(O_{v'}, u) \cr
+							&= \pi(O_{v'}) K(O_{v'}, O_v)
+\end{align}
+$$
+
+Hence, $\mathcal{M}( \mathcal{O} )$ with vertices corresponding to partitions in $C$ is reversible and $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ is the stationary distribution.

@@ -9,7 +9,7 @@ Irreducible markov chain
 Reversibility
 
 **Claim**:
-If $\mathcal{O}$ is k-orbigraph, then $\mathcal{O}$ has a finite k-regular cover if an only if, when converted to a Markov chain, $\mathcal{O}$ is reversible.
+A k-orbigraph $\mathcal{O}$ has a finite k-regular cover if and only if, when converted to a Markov chain, $\mathcal{O}$ is reversible.
 
 **Proof**:
 We start with the first direction: if $\mathcal{O}$, when converted to a Markov chain, is reversible, then $\mathcal{O}$ has a finite k-regular cover. Let $\mathcal{M}(\mathcal{O})$ denote the Markov chain, associated with orbigraph $\mathcal{O}$, which can be constructed by simply normalizing the rows of the adjacency matrix of $\mathcal{O}$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(\mathcal{O})$ and $P_{i,j}$ denote the probability of moving from 
@@ -52,7 +52,7 @@ This construction produces a k-regular cover with an equitable partition. To ens
 
 For the other direction, assume that $\mathcal{O}$ has a finite k-regular cover $C$ with an equitable partition. We wish to show that $\mathcal{M} ( \mathcal{O} )$ is reversible. We start by constructing a Markov model $\mathcal{M} ( \mathcal{C} )$, representing a random walk on the k-regular cover, using the construction outlined in [symmetric]. Hence, $\mathcal{M} ( \mathcal{C} )$ is trivially reversible since every random walk on an undirected graph is equivalent to a reversible Markov chain. If we now apply the "lumping" process described in [symmetric] we get a Markov model which is equivalent to $\mathcal{M}( \mathcal{O} )$ because we are simply summing "edge weights" already normalized by $k$. Thus, if the Markov chain produced by "lumping" $\mathcal{M} (\mathcal{C})$ is reversible then $\mathcal{M} ( \mathcal{O} )$ is also reversible. 
 
-We use the same notation as Boyd. Let $O_v$ be the partition in the cover $C$ containing a representative vertex $v$. By our quotienting process, we know that each partition corresponds to a vertex in $\mathcal{O}$. We know that $O_v$ is independent of choice of $v$ because the partition on $C$ is equitable. Choose stationary distribution for $\mathcal{M} ( \mathcal{O} )$ with entries $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ and the transition matrix for $\mathcal{M} ( \mathcal{O} )$  to be $K(O_v, O_{v'}) = \sum_{u \in O_{v'}} P(v, u)$ where $P$ is the transition matrix of the cover $C$. To check that $\mathcal{M} ( \mathcal{O} )$ is reversible:
+We use the same notation as Boyd. Let $O_v$ be the partition in the cover $C$ containing a representative vertex $v$. By our quotienting process, we know that each partition in $C$ corresponds to a vertex in $\mathcal{O}$. We know that $O_v$ is independent of choice of $v$ because the partition on $C$ is equitable. Choose stationary distribution for $\mathcal{M} ( \mathcal{O} )$ with entries $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ and the transition matrix for $\mathcal{M} ( \mathcal{O} )$  to be $K(O_v, O_{v'}) = \sum_{u \in O_{v'}} P(v, u)$ where $P$ is the transition matrix of the cover $C$. To check that $\mathcal{M} ( \mathcal{O} )$ is reversible:
 
 $$
 \begin{align}

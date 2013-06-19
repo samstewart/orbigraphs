@@ -33,6 +33,7 @@ DeleteIsomorphicGraphs::usage = "DeleteIsomorphicGraphs[gs] returns one represen
 GraphQuotient::usage = "GraphQuotient[g, h] gives the standard quotient graph g/h.";
 CollapseOrbigraph::usage = "CollapseOrbigraph[g] returns a new graph by removing weights from all but self loops.";
 GraphAutomorphismGroup::usage = "GraphAutomorphismGroup[g] finds the group of automorphisms of the graph g."
+GraphFactors::usage = "GraphFactors[g, n] finds all the quotients of g by subgroups of Aut(g) with up to n generators.";
 ImportRegularGraphs::usage = "ImportRegularGraphs[n, k] attemts to retrieve the set of k-regular graphs on n vertices from the data hosted at http://www.mathe2.uni-bayreuth.de.";
 ConjugacyClass::usage = "ConjugacyClass[x, g] returns the conjugacy class of the element x in the group g.";
 SunadaQ::usage = "SunadaQ[g, h1, h2] determines whether the triple (g, h1, h2) satisfies the Sunada condition.";
@@ -116,6 +117,12 @@ GraphAutomorphismGroup[g_Graph] := Block[{$ContextPath, cg},
 	Needs["GraphUtilities`"];
 	cg = GraphUtilities`ToCombinatoricaGraph[g];
 	PermutationGroup[FindPermutation /@ Combinatorica`Automorphisms[cg]]
+];
+
+GraphFactors[g_Graph, n_] := Module[{aut, subgroups},
+	aut = GraphAutomorphismGroup[g];
+	subgroups = PermutationGroup /@ Subsets[GroupElements@aut, n];
+	DeleteIsomorphicGraphs[OrbigraphFromGroup[g, #]& /@ subgroups]
 ];
 
 

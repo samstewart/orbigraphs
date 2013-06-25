@@ -121,7 +121,7 @@ GraphAutomorphismGroup[g_Graph] := Block[{$ContextPath, cg},
 
 GraphFactors[g_Graph, n_] := Module[{aut, subgroups},
 	aut = GraphAutomorphismGroup[g];
-	subgroups = PermutationGroup /@ Subsets[GroupElements@aut, n];
+	subgroups = PermutationGroup /@ Subsets[Rest@GroupElements@aut, n];
 	DeleteIsomorphicGraphs[OrbigraphFromGroup[g, #]& /@ subgroups]
 ];
 

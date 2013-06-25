@@ -7,10 +7,13 @@ Stationary distribution
 Limiting distribution
 Irreducible markov chain
 Reversibility
-Can we prove this with HOL light?
-
+Thoughts:
+Can we make the minimal construction more natural in the proof?
+Can we prove this with HOL light or some other automatic proof verifier?
+Is the business about the equivalence between the markov pillar and the tree pillar clear?
+Is it necessary or just obvious?
 **Claim**:
-A k-orbigraph $\mathcal{O}$ has a finite k-regular cover if and only if, when converted to a Markov chain, $\mathcal{O}$ is reversible.
+A k-orbigraph $\mathcal{O}$ has a finite k-regular cover with equitable partition if and only if, when converted to a Markov chain, $\mathcal{O}$ is reversible.
 
 **Proof**:
 We start with the first direction: if $\mathcal{O}$, when converted to a Markov chain, is reversible, then $\mathcal{O}$ has a finite k-regular cover. Let $\mathcal{M}(\mathcal{O})$ denote the Markov chain, associated with orbigraph $\mathcal{O}$, which can be constructed by simply normalizing the rows of the adjacency matrix of $\mathcal{O}$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(\mathcal{O})$ and $P_{i,j}$ denote the probability of moving from 
@@ -49,22 +52,26 @@ Next we handle the case where $i = j$: connections within a partition. Every par
 
 Overall then, we choose $c = LCM(\lbrace A_{i,j} | i \neq j \text{ and } A_{i, j} \neq 0 \rbrace \cup \lbrace A_{i, i} + 1 | i = j \text{ and } A_{i, i} \neq 0 \rbrace)$.
 
-This construction produces a k-regular cover with an equitable partition that quotients to $\mathcal{O}$. To ensure it is connected, one can swap edges between partitions $i \neq j$. Additionally, the construction can be made minimal if $c$ is a multiple of $A_{i, i} + 1$ and $A_{i, j}$ only when $d_i$ is $\textit{not}$.
+This construction produces a k-regular cover with an equitable partition that quotients to $\mathcal{O}$. To ensure it is connected, one can swap edges between partitions $i \neq j$. Additionally, the construction can be made minimal if $c$ is chosen to be a multiple of $A_{i, i} + 1$ and $A_{i, j}$ only when $d_i$ is $\textit{not}$.
 
-For the other direction, assume that $\mathcal{O}$ has a finite k-regular cover $C$ with an equitable partition. We wish to show that $\mathcal{M} ( \mathcal{O} )$ is reversible. We start by constructing a Markov model $\mathcal{M} ( \mathcal{C} )$, representing a random walk on the k-regular cover, using the construction outlined in [symmetric]. Hence, $\mathcal{M} ( \mathcal{C} )$ is trivially reversible since every random walk on an undirected graph is equivalent to a reversible Markov chain. If we now apply the "lumping" process described in [symmetric] we get a Markov model which is equivalent to $\mathcal{M}( \mathcal{O} )$ because we are simply summing "edge weights" already normalized by $k$. Thus, if the Markov chain produced by "lumping" $\mathcal{M} (\mathcal{C})$ is reversible then $\mathcal{M} ( \mathcal{O} )$ is also reversible. 
+For the other direction, assume that $\mathcal{O}$ has a finite k-regular cover $\mathcal{C}$ with an equitable partition $P = \lbrace P_1, \ldots, P_n \rbrace$. We wish to show that $\mathcal{M} ( \mathcal{O} )$ is reversible. 
 
-We use the same notation as Boyd. Let $O_v$ be the partition in the cover $C$ containing a representative vertex $v$. By our quotienting process, we know that each partition in $C$ corresponds to a vertex in $\mathcal{O}$. We know that $O_v$ is independent of choice of $v$ because the partition on $C$ is equitable. Choose stationary distribution for $\mathcal{M} ( \mathcal{O} )$ with entries $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ and the transition matrix for $\mathcal{M} ( \mathcal{O} )$  to be $K(O_v, O_{v'}) = \sum_{u \in O_{v'}} P(v, u)$ where $P$ is the transition matrix of the cover $C$. To check that $\mathcal{M} ( \mathcal{O} )$ is reversible:
+We first convert $\mathcal{C}$ into a Markov chain $\mathcal{M} ( \mathcal{C} )$, modeling a random walk on $\mathcal{C}$ using the construction outlined in [boyd]. For each pair of vertices $i, j$ where $i \neq j$, we add a directed edge to our Markov model with $p_{i, j} = \frac{1}{k}$ where $p_{i, j}$ is the probability of transitioning from state $i$ to state $j$. Of course, since  $\mathcal{C}$ is undirected, we will produce pairs of directed edges for each $i, j$. As [boyd] highlights, $\mathcal{M} (\mathcal{C})$ is reversible.
+
+Using the equitable partition $P$ and applying the Markov lumping process described in [boyd], the "lumped" chain is Markovian and has one state for each partition $P_i$. Furthermore, the lumped transition probabilities become $\tilde{p}_{i, j} = \sum_{k \in P_j} p_{i, k}$ so that $\tilde{p}_{i, j} = |P_i| \frac{1}{k}$. 
+
+This "lumped" chain is identical to $\mathcal{M} ( \mathcal{O} )$ which is obtained by first quotienting the k-regular covering $\mathcal{C}$ and then normalizing the edge weights by $k$. In other words, we need only show that if $\mathcal{M} (\mathcal{C} )$ is reversible, then the "lumped" chain, which is identical to $\mathcal{M} ( \mathcal{O} )$, is also reversible.
+
+By definition of lumping, we know that each partition in $P_i$ corresponds to a vertex in $\mathcal{M} ( \mathcal{O} )$ and that $P_i$ is independent of choice of $i$ because $P$ is equitable. Choose $\tilde{ \pi }_{P_i} = \sum_{k \in P_i} \pi_k$ and let $A$ be the transition matrix for $\mathcal{M} ( \mathcal{C} )$ and $\tilde {A}$ for $\mathcal{M} ( \mathcal{ O } )$. This choice of $\tilde{ \pi }$ makes $\mathcal{M} ( \mathcal{O} )$ reversible:
 
 $$
 \begin{align}
-	\pi(O_v) K(O_v, O_{v'}) &= \sum_{u \in O_v} \pi(u) K(u, O_{v'}) \cr
-							&= \sum_{u \in O_v} \sum_{u' \in O_{v'}} \pi(u) K(u, u') \cr
-							&= \sum_{u \in O_v} \sum_{u' \in O_{v'}} \pi(u') K(u', u) \cr
-							&= \sum_{u \in O_v} \pi(O_{v'}) K(O_{v'}, u) \cr
-							&= \pi(O_{v'}) K(O_{v'}, O_v)
+	\tilde{ \pi }_{P_i} \tilde{A}_{P_i, P_j} &= \sum_{k \in P_i} \pi_k A_{k, P_j} \cr
+							&= \sum_{k \in P_i} \sum_{\mathcal{l} \in P_j} \pi_k A_{k, \mathcal{l} } \cr
+							&= \sum_{k \in P_i} \sum_{\mathcal{l} \in P_j} \pi_{ \mathcal{l} } A_{\mathcal{l}, k} \cr
+							&= \sum_{k \in P_i} \pi_{P_j} A_{ \mathcal{l}, k } \cr
+							&= \pi_{P_j} \tilde{A}_{P_j, P_i}
 \end{align}
 $$
 
-Hence, $\mathcal{M}( \mathcal{O} )$ with vertices corresponding to partitions in $C$ is reversible and $\pi(O_v) = \sum_{u \in O_v} \pi(u)$ is the stationary distribution.
-
-(Note: can make it minimal)
+Hence, $\mathcal{M}( \mathcal{O} )$ is reversible if $\mathcal{M} ( \mathcal{C} )$ is reversible.

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    408303,       8970]
-NotebookOptionsPosition[    406175,       8901]
-NotebookOutlinePosition[    406531,       8917]
-CellTagsIndexPosition[    406488,       8914]
+NotebookDataLength[    406469,       8898]
+NotebookOptionsPosition[    404343,       8829]
+NotebookOutlinePosition[    404699,       8845]
+CellTagsIndexPosition[    404656,       8842]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -267,15 +267,15 @@ Cell[BoxData[
          "\[IndentingNewLine]", "]"}]}], ",", " ", "Total"}], "]"}]}]}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"BadOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
-    RowBox[{"MarkovProcessProperties", "[", 
-     RowBox[{
-      RowBox[{"MarkovProcessFromOrbigraph", "/@", "orbi"}], ",", " ", 
-      "\"\<Reversible\>\""}], "]"}]}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"GoodOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
+     RowBox[{"MarkovReversibleQ", "[", "orbi", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"GoodOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
-    RowBox[{"Not", "[", 
-     RowBox[{"BadOrbigraphQ", "[", "orbi", "]"}], "]"}]}], 
+    RowBox[{
+     RowBox[{"BadOrbigraphQ", "[", "orbi_", "]"}], " ", ":=", " ", 
+     RowBox[{"Not", "[", 
+      RowBox[{"GoodOrbigraphQ", "[", "orbi", "]"}], "]"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
@@ -315,85 +315,11 @@ Cell[BoxData[
    3.5799649955295267`*^9}, {3.579975183158083*^9, 3.579975278859131*^9}, {
    3.58004550137243*^9, 3.58004550879074*^9}, {3.58013290124972*^9, 
    3.580132907583428*^9}, 3.580133372336231*^9, {3.580247302161798*^9, 
-   3.580247458833802*^9}}],
+   3.580247458833802*^9}, {3.581193931977262*^9, 3.581193938249156*^9}, {
+   3.581194497109974*^9, 3.5811945025034027`*^9}, {3.581194554483968*^9, 
+   3.581194555587098*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["2", "3"], ",", 
-     FractionBox["1", "3"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "4"], ",", 
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "4"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "5"], ",", 
-     FractionBox["2", "5"], ",", 
-     FractionBox["2", "5"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "3"], ",", 
-     FractionBox["1", "3"], ",", 
-     FractionBox["1", "3"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "3"], ",", 
-     FractionBox["1", "3"], ",", 
-     FractionBox["1", "3"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["3", "5"], ",", 
-     FractionBox["2", "5"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "3"], ",", 
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "6"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "4"], ",", 
-     FractionBox["1", "4"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["3", "5"], ",", 
-     FractionBox["2", "5"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "4"], ",", 
-     FractionBox["3", "4"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["1", "2"], ",", 
-     FractionBox["1", "2"]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox["2", "3"], ",", 
-     FractionBox["1", "3"]}], "}"}]}], "}"}]], "Output",
+Cell[BoxData["goodOrbi"], "Output",
  CellChangeTimes->{
   3.580056455352071*^9, 3.580057686024632*^9, 3.580075206070632*^9, 
    3.580132907997531*^9, 3.580133372971888*^9, 3.580218979158112*^9, 
@@ -404,7 +330,9 @@ Cell[BoxData[
    3.58022404316435*^9, {3.58022619702059*^9, 3.580226226686067*^9}, 
    3.580247378127369*^9, 3.580247459088621*^9, 3.580489983266651*^9, 
    3.580494095600565*^9, 3.580500531679386*^9, {3.580501205871538*^9, 
-   3.580501256100698*^9}, 3.580501531713579*^9, 3.580501561725987*^9}]
+   3.580501256100698*^9}, 3.580501531713579*^9, 3.580501561725987*^9, {
+   3.5811939110266333`*^9, 3.581193940559602*^9}, {3.581194116519042*^9, 
+   3.581194125850534*^9}, 3.581194503254497*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -761,8 +689,8 @@ Cell[BoxData[
         CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
-        ImageSizeCache->{{0.34069330901009387`, 
-         178.65930669098995`}, {-24.707182487248367`, 14.239306690989906`}}],
+        ImageSizeCache->{{-2.7393066909899053`, 
+         178.5964495481328}, {-24.236702966576406`, 15.239306690989903`}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -878,8 +806,8 @@ Cell[BoxData[
         CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
-        ImageSizeCache->{{0.3406933090100921, 
-         179.2393066909899}, {-24.234864304219407`, 18.2393066909899}}],
+        ImageSizeCache->{{-2.739306690989906, 
+         178.2393066909899}, {-24.239306690989903`, 18.239306690989903`}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -1015,7 +943,7 @@ Cell[BoxData[
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
         ImageSizeCache->{{-0.2393066909899053, 
-         179.2393066909899}, {-22.857904766563664`, 16.239306690989906`}}],
+         179.2393066909899}, {-22.857904766563895`, 16.239306690989903`}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -1387,8 +1315,8 @@ Cell[BoxData[
         CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
-        ImageSizeCache->{{0.34069330901009387`, 
-         178.65930669098995`}, {-24.70718248724837, 14.23930669098991}}],
+        ImageSizeCache->{{0.34069330901009476`, 
+         178.65930669098995`}, {-23.23930669098987, 16.2393066909899}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -1524,7 +1452,7 @@ Cell[BoxData[
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
         ImageSizeCache->{{-0.2393066909899053, 
-         179.2393066909899}, {-22.857904766563664`, 16.239306690989906`}}],
+         179.2393066909899}, {-22.857904766563895`, 16.239306690989903`}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -1605,8 +1533,8 @@ Cell[BoxData[
         CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
         
-        ImageSizeCache->{{0.340693309010093, 
-         178.2393066909899}, {-36.23930669098989, 30.239306690989906`}}],
+        ImageSizeCache->{{-2.739306690989906, 
+         178.2393066909899}, {-36.23930669098989, 31.239306690989906`}}],
        MouseAppearanceTag["NetworkGraphics"]],
       AllowKernelInitialization->False,
       UnsavedVariables:>{$CellContext`flag}]],
@@ -8927,50 +8855,50 @@ Cell[8043, 212, 692, 10, 28, "Output"]
 }, Open  ]],
 Cell[8750, 225, 161, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[8936, 232, 4016, 85, 267, "Input"],
-Cell[12955, 319, 2800, 87, 48, "Output"]
+Cell[8936, 232, 4100, 87, 267, "Input"],
+Cell[13039, 321, 883, 13, 28, "Output"]
 }, Open  ]],
-Cell[15770, 409, 176, 4, 30, "Text"],
+Cell[13937, 337, 176, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[15971, 417, 142, 2, 28, "Input"],
-Cell[16116, 421, 70942, 1660, 376, "Output"]
+Cell[14138, 345, 142, 2, 28, "Input"],
+Cell[14283, 349, 70943, 1660, 378, "Output"]
 }, Open  ]],
-Cell[87073, 2084, 158, 3, 30, "Text"],
+Cell[85241, 2012, 158, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[87256, 2091, 2660, 55, 131, "Input"],
-Cell[89919, 2148, 774, 15, 28, "Output"]
+Cell[85424, 2019, 2660, 55, 131, "Input"],
+Cell[88087, 2076, 774, 15, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[90730, 2168, 970, 27, 80, "Input"],
-Cell[91703, 2197, 849, 16, 28, "Output"],
-Cell[92555, 2215, 1263, 27, 58, "Output"],
-Cell[93821, 2244, 707, 10, 28, "Output"]
+Cell[88898, 2096, 970, 27, 80, "Input"],
+Cell[89871, 2125, 849, 16, 28, "Output"],
+Cell[90723, 2143, 1263, 27, 47, "Output"],
+Cell[91989, 2172, 707, 10, 28, "Output"]
 }, Open  ]],
-Cell[94543, 2257, 6417, 120, 335, "Input"],
+Cell[92711, 2185, 6417, 120, 335, "Input"],
 Cell[CellGroupData[{
-Cell[100985, 2381, 2761, 42, 28, "Input"],
-Cell[103749, 2425, 246, 3, 28, "Output"]
+Cell[99153, 2309, 2761, 42, 28, "Input"],
+Cell[101917, 2353, 246, 3, 28, "Output"]
 }, Open  ]],
-Cell[104010, 2431, 90, 1, 28, InheritFromParent],
-Cell[104103, 2434, 3139, 53, 63, "Input"],
-Cell[107245, 2489, 25767, 527, 1967, "Input"],
+Cell[102178, 2359, 90, 1, 28, InheritFromParent],
+Cell[102271, 2362, 3139, 53, 63, "Input"],
+Cell[105413, 2417, 25767, 527, 1967, "Input"],
 Cell[CellGroupData[{
-Cell[133037, 3020, 4067, 61, 46, "Input"],
-Cell[137107, 3083, 1176, 22, 28, "Output"],
-Cell[138286, 3107, 796, 11, 28, "Output"]
+Cell[131205, 2948, 4067, 61, 46, "Input"],
+Cell[135275, 3011, 1176, 22, 28, "Output"],
+Cell[136454, 3035, 796, 11, 28, "Output"]
 }, Open  ]],
-Cell[139097, 3121, 4480, 72, 114, "Input"],
+Cell[137265, 3049, 4480, 72, 114, "Input"],
 Cell[CellGroupData[{
-Cell[143602, 3197, 7916, 143, 199, "Input"],
-Cell[151521, 3342, 2387, 33, 28, "Output"],
-Cell[153911, 3377, 2386, 33, 28, "Output"],
-Cell[156300, 3412, 2388, 33, 28, "Output"],
-Cell[158691, 3447, 2527, 39, 28, "Output"],
-Cell[161221, 3488, 2473, 37, 47, "Output"],
-Cell[163697, 3527, 3015, 52, 92, "Output"],
-Cell[166715, 3581, 239335, 5313, 2989, "Output"]
+Cell[141770, 3125, 7916, 143, 199, "Input"],
+Cell[149689, 3270, 2387, 33, 28, "Output"],
+Cell[152079, 3305, 2386, 33, 28, "Output"],
+Cell[154468, 3340, 2388, 33, 28, "Output"],
+Cell[156859, 3375, 2527, 39, 28, "Output"],
+Cell[159389, 3416, 2473, 37, 47, "Output"],
+Cell[161865, 3455, 3015, 52, 92, "Output"],
+Cell[164883, 3509, 239335, 5313, 2989, "Output"]
 }, Open  ]],
-Cell[406065, 8897, 94, 1, 28, InheritFromParent]
+Cell[404233, 8825, 94, 1, 28, InheritFromParent]
 }, Open  ]]
 }
 ]

@@ -13,3 +13,5 @@ Starting Points
 - [Theorems](pages/Theorems/) that we have proven or are using.
 
 - [[Information | Current]] and links about what we're doing now.
+
+- [[Outline]] of results.

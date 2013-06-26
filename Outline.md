@@ -1,0 +1,33 @@
+Outline of Results
+==================
+
+- **Introduction**
+    - Orbigraphs are a simple graph theoretic analog of orbifolds. 
+    - $k$-regular graphs can be viewed as `manifolds' which are locally modeled on $k$-stars.
+    - $k$-orbigraphs are then locally modeled on quotients of $k$-stars.
+- **Definitions**
+    - [[Orbigraphs | Orbigraph]]
+    - [[The adjacency matrix | AdjacencyOperator]]
+    - [[$k$-regular trees | KTree]]
+    - Note that every $k$-regular graph is an orbigraph.
+- **Basic Results**
+    - These results concern the structure of orbigraphs relating to their coverings and group actions.
+    - Results about coverings:
+        - Every $k$-orbigraph is covered by a $k$-regular tree and covers a bouquet of $k$-circles.
+        - Orbigraph covering composes nicely [[CompositionOfPartitions]].
+        - Definition of good and bad orbigraphs.
+        - Characterization of good and bad orbigraphs: [[GoodnessAndReversibility]].
+            - Corollary: by Kolmogorov's criterion an orbigraph is good if and only if the number of ways to traverse any sequence of vertices is independent of the direction of traversal.
+    - Results about group actions:
+        - Every quotient of a $k$-orbigraph graph by an automorphism subgroup is a $k$-orbigraph. (In particular, this means that quotients of $k$-regular graphs are orbigraphs.)
+        - For every orbigraph which is the quotient of a $k$-regular graph, there is a group acting on the corresponding $k$-tree that produces the orbigraph: [[GoodFundamentalGroup]].
+            - This means that the orbigraphs which are quotients form a sub-category of the category of orbigraphs, with fundamental groups etc, that behave like in standard topology.
+        - If $\mathcal{O}$ is the quotient of a $k$-regular graph by a free action, then $A(\mathcal{O})$ is symmetric: [[FreeAndSymmetric]]. The converse is certainly true if $\mathcal{O}$ has no self loops, and may be true otherwise: [[FreeAndSymmetricConverse]].
+- **Spectral Results**
+    - Basic result: the eigenvalues of $\mathcal{O}$ are a subset of the eigenvalues of any covering of $\mathcal{O}$ with multiplicity preserved.
+    - Many spectral results from $k$-regular graphs carry over to orbigraphs: 
+        - [[SpectralRadiusOfOrbigraph]]. A cleaner proof would be to use the fact that the spectral radius of $T_k$ in $\mathcal{l}^\infty$ is $k$ and the fact that eigenvalues are preserved by covering.
+        - An orbigraph is bipartite if and only if its spectrum is symmetric about zero. (What does this mean exactly for orbigraphs with complex eigenvalues?)
+    - There are spectral results that are unique to orbigraphs:
+        - The number of `singular points' is bounded by the the spectrum: [[SingularBounds]].
+        - Sunada's theorem holds in full generality for orbigraphs: [[RepresentationSunada]].

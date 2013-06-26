@@ -5,8 +5,10 @@ Composition of Partitions
 
 **Proof:** Denote the partition matrix associated with equitable partition $\pi$ by $P(\pi)$. Then by Lemma 2.1 (Algebraic Combinatorics, Godsil, p.77) we have that $A(\Gamma_1)P(\pi_1) = P(\pi_1)A(\Gamma_2)$ and $A(\Gamma_2)P(\pi_2) = P(\pi_2)A(\Gamma_3)$. Multiplying the first equation on the right by $P(\pi_2)$ gives
 $$
+\begin{align*}
 A(\Gamma_1)P(\pi_1)P(\pi_2) &= P(\pi_1)A(\Gamma_2)P(\pi_2) \\\\
 &= P(\pi_1)P(\pi_2)A(\Gamma_3).
+\end{align*}
 $$
 
 Thus the matrix $X = P(\pi_1)P(\pi_2)$ is such that $A(\Gamma_1) X = X A(\Gamma_3)$. Thus by the converse of Godsil's Lemma 2.1 we have that $X$ is a equitable partition matrix of $\Gamma_1$ with quotient orbigraph $\Gamma_3$.

@@ -47,7 +47,7 @@ $$
     XT + YB & ZT + WB
 \end{bmatrix}.
 $$
-Because each block is a sum of products of constant row sum matrices, they are constant row sum matrices themselves. Furthermore, to see that the row sum is independent of $T$, calculate i.e. $Rs(XA + YT^T) = Rs(X)Rs(A) + Rs(Y)Rs(T^T) = Rs(X)Rs(A) + Rs(Y) \frac{l}{2}$. Which is independent of $T$ by the induction hypothesis.
+Because each block is a sum of products of constant row sum matrices, they are constant row sum matrices themselves. Furthermore, to see that the row sum is independent of $T$, calculate i.e. $Rs(XA + YT^T) = Rs(X)Rs(A) + Rs(Y)Rs(T^T) = Rs(X)Rs(A) + Rs(Y) \cdot l$. Which is independent of $T$ by the induction hypothesis.
 
 
 **Lemma 2:** For any $n$, we have $A(\mathcal{S_1})^n = \begin{bmatrix}

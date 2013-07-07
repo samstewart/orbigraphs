@@ -3,7 +3,7 @@ Seidel Switching
 
 Seidel Switching is a method to construct cospectral pairs of graphs given any pair of base graphs. It has previously been used in undirected graphs, but there is very little literature on its use in directed graphs.
 
-**Procedure:** Suppose $\mathcal{O_1}$ and $\mathcal{O_2}$ are $k$-orbigraphs each on $2l$ vertices with adjacency matrices $A$ and $B$ respectively. Furthermore, suppose that $T$ is a _switching matrix_, that is, it is a $0,1$-matrix with each row and each column summing to $l$. Let $J$ be a $2l \times 2l$ matrix of ones then define two new orbigraphs $\mathcal{S_1}$ and $\mathcal{S_2}$ as follows:
+**Procedure:** Suppose $\mathcal{O_1}$ and $\mathcal{O_2}$ are $k$-orbigraphs each on $2l$ vertices with adjacency matrices $A$ and $B$ respectively. Furthermore, suppose that $T$ is a _switching matrix_, that is, it is a $(0,1)$-matrix with each row and each column summing to $l$. Let $J$ be a $2l \times 2l$ matrix of ones. Then define two new orbigraphs $\mathcal{S_1}$ and $\mathcal{S_2}$ as follows:
 
 $$
 A(\mathcal{S_1}) = \begin{bmatrix}
@@ -21,7 +21,7 @@ $$
 
 **Claim 1:** The orbigraphs $\mathcal{S_1}$ and $\mathcal{S_2}$ are cospectral.
 
-(Note in the following the term "constant row sum matrix" is used to describe a matrix $A$ such that $A 1 = k 1$ for some $k$. It is easy to show that the sum or product of constant row sum matrices is a constant row sum matrix and that the function $Rs(A) = k$ is additive and multiplicative. Similarly, "constant column matrices" are those in which for each column, every entry is the same. This set is likewise closed under addition and multiplication.)
+(Note, in the following, the term "constant row sum matrix" is used to describe a matrix $A$ such that $A 1 = k 1$ for some $k$. It is easy to show that the sum or product of constant row sum matrices is a constant row sum matrix and that the function $Rs(A) = k$ is additive and multiplicative. Similarly, "constant column matrices" are those in which for each column, every entry is the same. This set is likewise closed under addition and multiplication.)
 
 **Lemma 1:** If $T$ is any switching matrix and $A$ and $B$ are as above, then $\begin{bmatrix}
     A & T \\\\
@@ -102,7 +102,7 @@ We need only verify that these are each constant column matrices and that $Rs(S'
 
 By the previous lemma, we have that $Rs(CA + XT^T - S'_1) = Rs(CA + XT^T)$, but this implies that $Rs(S'_1) = 0$. The same reasoning shows that $Rs(S'_4) = 0$.
 
-**Proof of Claim 1:** This follows immediatly from the lemma and [[CyclesCospectrality]]. We have
+**Proof of Claim 1:** This follows immediatly from Lemma 2 and [[CyclesCospectrality]]. We have
 $$
 Tr(A(\mathcal{S_2})^n) = Tr(\begin{bmatrix}
     C - S_1 & S_2 - X \\\\

@@ -19,11 +19,20 @@ Our results:
 
 **What is a Markov chain?**
 
-**How does a markov chain take a step?***
+A Markov chain is a collection of random variables $X_1, X_2, \ldots, X_n$ where the random variables take on values from the state space $\Omega$. Furthermore, the distribution of the $(X_n)$ satisfies the "Markov property" so that $Pr(X_{n+1} = i | X_{n} = j) = Pr(X_{n+1} = i | X_{n} = j, X_{n-1} = k, \ldots, X_1 = l)$.
 
-**What does it mean to limit to a Markov Distribution?***
+**How does a Markov chain take a step?***
+
+**What is a stationary distribution?***
+A stationary distribution $\pi$ satisfies the following two properties:
+1. $\sum_{i} \pi_i$ = 1
+2. $\pi P = \pi$
+
+**What does it mean to limit to a stationary distribution?***
+A Markov chain must be both aperiodic and irreducible to possess a stationary distribution and limit to this distribution regardless of the initial distribution. Naturally, these chains, known as __ergodic__ chains, are of great interests to statisticians because ergodic chains enable us to study the __long term__ behavior or systems with the Markov property. The stationary distribution captures the proportion of time we spend in each state of the system after many, many, many steps and also exhibits a strange property: a further step does not change the stationary distribution. In other words, the probability of being in any particular state does not change after taking any number of steps.
 
 **How does our work relate to markov chain lumpability**
+The lumping process creates a partition $Q = Q_1 \cup Q_2 \cup Q_3 \cup \ldots \cup Q_n$ such that $\sum_{i} Pr(X_{n + 1} = Q_i | X_{n} = Q_j)$ is well-defined (independent of what representative we choose from $Q_i$).
 
 **What is the detailed balance equation?**
 

@@ -8,11 +8,13 @@ $$ where $\lambda_i$ are the eigenvalues of the adjacency matrix of $\mathcal{O}
 
 **Proof:** First note that $\sum_{i} \lambda_i^2 = tr(A(\mathcal{O})^2)$ and this quantity counts the number of closed walks of length $2$ in $\mathcal{O}$. For a given vertex $v \in \mathcal{O}$, the number of closed walks of length $2$ at $v$ is $\sum_{v \text{~} w} A(\mathcal{O})_{vw} \cdot A(\mathcal{O})_{wv}$ (where $A(\mathcal{O})_{vw}$) denotes the entry in the adjacency matrix of $\mathcal{O}$ giving the number of edges from $v$ to $w$). Vertex $v$ has exactly $k$ out-edges, each of which is matched by at least one in-edge. Thus $tr(A(\mathcal{O})^2) \ge n k$. Additionally, each singular vertex $v$ of $\mathcal{O}$ is adjacent by a multiple edge to at least one other vertex $w$, and that multiple edge contributes at least one extra closed walk to the total number of closed walks of length $2$. Hence $s \le \sum_{i} \lambda_i^2 - n k$. 
 
-For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \text{~} j} a_{ij} a_{ji} - k $ extra walks of length two. At most, $a_{ji} = k$ for all $j$. Thus we have
+For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \text{~} j} a_{ij} a_{ji} - k $ extra walks of length  two. At most, $a_{ji} = k$ for all $j$. Thus we have
+
 $$
-\sum_{i \text{~} j} a_{ij} a_{ji} - k & \ge \sum_{i \text{~} j} a_{ij} k - k \\\\
+\sum_{i \text{~} j} a_{ij} a_{ji} - k \& \ge \sum_{i \text{~} j} a_{ij} k - k \\\\
 = k \sum_{i \text{~} j} a_{ij} - k = k^2 - k.
 $$
+
 Hence, each singular vertex contributes at most $k^2 - k$ extra walks of lenght two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.
 
 **Corollary:** An orbigraph $\mathcal{O}$ is a simple $k$-regular graph if and only if $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$.

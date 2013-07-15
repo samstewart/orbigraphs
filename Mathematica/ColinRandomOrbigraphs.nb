@@ -1,0 +1,254 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9900,        245]
+NotebookOptionsPosition[      9314,        219]
+NotebookOutlinePosition[      9671,        235]
+CellTagsIndexPosition[      9628,        232]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Colin\[CloseCurlyQuote]s Random Orbigraphs", "Title",
+ CellChangeTimes->{{3.5814669959979563`*^9, 3.58146700058044*^9}}],
+
+Cell[TextData[{
+ "I use Colin\[CloseCurlyQuote]s naive \[OpenCurlyDoubleQuote]fill\
+\[CloseCurlyDoubleQuote] method for generating random orbigraphs. You can \
+never change 0\[CloseCurlyQuote]s but you can always change 1\
+\[CloseCurlyQuote]s upward due to orbigraph constraint. Note: the \
+\[OpenCurlyDoubleQuote]Outer\[CloseCurlyDoubleQuote] function is a great way \
+to do nested loops. This is wrong. You should just randomly pick columns and \
+fill in until k is satisfied. Then fill in the rest with zeros. If you \
+include zero in the sampling range, then there is no promise you\
+\[CloseCurlyQuote]ll ever be able to fill the row properly; after all, how \
+many zero\[CloseCurlyQuote]s should you place? I don\[CloseCurlyQuote]t know \
+if waiting until ",
+ StyleBox["after ",
+  FontSlant->"Italic"],
+ "I\[CloseCurlyQuote]ve filled the slots biases against the zeros, but there\
+\[CloseCurlyQuote]s nothing for it."
+}], "Text",
+ CellChangeTimes->{{3.581467003909492*^9, 3.581467012804014*^9}, {
+  3.581467731861977*^9, 3.581467754997278*^9}, {3.581468482615428*^9, 
+  3.581468495278142*^9}, {3.581469703791196*^9, 3.581469815764145*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FillMatrix", "[", 
+    RowBox[{"matrix_", ",", " ", "k_Integer"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"m", " ", "=", " ", "matrix"}], ",", " ", 
+       RowBox[{"rows", " ", "=", " ", 
+        RowBox[{"First", "@", 
+         RowBox[{"Dimensions", "@", "matrix"}]}]}], ",", " ", 
+       RowBox[{"cols", " ", "=", " ", 
+        RowBox[{"Last", "@", 
+         RowBox[{"Dimensions", "@", "matrix"}]}]}], ",", " ", 
+       RowBox[{"kp", "=", "k"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Map", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"kp", " ", "=", " ", "k"}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"While", "[", 
+           RowBox[{
+            RowBox[{"kp", " ", ">", " ", "0"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Which", "[", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"m", "\[LeftDoubleBracket]", 
+                 RowBox[{"r", ",", " ", "c"}], "\[RightDoubleBracket]"}], " ",
+                 "\[Equal]", " ", 
+                RowBox[{"-", "1"}]}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"m", "\[LeftDoubleBracket]", 
+                  RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                 "=", " ", 
+                 RowBox[{"RandomInteger", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", " ", "kp"}], "}"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"kp", " ", "=", " ", 
+                 RowBox[{"kp", " ", "-", " ", 
+                  RowBox[{"m", "\[LeftDoubleBracket]", 
+                   RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}]}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"m", "\[LeftDoubleBracket]", 
+                  RowBox[{"c", ",", "r"}], "\[RightDoubleBracket]"}], " ", 
+                 "=", " ", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"m", "\[LeftDoubleBracket]", 
+                    RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                    ">", " ", "0"}], ",", " ", "1", ",", " ", "0"}], 
+                  "]"}]}]}], ",", "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"m", "\[LeftDoubleBracket]", 
+                 RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                "\[Equal]", " ", "1"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"m", "\[LeftDoubleBracket]", 
+                  RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                 "=", " ", 
+                 RowBox[{"RandomInteger", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", " ", "kp"}], "}"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"kp", " ", "=", " ", 
+                 RowBox[{"kp", " ", "-", " ", 
+                  RowBox[{"m", "\[LeftDoubleBracket]", 
+                   RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}]}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"m", "\[LeftDoubleBracket]", 
+                  RowBox[{"c", ",", "r"}], "\[RightDoubleBracket]"}], " ", 
+                 "=", " ", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"m", "\[LeftDoubleBracket]", 
+                    RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                    ">", " ", "0"}], ",", " ", "1", ",", " ", "0"}], 
+                  "]"}]}]}], ",", "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"m", "\[LeftDoubleBracket]", 
+                 RowBox[{"r", ",", "c"}], "\[RightDoubleBracket]"}], " ", 
+                "\[Equal]", " ", "0"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], "&"}]}], ",", "\[IndentingNewLine]", 
+        
+        RowBox[{"Range", "@", "rows"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "m", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", " ", "=", " ", 
+   RowBox[{"FillMatrix", "[", 
+    RowBox[{
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}]}], "]"}], ",", " ", "3"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"t", "//", "MatrixForm"}], "\[IndentingNewLine]", 
+ RowBox[{"OrbigraphQ", "[", "t", "]"}]}], "Input",
+ CellChangeTimes->{{3.5814670302613993`*^9, 3.581467037628168*^9}, {
+   3.58146711795471*^9, 3.581467127683777*^9}, {3.5814673642802258`*^9, 
+   3.581467454948717*^9}, {3.5814675119250193`*^9, 3.581467618241901*^9}, {
+   3.581467666960956*^9, 3.581467678889296*^9}, {3.581467721927918*^9, 
+   3.5814677220159407`*^9}, {3.5814677983263197`*^9, 3.581467883363756*^9}, {
+   3.581468037120508*^9, 3.5814680788823833`*^9}, 3.581468138888054*^9, {
+   3.5814681894556017`*^9, 3.5814682488615017`*^9}, {3.5814683257247353`*^9, 
+   3.581468340699481*^9}, {3.5814683968750477`*^9, 3.5814684544496717`*^9}, {
+   3.5814685007049913`*^9, 3.58146881254033*^9}, {3.581468862821406*^9, 
+   3.581468893587123*^9}, {3.581468967528749*^9, 3.581468982093837*^9}, {
+   3.581469029849751*^9, 3.5814691324920692`*^9}, {3.5814692158185167`*^9, 
+   3.581469329659306*^9}, {3.581469362220235*^9, 3.581469409163409*^9}, {
+   3.5814694887043247`*^9, 3.581469490431527*^9}, {3.581471094888536*^9, 
+   3.581471192933427*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "1", "0"},
+     {"2", "0", "1"},
+     {"0", "3", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.581468983067844*^9, {3.581469040879651*^9, 3.58146913278058*^9}, {
+   3.581469288468865*^9, 3.581469330118968*^9}, {3.581469366927846*^9, 
+   3.581469411851796*^9}, 3.581469490753104*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.581468983067844*^9, {3.581469040879651*^9, 3.58146913278058*^9}, {
+   3.581469288468865*^9, 3.581469330118968*^9}, {3.581469366927846*^9, 
+   3.581469411851796*^9}, 3.581469490755361*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"0", "/.", " ", 
+  RowBox[{"{", 
+   RowBox[{"0", "\[Rule]", " ", "4"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.581468381882513*^9, 3.58146839371303*^9}}],
+
+Cell[BoxData["4"], "Output",
+ CellChangeTimes->{{3.5814683910720367`*^9, 3.58146839399506*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 704},
+WindowMargins->{{36, Automatic}, {16, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 126, 1, 92, "Title"],
+Cell[708, 25, 1144, 19, 125, "Text"],
+Cell[CellGroupData[{
+Cell[1877, 48, 6018, 125, 488, "Input"],
+Cell[7898, 175, 829, 22, 74, "Output"],
+Cell[8730, 199, 243, 4, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9010, 208, 178, 4, 28, "Input"],
+Cell[9191, 214, 95, 1, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

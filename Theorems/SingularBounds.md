@@ -11,8 +11,13 @@ $$ where $\lambda_i$ are the eigenvalues of the adjacency matrix of $\mathcal{O}
 For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \text{~} j} a_{ij} a_{ji} - k $ extra walks of length  two. At most, $a_{ji} = k$ for all $j$. Thus we have
 
 $$
-\sum_{i \text{~} j} a_{ij} a_{ji} - k  \ge \sum_{i \text{~} j} a_{ij} k - k \\\\
+
+\begin{align*}
+	\sum_{i \text{~} j} a_{ij} a_{ji} - k & \ge \sum_{i \text{~} j} a_{ij} k - k \cr
 = k \sum_{i \text{~} j} a_{ij} - k = k^2 - k.
+
+\end{align*}
+
 $$
 
 Hence, each singular vertex contributes at most $k^2 - k$ extra walks of lenght two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.
@@ -32,8 +37,8 @@ As above, we have that each singular point $i$ contributes $ \sum_{i \text{~} j}
 
 $$
 \begin{align*}
-\sum_{i \text{~} j} a_{ij} a_{ji} - k &= \sum_{i \text{~} j} a_{ij}^2 - k \\\\
-& \ge 4 + \sum_{i \text{~} j, j \neq l} a_{ij}^2 - k \\\\
+\sum_{i \text{~} j} a_{ij} a_{ji} - k &= \sum_{i \text{~} j} a_{ij}^2 - k \cr
+& \ge 4 + \sum_{i \text{~} j, j \neq l} a_{ij}^2 - k \cr
 & = 4 + (k - 2) - k = 2.
 \end{align*}
 $$

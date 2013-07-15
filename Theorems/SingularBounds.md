@@ -11,7 +11,7 @@ $$ where $\lambda_i$ are the eigenvalues of the adjacency matrix of $\mathcal{O}
 For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \text{~} j} a_{ij} a_{ji} - k $ extra walks of length  two. At most, $a_{ji} = k$ for all $j$. Thus we have
 
 $$
-\sum_{i \text{~} j} a_{ij} a_{ji} 
+\sum_{i \text{~} j} a_{ij} a_{ji} - k \& \ge \sum_{i \text{~} j} 
 $$
 
 Hence, each singular vertex contributes at most $k^2 - k$ extra walks of lenght two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.

@@ -17,7 +17,7 @@ $$
 \end{align*}
 $$
 
-Hence, each singular vertex contributes at most $k^2 - k$ extra walks of lenght two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.
+Hence, each singular vertex contributes at most $k^2 - k$ extra walks of length two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.
 
 **Corollary:** An orbigraph $\mathcal{O}$ is a simple $k$-regular graph if and only if $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$.
 

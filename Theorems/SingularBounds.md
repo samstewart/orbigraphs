@@ -12,7 +12,7 @@ For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \t
 
 $$
 \begin{align*}
-	\sum_{i \text{~} j} a_{ij} a_{ji} - k & \ge \sum_{i \text{~} j} a_{ij} k - k \cr
+	\sum_{i \text{~} j} a_{ij} a_{ji} - k & \le \sum_{i \text{~} j} a_{ij} k - k \cr
 										  & = k \sum_{i \text{~} j} a_{ij} - k = k^2 - k.
 \end{align*}
 $$

@@ -1,0 +1,289 @@
+% EJC papers *must* begin with the following two lines. 
+\documentclass[12pt]{article}
+\usepackage{e-jc}
+
+% Please remove all other commands that change parameters such as
+% margins or pagesizes.
+
+% only use standard LaTeX packages
+% only include packages that you actually need
+
+% we recommend these ams packages
+\usepackage{amsthm,amsmath,amssymb}
+
+% we recommend the graphicx package for importing figures
+\usepackage{graphicx}
+
+% use this command to create hyperlinks (optional and recommended)
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+
+% use these commands for typesetting doi and arXiv references in the bibliography
+\newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+% all overfull boxes must be fixed; 
+% i.e. there must be no text protruding into the margins
+
+
+% declare theorem-like environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open Problem}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if needed include a line break (\\) at an appropriate place in the title
+
+\title{\bf Orbigraphs: Defining a Graph Theoretic Analog to Reimannian Orbifolds}
+
+% input author, affilliation, address and support information as follows;
+% the address should include the country, and does not have to include
+% the street address 
+
+\author{Dagwood Remifa\thanks{Supported by NASA grant ABC123.}\\
+\small Department of Inconsequential Studies\\[-0.8ex]
+\small Solatido College\\[-0.8ex] 
+\small North Kentucky, U.S.A.\\
+\small\tt remifa@dis.solatido.edu\\
+\and
+Forgotten Second Author \qquad  Forgotten Third Author\\
+\small School of Hard Knocks\\[-0.8ex]
+\small University of Western Nowhere\\[-0.8ex]
+\small Nowhere, Australasiaopia\\
+\small\tt \{fsa,fta\}@uwn.edu.ao
+}
+
+% \date{\dateline{submission date}{acceptance date}\\
+% \small Mathematics Subject Classifications: comma separated list of
+% MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
+
+\date{\dateline{Jan 1, 2012}{Jan 2, 2012}\\
+\small Mathematics Subject Classifications: 05C88, 05C89}
+
+\begin{document}
+
+\maketitle
+
+% E-JC papers must include an abstract. The abstract should consist of a
+% succinct statement of background followed by a listing of the
+% principal new results that are to be found in the paper. The abstract
+% should be informative, clear, and as complete as possible. Phrases
+% like "we investigate..." or "we study..." should be kept to a minimum
+% in favor of "we prove that..."  or "we show that...".  Do not
+% include equation numbers, unexpanded citations (such as "[23]"), or
+% any other references to things in the paper that are not defined in
+% the abstract. The abstract will be distributed without the rest of the
+% paper so it must be entirely self-contained.
+
+\begin{abstract}
+  % keywords are optional
+  \bigskip\noindent \textbf{Keywords:} orbifolds, spectral graph theory
+\end{abstract}
+
+\section{Introduction}
+
+Introduction here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Brief introduction to Riemannian orbifolds}
+
+Brooks analogy, Bass Serre Theory mention.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Defining Orbigraphs as Analogs of Orbifolds}
+
+Reasons for choices, etc.
+\begin{definition}
+A $k$-\textbf{orbigraph} is...
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Properties of Orbigraphs}
+
+\subsection{Covering Theory for Orbigraphs}
+
+\begin{definition}
+An \textbf{equitable partition} of an orbigraph $\Gamma$ is...
+\end{definition}
+
+We say that an orbigraph $\Gamma_1$ covers an orbigraph $\Gamma_2$ if there is an equitable partition $\pi$ of $\Gamma$ such that $\Gamma_1 / \pi = \Gamma_2$.
+
+\begin{lemma}
+The covering relation is transitive and reflexive. (Orbigraphs form a category.)
+\end{lemma}
+
+\begin{theorem}
+Every connected $k$-orbigraph is covered by the $k$-tree. (Disconnected orbigraphs are covered by disjoint unions of $k$-trees.)
+\end{theorem}
+
+These two previous results imply that we can think of $k$-trees as universal covers of orbigraphs.
+
+We are particularly interested in the case when an orbigraph $\Gamma$ is covered by a finite $k$-regular graph. We call such orbigraphs \textbf{good} which parallels the corresponding distinction in orbifold theory. We have characterized when an orbigraph is good:
+
+\begin{theorem}
+An orbigraph is good if and only if, for every sequence of vertices $v_1,\ldots,v_n$ such that $v_1 = v_n$ the number of walks forward is the same as the number backward.
+\end{theorem}
+
+\subsection{Group Actions on Orbigraphs}
+
+We can also investigate the relationship between group actions and orbigraphs:
+
+\begin{theorem}
+If a group $G$ acts on $\Gamma$ by automorphisms, then $\Gamma / G$ is an orbigraph and $\Gamma$ covers $\Gamma / G$.
+\end{theorem}
+
+Note that this implies that an orbigraph is good if it is the quotient of a $k$-regular graph by a group action. We see that this group action can be lifted to the universal covering tree:
+
+\begin{theorem}
+If $\Gamma$ is a $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some automorphism group $G$, then there exists a group of automorphism $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
+\end{theorem}
+
+Such a group may be regarded as the fundamental group of the orbigraph.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spectral properties of orbigraphs}
+
+There are well developed spectral theories of manifolds and orbifolds. Showing that spectral results about orbigraphs parallel these theories is a good way to establish their legitimacy.
+
+\subsection{Familiar Spectral Results}
+
+Many spectral results about manifolds carry over to orbifolds. The same is true for regular graphs vs orbigraphs. We investigate the spectrum of the adjacency operator of an orbigraph.
+
+The following lemma is of fundamental importance for the spectral theory of orbigraphs:
+
+\begin{lemma}
+If $\widetilde{\Gamma}$ covers $\Gamma$, then $Spec(\Gamma) \subseteq Spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
+\end{lemma}
+
+\begin{theorem}
+The spectral radius of a $k$-orbigraph is $k$.
+\end{theorem}
+
+\begin{theorem}
+The spectrum of an orbigraph determines and is determined by length spectrum.
+\end{theorem}
+
+\begin{theorem}
+An orbigraph is bipartite if and only if its spectrum is symmetric about zero.
+\end{theorem}
+
+
+\subsection{Results Intrinsic to Orbigraphs}
+
+\begin{theorem}
+Orbigraphs with complex eigenvalues are bad.
+\end{theorem}
+
+Note that complex eigenvalues mean that there is an imbalanced loop.
+
+As in the orbifold case (reference or quote theorem) we can establish bounds on the singular set of an orbigraph via the spectrum:
+
+\begin{theorem}
+If $\Gamma$ is a $k$-orbigraph on $n$-vertices with $s$ singular points then we have... (bound on $s$).
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cospectral Orbigraphs}
+
+Here we show that some familiar methods for generating cospectral graphs can be extended to the orbifold case. In particular we extend Sunada's theorem to orbifolds.
+
+\begin{theorem}
+If $\Gamma$ is an orbigraph and $H_1$ and $H_2$ are Sunada equivalent subgroups of the automorphism group of $\Gamma$, then $spec(\Gamma / H_1) = spec(\Gamma / H_2)$.
+\end{theorem}
+
+Example using $K_6$ with gadgets.
+
+The method of Seidel switching (reference) can also be extended to orbigraphs:
+
+\begin{theorem}
+Complicated statement about cospectral covers.
+\end{theorem}
+
+This gives a simple method of finding cospectral good and bad orbigraphs:
+
+\begin{theorem}
+There are cospectral good and bad orbigraphs.
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+Some concluding remarks.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Acknowledgements}
+Acknowledgements here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain} 
+% \bibliography{myBibFile} 
+% If you use BibTeX to create a bibliography
+% then copy and past the contents of your .bbl file into your .tex file
+
+\begin{thebibliography}{10}
+
+\bibitem{Bollobas} B{\'e}la Bollob{\'a}s.  \newblock Almost every
+  graph has reconstruction number three.  \newblock {\em J. Graph
+    Theory}, 14(1):1--4, 1990.
+
+\bibitem{WikipediaReconstruction} Wikipedia contributors.  \newblock
+  Reconstruction conjecture.  \newblock {\em Wikipedia, the free
+    encyclopedia}, 2011.
+
+\bibitem{FGH} J.~Fisher, R.~L. Graham, and F.~Harary.  \newblock A
+  simpler counterexample to the reconstruction conjecture for
+  denumerable graphs.  \newblock {\em J. Combinatorial Theory Ser. B},
+  12:203--204, 1972.
+
+\bibitem{HHRT} Edith Hemaspaandra, Lane~A. Hemaspaandra,
+  Stanis{\l}aw~P. Radziszowski, and Rahul Tripathi.  \newblock
+  Complexity results in graph reconstruction.  \newblock {\em Discrete
+    Appl. Math.}, 155(2):103--118, 2007.
+
+\bibitem{Kelly} Paul~J. Kelly.  \newblock A congruence theorem for
+  trees.  \newblock {\em Pacific J. Math.}, 7:961--968, 1957.
+
+\bibitem{KSU} Masashi Kiyomi, Toshiki Saitoh, and Ryuhei Uehara.
+  \newblock Reconstruction of interval graphs.  \newblock In {\em
+    Computing and combinatorics}, volume 5609 of {\em Lecture Notes in
+    Comput. Sci.}, pages 106--115. Springer, 2009.
+
+\bibitem{RM} S.~Ramachandran and S.~Monikandan.  \newblock Graph
+  reconstruction conjecture: reductions using complement, connectivity
+  and distance.  \newblock {\em Bull. Inst. Combin. Appl.},
+  56:103--108, 2009.
+
+\bibitem{RR} David Rivshin and Stanis{\l}aw~P. Radziszowski.
+  \newblock The vertex and edge graph reconstruction numbers of small
+  graphs.  \newblock {\em Australas. J. Combin.}, 45:175--188, 2009.
+
+\bibitem{Stockmeyer} Paul~K. Stockmeyer.  \newblock The falsity of the
+  reconstruction conjecture for tournaments.  \newblock {\em J. Graph
+    Theory}, 1(1):19--25, 1977.
+
+\bibitem{Ulam} S.~M. Ulam.  \newblock {\em A collection of
+    mathematical problems}.  \newblock Interscience Tracts in Pure and
+  Applied Mathematics, no. 8.  Interscience Publishers, New
+  York-London, 1960.
+
+\end{thebibliography}
+
+\end{document}

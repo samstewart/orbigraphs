@@ -228,3 +228,22 @@ IsomorphicPermutationGroup[g_, h_, p_] := PermutationGroup[Map[(a \[Function] Fi
 
 End[];
 EndPackage[];
+
+
+(* ::Text:: *)
+(*Random Orbigraph Generation*)
+
+
+CompatibleOrbigraphRow[r1_,i_,r2_,j_]:=(r1[[j]]==0||r2[[i]]>0) && (r2[[i]] == 0 || r1[[j]]>0);
+
+GenerateRandomOrbigraph[n_,k_]:=Module[{mat, possibilities, ch, rows},
+	rows=Flatten[Map[Permutations, PadRight[#, n] & /@ IntegerPartitions[k,n], {1}], 1];
+	mat={};
+	For[i = 1, i <= n, i++,
+		possibilities = Select[rows, And@@Table[CompatibleOrbigraphRow[mat[[j]], j, #, i], {j, 1, i-1}]&];
+		If[Length[possibilities] == 0, Return[GenerateRandomOrbigraph[n, k]]];
+		ch = RandomChoice[possibilities];
+		AppendTo[mat,ch];
+	];
+	Return[mat];
+];

@@ -83,8 +83,8 @@ ConvertWalksToEdgeList[ws_] := Select[
 			UndirectedEdge,
 			ws,ws,
 			1],
-		1],
-		WalksAreAdjacentQ @@ #&
+	1],
+	WalksAreAdjacentQ @@ #&
 ];
 
 (* Set a property on the graph*)

@@ -1,62 +1,29 @@
-We proceed by noting that by the Kolmogorov criterion, this statement is equivalent to the claim that a k-orbigraph $\Gamma$ has a finite k-regular cover with equitable partition if and only if, when converted to a Markov chain, $\Gamma$ is reversible.
+For the first direction of \ref{thm:good_bad_characterization}, we wish to show that if an orbigraph $\Gamma$, when converted to a Markov-chain is reversible, then $\Gamma$ is good (has a finite $k$-regular cover). Because $\Gamma$ has constant out-degree $k$, we can easily convert $\Gamma$ to a Markov chain by normalizing the rows of its adjacency matrix $A$ and thus treat $\Gamma$ as a Markov chain henceforward.
 
-We start with the first direction: if $\Gamma$, when converted to a Markov chain, is reversible, then $\Gamma$ has a finite k-regular cover. Let $\mathcal{M}(\Gamma)$ denote the Markov chain, associated with orbigraph $\Gamma$, which can be constructed by simply normalizing the rows of the adjacency matrix of $\Gamma$ by $k$. Let $P$ be the stochastic transition matrix of $\mathcal{M}(\Gamma)$ and $P_{ij}$ denote the probability of moving from $i$ to $j$.
+Reversible Markov chains satisfy the \textit{detailed balance} equation 
 
-If $\mathcal{M}(\Gamma)$ is reversible, then by definition, there exists a stationary distribution $\pi$, such that for any two states $i$ and $j$, $\pi$ satisfies the $\textit{detailed balance equation}$:
+\begin{equation}\label{eq:detailed_balance}
+	\pi_i A_{ i, j } = \pi_j A_{ j, i }
+\end{equation}
 
-$$
-\pi_i P_{ij} = \pi_j P_{ji}
-$$
+where $\pi$ is the stationary distribution of $\Gamma$. By reversibility, $\pi$ is also rational [Kemney and Snell] so that \ref{eq:detailed_balance} becomes
 
-We will use this equality to produce a finite k-regular cover for $\Gamma$. We start by ``denormalizing'' $P_{ij}$ and $P_{ji}$ by multiplying both sides of the quality by $k$ giving us the following:
+\begin{equation} \label{eq:detailed_balance_normalized}
+	d_i A_{i, j} = d_j A_{ i, j }
+\end{equation}
 
-$$
-\pi_i A(\Gamma)_{ij} = \pi_j A(\Gamma)_{ji}
-$$
+where $d_i$ and $d_j$ are integers.
 
-where $A$ is the integer-valued adjacency matrix of the original orbigraph $\Gamma$. Next, we ``denormalize'' $\pi_i$ and $\pi_j$. We know that every reversible Markov chain can be represented as a walk on some undirected graph (boyd) so that the stationary distribution becomes $\pi_i = \frac{W(i)}{W}$ where $W(i)$ is the total outgoing edge weights from vertex $i$ (in the undirected graph) and $W$ is the total outgoing edge weights. In short, $\pi_i$ is rational and every entry of $\pi$ shares a common denominator. Thus, we ``denomalize'' $\pi_i$ and $\pi_j$ to new integer values $d_i$ and $d_j$.
+We use the detailed balance equation to construct the finite $k$-regular cover $C$ with partition classes corresponding to the vertices of $\Gamma$. Every vertex in class $i$ of $C$ must connect to $A_{i, j}$ vertices in class $j$ and, conversely, every vertex in class $j$ must connect to $A_{j, i}$ vertices in parition $i$.  Equivalently, $A_{j, i}$ should divide the number of vertices in class $i$ and $A_{i, j}$ should divide the number of vertices in class $j$. Thus, we choose $c$ such that $A_{j, i} | c d_i$ and $A_{i, j} | c d_j$ so that \ref{eq:detailed_balance_normalized} becomes
 
-$$
-d_i A(\Gamma)_{ij} = d_j A(\Gamma)_{ji}
-$$
+\begin{equation} \label{eq:detailed_balance_multiplied}
+	(c d_i) A_{ i, j } = (c d_j) A_{ i, j }
+\end{equation}
 
-We wish to construct a k-regular graph $\mathcal{C}$ with an equitable partition which, when quotiented, produces $\Gamma$. We can use the information in the detailed balance equation to construct a valid cover.
+and we place $c d_i$ vertices in class $i$ and $c d_j$ vertices in class $j$.
 
-For any two partitions $i$ and $j$ where $i \neq j$, we place $c d_i$ vertices in partition $i$ and $c d_j$ vertices in partition $j$. The detailed balance equation thus becomes:
+Connections \textit{within} classes require a special treatment. Every vertex in class $i$ must connect to $A_{i, i}$ other vertices its own class, so in total, we need a multiple of $A_{i, i} + 1$ vertices in class $i$. Thus, we choose $c$ such that $(A_{ i, i } + 1) | c d_i$. 
 
-$$
-(c d_i) A(\Gamma)_{ij} = (c d_j) A(\Gamma)_{ji}
-$$
+This construction produces a $k$-regular cover with an equitable partition that quotients to $\Gamma$. As outlined above, our choice of $c$ ensures the proper number of vertices and edges and \ref{eq:detailed_balance_multiplied} guarantees an equitable partition.
 
-In order for $\mathcal{C}$ to properly quotient to $\Gamma$, every vertex in partition $i$ must connect to $A_{ij}$ vertices in partition $j$ and vice versa for vertices in $j$. In other words, $A_{ji}$ should divide the total number of vertices in partition $i$ and vice versa for $A_{ij}$ and partition $j$. Thus, we choose $c$ such that $A_{j, i} | c d_i$ and $A_{ij} | c d_j$. 
-
-The detailed balance equations ensures that partition $i$ and partition $j$ share the same number of total outgoing edges; we need only choose $c$ to guarantee an equitable distribution of edges within the partitions.
-
-Next we handle the case where $i = j$: connections within a partition. Every partition $i$ requires a multiple of $A_{ii} + 1$ vertices since each vertex in $i$ must connect to $A_{ii}$ other vertices. Thus, we choose $c$ such that $(A_{ii} + 1) | c d_i$. 
-
-Overall then, we choose 
-$$
-  c = LCM(\lbrace A(\Gamma)_{ij} | i \neq j \text{ and } A(\Gamma)_{ij} \neq 0 \rbrace \cup \lbrace A(\Gamma)_{ii} + 1 | A(\Gamma)_{ii} \neq 0 \rbrace).
-$$
-
-This construction produces a $k$-regular cover with an equitable partition that quotients to $\Gamma$. To ensure it is connected, one can swap edges between partitions $i \neq j$. Additionally, the construction can be made minimal if $c$ is chosen to be a multiple of $A_{ii} + 1$ and $A_{ij}$ only when $d_i$ is $\textit{not}$.
-
-For the other direction, assume that $\Gamma$ has a finite k-regular cover $\mathcal{C}$ with an equitable partition $P = \lbrace P_1, \ldots, P_n \rbrace$. We wish to show that $\mathcal{M} ( \Gamma )$ is reversible. 
-
-We first convert $\mathcal{C}$ into a Markov chain $\mathcal{M} ( \mathcal{C} )$, modeling a random walk on $\mathcal{C}$ using the construction outlined in [boyd]. For each pair of vertices $ij$ where $i \neq j$, we add a directed edge to our Markov model with $p_{ij} = \frac{1}{k}$ where $p_{ij}$ is the probability of transitioning from state $i$ to state $j$. Of course, since  $\mathcal{C}$ is undirected, we will produce pairs of directed edges for each $ij$. As [boyd] highlights, $\mathcal{M} (\mathcal{C})$ is reversible.
-
-Using the equitable partition $P$ and applying the Markov lumping process described in [boyd], the lumped chain is Markovian and has one state for each partition $P_i$. Furthermore, the lumped transition probabilities become $\tilde{p}_{ij} = \sum_{k \in P_j} p_{i, k}$ so that $\tilde{p}_{ij} = |P_i| \frac{1}{k}$. 
-
-This lumped chain is identical to $\mathcal{M} ( \Gamma )$ which is obtained by first quotienting the k-regular covering $\mathcal{C}$ and then normalizing the edge weights by $k$. In other words, we need only show that if $\mathcal{M} (\mathcal{C} )$ is reversible, then the lumped chain, which is identical to $\mathcal{M} ( \Gamma )$, is also reversible.
-
-By definition of lumping, we know that each partition in $P_i$ corresponds to a vertex in $\mathcal{M} ( \Gamma )$ and that $P_i$ is independent of choice of $i$ because $P$ is equitable. Choose $\tilde{ \pi }_{P_i} = \sum_{k \in P_i} \pi_k$ and let $A$ be the transition matrix for $\mathcal{M} ( \mathcal{C} )$ and $\tilde {A}$ for $\mathcal{M} ( \mathcal{ O } )$. This choice of $\tilde{ \pi }$ makes $\mathcal{M} ( \Gamma )$ reversible:
-
-\begin{align}
-  \tilde{ \pi }_{P_i} \tilde{A}_{P_i, P_j} &= \sum_{k \in P_i} \pi_k A(\Gamma)_{k P_j} \cr
-              &= \sum_{k \in P_i} \sum_{l \in P_j} \pi_k A(\Gamma)_{kl } \cr
-              &= \sum_{k \in P_i} \sum_{l \in P_j} \pi_{ l } A(\Gamma)_{lk} \cr
-              &= \sum_{k \in P_i} \pi_{P_j} A(\Gamma)_{ lk } \cr
-              &= \pi_{P_j} \tilde{A}_{P_j, P_i}
-\end{align}
-
-Hence, $\mathcal{M}( \Gamma )$ is reversible if $\mathcal{M} ( \mathcal{C} )$ is reversible.
+For the other direction of \ref{thm:good_bad_characterization}, we rely on [Boyd] who proves that an undirected covering graph $C$ quotients to a reversible graph $\Gamma$. 

@@ -19,7 +19,7 @@
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 %%%% REMOVE FOR FINAL DRAFT: %%%%
-\usepackage{showkeys}
+%\usepackage{showkeys}
 \usepackage[left=2in, right=1in]{geometry}
 
 % use these commands for typesetting doi and arXiv references in the bibliography
@@ -65,10 +65,10 @@
 % the address should include the country, and does not have to include
 % the street address 
 
-\author{Dagwood Remifa\thanks{Supported by NASA grant ABC123.}\\
-\small Department of Inconsequential Studies\\[-0.8ex]
-\small Solatido College\\[-0.8ex] 
-\small North Kentucky, U.S.A.\\
+\author{Dr. Liz Stanhope\\
+\small Department of Mathematical Sciences\\[-0.8ex]
+\small Lewis and Clark College\\[-0.8ex] 
+\small Portland, Oregon\\
 \small\tt remifa@dis.solatido.edu\\
 \and
 Forgotten Second Author \qquad  Forgotten Third Author\\
@@ -82,7 +82,7 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
 % \small Mathematics Subject Classifications: comma separated list of
 % MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
 
-\date{\dateline{Jan 1, 2012}{Jan 2, 2012}\\
+\date{\dateline{July 29, 2013}{July 29, 2013}\\
 \small Mathematics Subject Classifications: 05C88, 05C89}
 
 \begin{document}
@@ -102,6 +102,8 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Instead of being locally diffeomorphic to $\mathbb{R}^n$, Riemannian orbifolds are locally diffeomorphic to $\mathbb{R}^n$ modulo the isometric action of a finite group.  Recently, a number of authors have examined orbifolds from the perspective of inverse spectral geometry.  In light of the strong connection between spectral geometry and spectral graph theory, our project defines a graph theoretic parallel of an orbifold, called an orbigraph, and obtains spectral results about orbigraphs.  The graph theoretic analogue of a manifold is taken to be a $k$-regular graph.  Because the local structure of a $k$-regular graph is a $k$-star, we form a $k$-orbigraph by patching together quotients of $k$-stars.  The resulting class of objects (the $k$-orbigraphs) consists of directed multigraphs satisfying certain outdegree conditions.  The spectrum of the adjacency matrix of a $k$-orbigraph yields bounds on the number of singular (non $k$-star) vertices present in the orbigraph.  The reversibility (as in Markov chains) of an orbigraph determines if it can be obtained as the quotient of a finite $k$-regular graph.  Our methods include computational algorithms and formal graph theoretic arguments.  Both the definition of an orbigraph and our results about them are new.
+
   % keywords are optional
   \bigskip\noindent \textbf{Keywords:} orbifolds, spectral graph theory
 \end{abstract}
@@ -110,7 +112,10 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-  Introduction here.
+  How exciting can we make the intro without sound too informal?
+  Introduction describing motivation
+  Introduce project; describe student contributions over multiple summers?
+
   
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,13 +194,16 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
       It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a function $\cdot^{-1} : E(\Gamma) \to E(\Gamma)$ such that if $o(e) = a$ and $t(e) = b$ then $o(e^{-1}) = b$ and $t(e^{-1}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e,e^{-1}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable partition.
     \end{proof}
 
-    These two previous results imply that we can think of $k$-trees as universal covers of orbigraphs.
+    These two results imply that we can think of $k$-trees as universal covers of orbigraphs.
 
-    We are particularly interested in the case when an orbigraph $\Gamma$ is covered by a finite $k$-regular graph. We call such orbigraphs \textbf{good} which parallels the corresponding distinction in orbifold theory. We have characterized when an orbigraph is good:
+    Comparable to the distinction between \textbf{good} and \textbf{bad} orbi\textit{folds} [see thurston], we call an orb\textit{graph} $\Gamma$ \textbf{good} when it is covered by a \textit{finite} $k$-regular graph and we call $\Gamma$ \textbf{bad} when no finite covering exists. Of course, both good and bad orbigraphs are always covered by infinite $k$-trees as described above, again similar to the universal coverings of orbifolds. But beyond these similarities, orbigraph covering theory parts ways with orbifold covering theory: we are able to characterize good and bad orbigraph via a purely structural property.
 
-    \begin{theorem}\label{GoodCharacterization}
-      An orbigraph is good if and only if, for every sequence of vertices $v_1,\ldots,v_n$ such that $v_1 = v_n$ the number of walks forward is the same as the number backward.
+    \begin{theorem}\label{thm:good_bad_characterization}
+      Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, $\Gamma$ has a corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
     \end{theorem}
+
+    The cycle condition in \ref{thm:good_bad_characterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains.
+
     \begin{proof}
       \input{GoodCharacterizationProof}
     \end{proof}
@@ -233,15 +241,13 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spectral properties of orbigraphs}
 
-  There are well developed spectral theories of manifolds and orbifolds. Showing that spectral results about orbigraphs parallel these theories is a good way to establish their legitimacy.
+  Showing that spectral results about orbigraphs parallel the spectral results of manifolds and orbifolds provides excellent motivation.
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{Familiar Spectral Results}
 
-    Many spectral results about manifolds carry over to orbifolds. The same is true for regular graphs vs orbigraphs. We investigate the spectrum of the adjacency operator of an orbigraph.
-
-    The following lemma is of fundamental importance for the spectral theory of orbigraphs:
+    Many spectral results about manifolds carry over to orbifolds, and the same is true of spectral results of regular graphs to orbigraphs. We start the discussion of the spectral theory of orbigraphs a fundamental result.
 
     \begin{lemma}\label{SpectrumInclusion}
       If $\widetilde{\Gamma}$ covers $\Gamma$, then $\spec(\Gamma) \subseteq \spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
@@ -253,7 +259,7 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
       The spectral radius of a $k$-orbigraph is $k$.
     \end{theorem}
     \begin{proof}
-      Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, so the spectral radius of $\Gamma$ must be exactly $k$. 
+      Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, [??] so the spectral radius of $\Gamma$ must be exactly $k$. 
     \end{proof}
 
     \begin{theorem}\label{LengthSpectrum}

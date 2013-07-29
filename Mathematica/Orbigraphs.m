@@ -53,6 +53,8 @@ OrbigraphQ[adj_] := Module[{n=Length[adj]},
 
 EnumerateOrbigraphs[n_,k_] := Select[Tuples[Flatten[Map[Permutations, PadRight[#, n] & /@ IntegerPartitions[k,n], {1}], 1], n], OrbigraphQ];
 
+TruncatedOrbigraphs[n_, k_, m_] := ConstantArray[#, n]& /@ Map[Permutations, PadRight[#, n] & /@ IntegerPartitions[k, n], {1}]
+
 OrbigraphSpectrum[g_] := Eigenvalues[WeightedAdjacencyMatrix[g]];
 
 
@@ -81,10 +83,9 @@ CompletePartition[g_, pi_] := Module[{excluded, p},
 	Join[pi, List /@ excluded]
 ];
 
-OrbigraphFromPartition[g_, pi_] := Module[{mat, p},
-	p = CompletePartition[g, pi];
-	mat = Table[EdgeCount[g, First[p[[i]]] \[UndirectedEdge] b_ /; MemberQ[p[[j]], b]], {i, Length[p]}, {j, Length[p]}];
-	Return[AdjacencyOrbigraph[mat]]
+OrbigraphFromPartition[g_, pi_] := Module[{p},
+	p = Table[Boole[MemberQ[pi[[m]], n]], {n, VertexCount[g]}, {m, Length[pi]}];
+	AdjacencyOrbigraph[Inverse[Transpose[p].p].Transpose[p].WeightedAdjacencyMatrix[g].p]
 ];
 
 OrbigraphFromGroup[g_, h_] := OrbigraphFromPartition[g, GroupOrbits[h, VertexList[g]]]

@@ -1,0 +1,10 @@
+First note that $\sum_{i} \lambda_i^2 = \tr(A(\Gamma)^2)$ and this quantity counts the number of closed walks of length $2$ in $\Gamma$. For a given vertex $v \in \Gamma$, the number of closed walks of length $2$ at $v$ is $\sum_{v \text{~} w} A(\Gamma)_{vw} \cdot A(\Gamma)_{wv}$ (where $A(\Gamma)_{vw}$) denotes the entry in the adjacency matrix of $\Gamma$ giving the number of edges from $v$ to $w$). Vertex $v$ has exactly $k$ out-edges, each of which is matched by at least one in-edge. Thus $\tr(A(\Gamma)^2) \ge n k$. Additionally, each singular vertex $v$ of $\Gamma$ is adjacent by a multiple edge to at least one other vertex $w$, and that multiple edge contributes at least one extra closed walk to the total number of closed walks of length $2$. Hence $s \le \sum_{i} \lambda_i^2 - n k$. 
+
+For the lower bound, note that each singular vertex $i$ contributes $ \sum_{i \text{~} j} a_{ij} a_{ji} - k $ extra walks of length  two. At most, $a_{ji} = k$ for all $j$. Thus we have
+
+\begin{align*}
+    \sum_{i \text{~} j} a_{ij} a_{ji} - k & \le \sum_{i \text{~} j} a_{ij} k - k \cr
+                                          & = k \sum_{i \text{~} j} a_{ij} - k = k^2 - k.
+\end{align*}
+
+Hence, each singular vertex contributes at most $k^2 - k$ extra walks of length two, so $s(k^2 - k) \ge \sum_{i} \lambda_i^2 - n k$.

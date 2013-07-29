@@ -1,0 +1,363 @@
+% EJC papers *must* begin with the following two lines. 
+\documentclass[12pt]{article}
+\usepackage{e-jc}
+
+% Please remove all other commands that change parameters such as
+% margins or pagesizes.
+
+% only use standard LaTeX packages
+% only include packages that you actually need
+\usepackage{enumerate}
+
+% we recommend these ams packages
+\usepackage{amsthm,amsmath,amssymb}
+
+% we recommend the graphicx package for importing figures
+\usepackage{graphicx}
+
+% use this command to create hyperlinks (optional and recommended)
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+
+%%%% REMOVE FOR FINAL DRAFT: %%%%
+\usepackage{showkeys}
+\usepackage[left=2in, right=1in]{geometry}
+
+% use these commands for typesetting doi and arXiv references in the bibliography
+\newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+% all overfull boxes must be fixed; 
+% i.e. there must be no text protruding into the margins
+
+% declare theorem-like environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open Problem}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+% custom markup
+\DeclareMathOperator*{\spec}{Spec}
+\DeclareMathOperator*{\tr}{tr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if needed include a line break (\\) at an appropriate place in the title
+
+\title{\bf Orbigraphs: Defining a Graph Theoretic Analog to Reimannian Orbifolds}
+
+% input author, affilliation, address and support information as follows;
+% the address should include the country, and does not have to include
+% the street address 
+
+\author{Dagwood Remifa\thanks{Supported by NASA grant ABC123.}\\
+\small Department of Inconsequential Studies\\[-0.8ex]
+\small Solatido College\\[-0.8ex] 
+\small North Kentucky, U.S.A.\\
+\small\tt remifa@dis.solatido.edu\\
+\and
+Forgotten Second Author \qquad  Forgotten Third Author\\
+\small School of Hard Knocks\\[-0.8ex]
+\small University of Western Nowhere\\[-0.8ex]
+\small Nowhere, Australasiaopia\\
+\small\tt \{fsa,fta\}@uwn.edu.ao
+}
+
+% \date{\dateline{submission date}{acceptance date}\\
+% \small Mathematics Subject Classifications: comma separated list of
+% MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
+
+\date{\dateline{Jan 1, 2012}{Jan 2, 2012}\\
+\small Mathematics Subject Classifications: 05C88, 05C89}
+
+\begin{document}
+
+\maketitle
+
+% E-JC papers must include an abstract. The abstract should consist of a
+% succinct statement of background followed by a listing of the
+% principal new results that are to be found in the paper. The abstract
+% should be informative, clear, and as complete as possible. Phrases
+% like "we investigate..." or "we study..." should be kept to a minimum
+% in favor of "we prove that..."  or "we show that...".  Do not
+% include equation numbers, unexpanded citations (such as "[23]"), or
+% any other references to things in the paper that are not defined in
+% the abstract. The abstract will be distributed without the rest of the
+% paper so it must be entirely self-contained.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % keywords are optional
+  \bigskip\noindent \textbf{Keywords:} orbifolds, spectral graph theory
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+  Introduction here.
+  
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Notation}
+  Let $\Gamma$ is a graph, possibly directed with multiple edges. Its vertex set will be denoted $V(\Gamma)$ and its edge set $E(\Gamma)$. Furthermore, if $u, v \in V(\Gamma)$, then $w_\Gamma(u, v)$ will denote the number of edges from $u$ to $v$. In cases when the context is clear, this notation may be abbreviated to $w(u,v)$. Then for an enumeration $v_1, \ldots, v_n$ of $V(\Gamma)$, the adjacency matrix $A(\Gamma)$ is given by $A(\Gamma)_{ij} = w(v_i, v_j)$. If $e \in E(\Gamma)$ then $o(e)$ denotes the origin of the edge and $t(e)$ denotes its terminus. A walk in $\Gamma$ is a sequence of edges $e_1,\ldots,e_n$ such that $t(e_i) = o(e_{i+1})$ for $1 \le i < n$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Brief introduction to Riemannian orbifolds}
+
+  Brooks analogy, Bass Serre Theory mention.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Defining Orbigraphs as Analogs of Orbifolds}
+
+  Reasons for choices, etc.
+
+  \begin{definition}\label{OrbigraphDefn}
+    A \textbf{$k$-orbigraph} is a directed graph $\Gamma$ where the adjacency matrix $A(\Gamma)$ satisfies the following:
+    
+    \begin{enumerate}[i.]
+      \item $A(\Gamma)_{ij} \in \mathbb{Z}_{\ge 0}$
+      \item $\sum_j A(\Gamma)_{ij} = k$
+      \item $A(\Gamma)_{ij} > 0$ if and only if $A(\Gamma)_{ji} > 0$.
+    \end{enumerate}
+
+  \end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Properties of Orbigraphs}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Covering Theory for Orbigraphs}
+
+    \begin{definition}\label{EqPartitionDefn}
+      Let $\Gamma$ be an orbigraph and $\pi = \{ \pi_1, \ldots, \pi_m \}$ be a partition of its vertices. Then $\pi$ is an \textbf{equitable partition} if for $v \in \pi_i$, the number $A(\Gamma / \pi)_{ij} = \sum_{u \in \pi_j} w(v, u)$ is independent of the choice of $v$. The multi-digraph with adjacency matrix $A(\Gamma / \pi)$ is called the \textbf{quotient graph}.
+    \end{definition}
+
+    \begin{lemma}\label{EqPartitionQuotient}
+      If $\Gamma$ is an $k$-orbigraph and $\pi$ is an equitable partition of $\Gamma$, then $\Gamma / \pi$ is a $k$-orbigraph.
+    \end{lemma}
+    \begin{proof}
+      Because $\Gamma$ is an orbigraph, we have $w_\Gamma(v, u) \in \mathbb{Z}_{\ge 0}$ for all $u, v \in V(\Gamma)$. Hence, $A(\Gamma / \pi)_{ij} = \sum_{u \in \pi_j} w_\Gamma(v, u) \in \mathbb{Z}_{\ge 0}$ for any $v \in \pi_i$. Now let $v \in \pi_i$ so we have
+      
+      \begin{align*}
+        \sum_j A(\Gamma / \pi)_{ij} &= \sum_j \sum_{u \in \pi_j} w_\Gamma(v, u) \\
+        &= \sum_{u \in \Gamma} w_\Gamma(v, u) = k.
+      \end{align*}
+
+      Finally, assume that $A(\Gamma / \pi)_{ij} > 0$. Then there must be a $u \in \pi_j$ for some $j$ such that $w_\Gamma(v, u) > 0$. Because $\Gamma$ is an orbigraph, we must have $w_\Gamma(u, v) > 0$. Thus $A(\Gamma / \pi)_{ji} > 0$.
+    \end{proof}
+
+    We say that an orbigraph $\Gamma_1$ covers an orbigraph $\Gamma_2$ if there is an equitable partition $\pi$ of $\Gamma$ such that $\Gamma_1 / \pi = \Gamma_2$.
+
+    \begin{lemma}\label{CoveringTransitivity}
+      The covering relation is transitive.
+    \end{lemma}
+    \begin{proof}
+      We wish to show that if $\Gamma_1$ is an orbigraph with equitable partition $\pi_1$ such that $\Gamma_1 / \pi_1 = \Gamma_2$ and $\Gamma_2$ has an equitable parition $\pi_2$ such that $\Gamma_2 / \pi_2 = \Gamma_3$, then there is an equitable partition $\pi_1 \circ \pi_2$ of $\Gamma_1$ such that $\Gamma_1 / (\pi_1 \circ \pi_2) = \Gamma_3$. Denote the partition matrix associated with equitable partition $\pi$ by $P(\pi)$. By Lemma 2.1 (Algebraic Combinatorics, Godsil, p.77) we have that $A(\Gamma_1)P(\pi_1) = P(\pi_1)A(\Gamma_2)$ and $A(\Gamma_2)P(\pi_2) = P(\pi_2)A(\Gamma_3)$. Multiplying the first equation on the right by $P(\pi_2)$ gives
+      
+      \begin{align*}
+        A(\Gamma_1)P(\pi_1)P(\pi_2) &= P(\pi_1)A(\Gamma_2)P(\pi_2) \\
+        &= P(\pi_1)P(\pi_2)A(\Gamma_3).
+      \end{align*}
+
+      Thus the matrix $X = P(\pi_1)P(\pi_2)$ is such that $A(\Gamma_1) X = X A(\Gamma_3)$. Thus by the converse of Godsil's Lemma 2.1 we have that $X$ is a equitable partition matrix of $\Gamma_1$ with quotient orbigraph $\Gamma_3$.
+    \end{proof}
+
+    \begin{theorem}\label{UniversalCovers}
+      Every connected $k$-orbigraph is covered by the $k$-tree and disconnected orbigraphs are covered by disjoint unions of $k$-trees.
+    \end{theorem}
+    \begin{proof}
+      It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a function $\cdot^{-1} : E(\Gamma) \to E(\Gamma)$ such that if $o(e) = a$ and $t(e) = b$ then $o(e^{-1}) = b$ and $t(e^{-1}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e,e^{-1}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable partition.
+    \end{proof}
+
+    These two previous results imply that we can think of $k$-trees as universal covers of orbigraphs.
+
+    We are particularly interested in the case when an orbigraph $\Gamma$ is covered by a finite $k$-regular graph. We call such orbigraphs \textbf{good} which parallels the corresponding distinction in orbifold theory. We have characterized when an orbigraph is good:
+
+    \begin{theorem}\label{GoodCharacterization}
+      An orbigraph is good if and only if, for every sequence of vertices $v_1,\ldots,v_n$ such that $v_1 = v_n$ the number of walks forward is the same as the number backward.
+    \end{theorem}
+    \begin{proof}
+      \input{GoodCharacterizationProof}
+    \end{proof}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Group Actions on Orbigraphs}
+
+    We can also investigate the relationship between group actions and orbigraphs:
+
+    \begin{theorem}\label{GroupQuotient}
+      If a group $G$ acts on an orbigraph $\Gamma$ by automorphisms, then the orbits of $V(\Gamma)$ form an equitable partition.
+    \end{theorem}
+    \begin{proof}
+      Let $\pi = \{ \pi_1, \ldots, \pi_n \}$ be the partition of $V(\Gamma)$ into orbits by $G$. Then let $v, v' \in \pi_i$. Then there exists a $g \in G$ such that $g . v = v'$. Then we have
+      
+      \begin{align*}
+        \sum_{u \in \pi_j} w_\Gamma(v, u) &= \sum_{u \in \pi_j} w_\Gamma(g^{-1}.v', u) \\
+        &= \sum_{g^{-1}.u' \in \pi_j} w_\Gamma(g^{-1}.v', g^{-1}.u') \\
+        &= \sum_{u' \in \pi_j} w_\Gamma(v', u') = \sum_{u \in \pi_j} w_\Gamma(v', u).
+      \end{align*}
+
+      Hence the partition $\pi$ is equitable.
+    \end{proof}
+
+    In this situation will denote the quotient $\Gamma / \pi$ by $\Gamma / G$. Note that this implies that an orbigraph is good if it is the quotient of a $k$-regular graph by a group action. We see that this group action can be lifted to the universal covering tree:
+
+    \begin{theorem}\label{GoodFundamentalGroup}
+      If $\Gamma$ is a $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
+    \end{theorem}
+
+    Such a group may be regarded as the fundamental group of the orbigraph.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spectral properties of orbigraphs}
+
+  There are well developed spectral theories of manifolds and orbifolds. Showing that spectral results about orbigraphs parallel these theories is a good way to establish their legitimacy.
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Familiar Spectral Results}
+
+    Many spectral results about manifolds carry over to orbifolds. The same is true for regular graphs vs orbigraphs. We investigate the spectrum of the adjacency operator of an orbigraph.
+
+    The following lemma is of fundamental importance for the spectral theory of orbigraphs:
+
+    \begin{lemma}\label{SpectrumInclusion}
+      If $\widetilde{\Gamma}$ covers $\Gamma$, then $\spec(\Gamma) \subseteq \spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
+    \end{lemma}
+    \begin{proof}
+    \end{proof}
+
+    \begin{theorem}\label{SpectralRadius}
+      The spectral radius of a $k$-orbigraph is $k$.
+    \end{theorem}
+    \begin{proof}
+      Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, so the spectral radius of $\Gamma$ must be exactly $k$. 
+    \end{proof}
+
+    \begin{theorem}\label{LengthSpectrum}
+      The spectrum of an orbigraph determines and is determined by length spectrum.
+    \end{theorem}
+    \begin{proof}
+    \end{proof}
+
+    \begin{theorem}\label{BipartiteSymmetry}
+      An orbigraph is bipartite if and only if its spectrum is symmetric about zero.
+    \end{theorem}
+    \begin{proof}
+    \end{proof}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Results Intrinsic to Orbigraphs}
+
+    \begin{theorem}\label{ComplexEigenvalues}
+      If $\Gamma$ is a $k$-orbigraph whose spectrum contains a complex eigenvalue, then $\Gamma$ is bad.
+    \end{theorem}
+    \begin{proof}
+      Suppose that $\Gamma$ has a finite $k$-regular cover $\widetilde{\Gamma}$. The adjacency matrix of $\widetilde{\Gamma}$ must be symmetric, so $\spec{\widetilde{\Gamma}}$ must be entirely real. Thus $\spec{\Gamma}$ is entirely real by Lemma \ref{SpectrumInclusion}. Hence, such a $k$-regular cover cannot exist.
+    \end{proof}
+
+    Note that complex eigenvalues mean that there is an imbalanced loop.
+
+    As in the orbifold case (reference or quote theorem) we can establish bounds on the singular set of an orbigraph via the spectrum:
+
+    \begin{theorem}\label{SingularBounds}
+      Let $\Gamma$ be an $k$-orbigraph on $n$ vertices. If $s$ is the number of singular points in $\Gamma$, then we have
+      $$
+        \frac{\sum_{i} \lambda_i^2 - n k}{k^2 - k} \le s \le \sum_{i} \lambda_i^2 - n k
+      $$
+      where $\lambda_i$ are the eigenvalues of the adjacency matrix of $\Gamma$
+    \end{theorem}
+    \begin{proof}
+      \input{SingularBounds}
+    \end{proof}
+
+    Furthermore, we find that we can determine if an orbigraph is a simple, undirected, $k$-regular graph via its spectrum:
+    \begin{corollary}
+      An orbigraph $\Gamma$ is a simple $k$-regular graph if and only if $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$.
+    \end{corollary}
+    \begin{proof}
+      If $\Gamma$ is a simple $k$-regular graph then there are no self loop so $\sum_{i} \lambda_i = tr(A(\Gamma)) = 0$. Additionally, note that $\sum_{i} \lambda_i^2 = tr(A(\Gamma)^2)$ via Jordan normal form decomposition, and this quantity counts the number closed walks of length $2$ in $\Gamma$. For each vertex of $\Gamma$ there are exactly $k$ closed walks of length $2$, therefore $\sum_{i} \lambda_i^2 = n k$. 
+
+      Conversely, assume that $\Gamma$ is an orbigraph such that $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$. Then by the previous theorem, we have $s \le 0$. However, $s \ge 0$ by definition so $s = 0$. Thus the neighborhood of each vertex is a $k$-star and because there are no self loops via the second condition, $\Gamma$ must be a simple $k$-regular graph.
+    \end{proof}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Cospectral Orbigraphs}
+
+  Here we show that some familiar methods for generating cospectral graphs can be extended to the orbifold case. In particular we extend Sunada's theorem to orbifolds.
+
+  \begin{definition}\label{SunadaEquivalentDefn}
+    Two subgroups $H_1$ and $H_2$  of a finite group $G$ are called Sunada equivalent if, for all $g \in G$ we have $\#([g] \cap H_1) = \#([g] \cap H_2)$.
+  \end{definition}
+
+  \begin{theorem}\label{Sunada}
+    If $\Gamma$ is an orbigraph and $H_1$ and $H_2$ are Sunada equivalent subgroups of the automorphism group of $\Gamma$, then $\spec(\Gamma / H_1) = \spec(\Gamma / H_2)$.
+  \end{theorem}
+  \begin{proof}
+    \input{SunadaProof}
+  \end{proof}
+
+  Example using $K_6$ with gadgets.
+
+  The method of Seidel switching (reference) can also be extended to orbigraphs:
+
+  \begin{theorem}\label{SeidelSwitching}
+    Complicated statement about cospectral covers.
+  \end{theorem}
+  \begin{proof}
+  \end{proof}
+
+  This gives a simple method of finding cospectral good and bad orbigraphs:
+
+  \begin{corollary}\label{GoodBadCospectral}
+    There are cospectral good and bad orbigraphs.
+  \end{corollary}
+  \begin{proof}
+  \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+  Some concluding remarks.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Acknowledgements}
+  Acknowledgements here.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain} 
+% \bibliography{myBibFile} 
+% If you use BibTeX to create a bibliography
+% then copy and past the contents of your .bbl file into your .tex file
+
+\begin{thebibliography}{10}
+
+\end{thebibliography}
+
+\end{document}

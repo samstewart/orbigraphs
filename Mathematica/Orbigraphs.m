@@ -39,6 +39,7 @@ ConjugacyClass::usage = "ConjugacyClass[x, g] returns the conjugacy class of the
 SunadaQ::usage = "SunadaQ[g, h1, h2] determines whether the triple (g, h1, h2) satisfies the Sunada condition.";
 PartialKTree::usage = "PartialKTree[k, l] builds a k-regular tree up to l levels deep, with only the leaves having degree 1.";
 IsomorphicPermutationGroup::usage = "IsomorphicPermutationGroup[g, p] Constructs a permutation group that is isomorphic to group g using product p.";
+GenerateRandomOrbigraph::usage = "GenerateRandomOrbigraph[n_, k_] Generates a random orbigraph on n vertices with degree k";
 Begin["`Private`"];
 
 
@@ -226,17 +227,13 @@ PartialKTree[k_, l_] := Nest[ExtendKTree[#, k] &, Graph[{1}, {}, VertexLabels ->
 IsomorphicPermutationGroup[g_, h_, p_] := PermutationGroup[Map[(a \[Function] FindPermutation[g, Map[p[a, #] &, g]]), h]];
 
 
-End[];
-EndPackage[];
-
-
 (* ::Text:: *)
 (*Random Orbigraph Generation*)
 
 
 CompatibleOrbigraphRow[r1_,i_,r2_,j_]:=(r1[[j]]==0||r2[[i]]>0) && (r2[[i]] == 0 || r1[[j]]>0);
 
-GenerateRandomOrbigraph[n_,k_]:=Module[{mat, possibilities, ch, rows},
+GenerateRandomOrbigraph[n_,k_] := Module[{mat, possibilities, ch, rows},
 	rows=Flatten[Map[Permutations, PadRight[#, n] & /@ IntegerPartitions[k,n], {1}], 1];
 	mat={};
 	For[i = 1, i <= n, i++,
@@ -247,3 +244,7 @@ GenerateRandomOrbigraph[n_,k_]:=Module[{mat, possibilities, ch, rows},
 	];
 	Return[mat];
 ];
+
+
+End[];
+EndPackage[];

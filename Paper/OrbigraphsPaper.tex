@@ -54,6 +54,8 @@
 % custom markup
 \DeclareMathOperator*{\spec}{Spec}
 \DeclareMathOperator*{\tr}{tr}
+\providecommand{\cover}[1]{\widetilde{#1}}
+\providecommand{\rev}[1]{\bar{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,6 +127,11 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   \subsection{Notation}
   Let $\Gamma$ is a graph, possibly directed with multiple edges. Its vertex set will be denoted $V(\Gamma)$ and its edge set $E(\Gamma)$. Furthermore, if $u, v \in V(\Gamma)$, then $w_\Gamma(u, v)$ will denote the number of edges from $u$ to $v$. In cases when the context is clear, this notation may be abbreviated to $w(u,v)$. Then for an enumeration $v_1, \ldots, v_n$ of $V(\Gamma)$, the adjacency matrix $A(\Gamma)$ is given by $A(\Gamma)_{ij} = w(v_i, v_j)$. If $e \in E(\Gamma)$ then $o(e)$ denotes the origin of the edge and $t(e)$ denotes its terminus. A walk in $\Gamma$ is a sequence of edges $e_1,\ldots,e_n$ such that $t(e_i) = o(e_{i+1})$ for $1 \le i < n$.
 
+  Also, note that the adjacency matrix can be viewed as a linear operator on the function space $\mathbb{C}^V(\Gamma)$. This operator will be denoted $A_\Gamma$ and is defined for $\psi \in \mathbb{C}^V(\Gamma)$ and $v \in V(\Gamma)$ by
+  $$
+    [A_\Gamma \psi](v) = \sum_{u \in V(\Gamma)} w(v, u)\psi(u).
+  $$
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Brief introduction to Riemannian orbifolds}
@@ -194,8 +201,12 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       Every connected $k$-orbigraph is covered by the $k$-tree and disconnected orbigraphs are covered by disjoint unions of $k$-trees.
     \end{theorem}
     \begin{proof}
-      It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a function $\cdot^{-1} : E(\Gamma) \to E(\Gamma)$ such that if $o(e) = a$ and $t(e) = b$ then $o(e^{-1}) = b$ and $t(e^{-1}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e,e^{-1}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable partition.
-    \end{proof}
+      It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a mapping $e \mapsto \rev{e}$ on the edge set of $\Gamma$ such that if $o(e) = a$ and $t(e) = b$ then $o(\rev{e}) = b$ and $t(\rev{e}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e\rev{e}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable.
+
+      To see that $T$ is a $k$-tree, note that each walk $w$ in $\Gamma$ can be extended by one edge in $k$ ways; however, exactly one of these extensions will be the inverse of the last edge of the walk. Therefore, there are $k-1$ edges in $T$ of the form $(w, w')$ where $w'$ is one edge longer than $w$ and $1$ edge of the form $(w'', w)$ where $w''$ is one edge shorter than $w$. Hence each vertex $w \in T$ has degree $k$. Furthermore, because each edge in $T$ is of the form $(w_1, w_2)$ where $w_2$ is one edge longer than $w_1$, there can be no cycles in $T$. Hence $T$ is a $k$-tree.
+
+      Finally, consider the partition $\pi$ of $V(T)$ according to the terminus function. Let $w \in \pi_i$ and consider $\sum_{u \in \pi_j} w_T(w, u)$. Because $T$ does not have multiple edges, this is simply equal to the number of neighbors of $w$ in $\pi_j$. However, by definition of $\pi$, this is then equal $w_\Gamma(t(w), t(u))$ for any $u \in \pi_j$, which is clearly independent of the choice of $w$. This also shows that $T / \pi = \Gamma$, completing the proof.
+      \end{proof}
 
     These two results imply that we can think of $k$-trees as universal covers of orbigraphs.
 
@@ -240,6 +251,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
     Such a group may be regarded as the fundamental group of the orbigraph.
 
+    \input{SymmetricGroupAction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spectral properties of orbigraphs}
@@ -256,6 +268,21 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       If $\widetilde{\Gamma}$ covers $\Gamma$, then $\spec(\Gamma) \subseteq \spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
     \end{lemma}
     \begin{proof}
+      Let $\varphi \in \mathbb{C}^{V(\Gamma)}$. If the projection map from $\cover{\Gamma}$ to $\Gamma$ is $\phi$, then the lift of $\varphi$ is $\cover{\varphi} = \varphi \circ \phi$. We will show that $\varphi$ is an eigenvector of $A_\Gamma$ if and only if $\cover{\varphi}$ is an eigenvector of $A_{\cover{\Gamma}}$. If $A_{\cover{\Gamma}} \cover{\varphi} = \lambda \cover{\varphi}$, then for $v \in V(\cover{\Gamma})$ we have:
+      \begin{align*}
+        \lambda \varphi(\phi(v)) &= \lambda \cover{\varphi}(v) \\
+        &= \sum_{u \in \cover{\Gamma}} w_{\cover{\Gamma}}(v, u)\cover{\varphi}(u) \\
+        &= \sum_{u \in \cover{\Gamma}} w_{\cover{\Gamma}}(\phi(v), \phi(u)) \varphi(\phi(u)) \\
+        &= \sum_{u \in \Gamma} w_{\cover{\Gamma}}(\phi(v), u) \varphi(u) = [A_\Gamma \varphi](\phi(v)).
+      \end{align*}
+      Because $\phi$ is surjective, this shows that $\varphi$ must be an eigenvector of $A_\Gamma$. On the other hand, if $A_\Gamma \varphi = \lambda \varphi$, then for $v \in V(\cover{\Gamma})$ we have:
+      \begin{align*}
+        [A_{\cover{\Gamma}} \cover{\varphi}](v) &= \sum_{u \in \cover{\Gamma}} w(v, u) \cover{\varphi}(u) \\
+        &= \sum_{u \in \cover{\Gamma}} w(v, u) \varphi(\phi(u)) \\
+        &= \sum_{u \in \cover{\Gamma}} w(\phi(v), \phi(u)) \varphi(\phi(u)) \\
+        &= \sum_{u \in \Gamma} w(\phi(v), u) \varphi(u) \\
+        &= \lambda \varphi(\phi(v)) = \lambda \cover{\varphi}(v).
+      \end{align*}
     \end{proof}
 
     \begin{theorem}\label{SpectralRadius}

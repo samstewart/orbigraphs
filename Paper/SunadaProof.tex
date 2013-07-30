@@ -31,13 +31,13 @@ Whereas:
 Thus, $\rho_G$ is a homemorphism. Now I will show that a $\lambda$-eigenspace of $A_\Gamma$ is invariant under the action of $\rho_G$. Let $E_{\lambda}^{\Gamma}$ be such an eigenspace and $\phi \in E_{\lambda}^{\Gamma}$. We would like to show that $A_\Gamma (\rho_G(g)\phi) = \lambda (\rho_G(g)\phi)$. We have the following:
 
 \begin{align*}
-[A_\Gamma (\rho_G(g)\phi)](v) &= \sum_{v \text{~} w} [ \rho_G(g)\phi ](w) \\
-&= \sum_{v \text{~} w} \phi(g^{-1}.w) \\
-&= \sum_{g^{-1}.v \text{~} g^{-1}.w} \phi(g^{-1}.w)
+[A_\Gamma (\rho_G(g)\phi)](v) &= \sum_{u \in \Gamma} w(v, u)[ \rho_G(g)\phi ](u) \\
+&= \sum_{u \in \Gamma} w(v, u)\phi(g^{-1}.u) \\
+&= \sum_{u \in \Gamma} w(g^{-1}.v, g^{-1}.u)\phi(g^{-1}.u)
 \end{align*}
 
-where the last equality is because $G$ acts by automorphisms. Furthermore, note that any vertex $s$ can be written $g^{-1}.w$ for some vertex $w$, so the sum may be rewritten as $\sum_{g^{-1}.v \text{~} s} \phi(s)$. Of course, this is simply $[A_\Gamma \phi](g^{-1}.v) = \lambda \phi(g^{-1}.v)$. On the other hand, we have $\lambda [\rho_G(g)\phi](v) = \lambda \phi(g^{-1}.v)$, giving the desired result.
+where the last equality is because $G$ acts by automorphisms. Of course, this is simply $[A_\Gamma \phi](g^{-1}.v) = \lambda \phi(g^{-1}.v)$. On the other hand, we have $\lambda [\rho_G(g)\phi](v) = \lambda \phi(g^{-1}.v)$, giving the desired result.
 
-Because $E_{\lambda}^{\Gamma}$ is invariant under $\rho_G$, there is a subrepresentation $\rho_G^\lambda : G \to GL(E_{\lambda}^{\Gamma})$. Note that the degree of $\rho_G^\lambda$ is equal to the dimension $E_{\lambda}^{\Gamma}$. 
+Because $E_{\lambda}^{\Gamma}$ is invariant under $\rho_G$, there is a subrepresentation $\rho_G^\lambda : G \to \operatorname{GL}(E_{\lambda}^{\Gamma})$. Note that the degree of $\rho_G^\lambda$ is equal to the dimension $E_{\lambda}^{\Gamma}$. 
 
 Now consider $E_{\lambda}^{\Gamma_i}$, the $\lambda$-eigenspace of $A_{\Gamma_i}$. I will show that its dimension is equal to the dimension of the subspace of $E_{\lambda}^{\Gamma}$ that is fixed by $\operatorname{Res}_{H_i}^G \rho_G^\lambda$. Let $\varphi_1 \ldots \varphi_m$ be a basis for $E_{\lambda}^{\Gamma_i}$. I will show that the lifts of these functions \ldots

@@ -19,8 +19,8 @@
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 %%%% REMOVE FOR FINAL DRAFT: %%%%
-%\usepackage{showkeys}
-\usepackage[left=2in, right=1in]{geometry}
+\usepackage{showkeys}
+\usepackage[left=2in, right=2in]{geometry}
 
 % use these commands for typesetting doi and arXiv references in the bibliography
 \newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
@@ -54,6 +54,8 @@
 % custom markup
 \DeclareMathOperator*{\spec}{Spec}
 \DeclareMathOperator*{\tr}{tr}
+\providecommand{\cover}[1]{\widetilde{#1}}
+\providecommand{\rev}[1]{\bar{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,7 +107,7 @@ Forgotten Second Author \qquad  Forgotten Third Author\\
 Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Instead of being locally diffeomorphic to $\mathbb{R}^n$, Riemannian orbifolds are locally diffeomorphic to $\mathbb{R}^n$ modulo the isometric action of a finite group.  Recently, a number of authors have examined orbifolds from the perspective of inverse spectral geometry.  In light of the strong connection between spectral geometry and spectral graph theory, our project defines a graph theoretic parallel of an orbifold, called an orbigraph, and obtains spectral results about orbigraphs.  The graph theoretic analogue of a manifold is taken to be a $k$-regular graph.  Because the local structure of a $k$-regular graph is a $k$-star, we form a $k$-orbigraph by patching together quotients of $k$-stars.  The resulting class of objects (the $k$-orbigraphs) consists of directed multigraphs satisfying certain outdegree conditions.  The spectrum of the adjacency matrix of a $k$-orbigraph yields bounds on the number of singular (non $k$-star) vertices present in the orbigraph.  The reversibility (as in Markov chains) of an orbigraph determines if it can be obtained as the quotient of a finite $k$-regular graph.  Our methods include computational algorithms and formal graph theoretic arguments.  Both the definition of an orbigraph and our results about them are new.
 
   % keywords are optional
-  \bigskip\noindent ``All perception of truth is the perception of an analogy'', \textit{Thoreau}
+  \bigskip\noindent ``All perception of truth is the perception of an analogy.'' -- \textit{Thoreau}
   % Nothing is either good or bad but by comparison (Anonymous)
   % Bad is called good when worse happens (Anonymous)
 
@@ -123,7 +125,12 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{Notation}
-  Let $\Gamma$ is a graph, possibly directed with multiple edges. Its vertex set will be denoted $V(\Gamma)$ and its edge set $E(\Gamma)$. Furthermore, if $u, v \in V(\Gamma)$, then $w_\Gamma(u, v)$ will denote the number of edges from $u$ to $v$. In cases when the context is clear, this notation may be abbreviated to $w(u,v)$. Then for an enumeration $v_1, \ldots, v_n$ of $V(\Gamma)$, the adjacency matrix $A(\Gamma)$ is given by $A(\Gamma)_{ij} = w(v_i, v_j)$. If $e \in E(\Gamma)$ then $o(e)$ denotes the origin of the edge and $t(e)$ denotes its terminus. A walk in $\Gamma$ is a sequence of edges $e_1,\ldots,e_n$ such that $t(e_i) = o(e_{i+1})$ for $1 \le i < n$.
+  Let $\Gamma$ be a graph, possibly directed with multiple edges. Its vertex set will be denoted $V(\Gamma)$ and its edge set $E(\Gamma)$. Furthermore, if $u, v \in V(\Gamma)$, then $w_\Gamma(u, v)$ will denote the number of edges from $u$ to $v$. In cases when the context is clear, this notation may be abbreviated to $w(u,v)$. Then for an enumeration $v_1, \ldots, v_n$ of $V(\Gamma)$, the adjacency matrix $A(\Gamma)$ is given by $A(\Gamma)_{ij} = w_\Gamma(v_i, v_j)$. If $e \in E(\Gamma)$ then $o(e)$ denotes the origin of the edge and $t(e)$ denotes its terminus. A walk in $\Gamma$ is a sequence of edges $e_1,\ldots,e_n$ such that $t(e_i) = o(e_{i+1})$ for $1 \le i < n$. A walk is closed if $o(e_1) = t(e_n)$. A closed walk may be referred to as a loop at $o(e_1)$.
+
+  Also, note that the adjacency matrix can be viewed as a linear operator on the function space $\mathbb{C}^{V(\Gamma)}$. This operator will be denoted $A_\Gamma$ and is defined for $\psi \in \mathbb{C}^V(\Gamma)$ and $v \in V(\Gamma)$ by
+  $$
+    [A_\Gamma \psi](v) = \sum_{u \in V(\Gamma)} w(v, u)\psi(u).
+  $$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,7 +144,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
   Reasons for choices, etc.
 
-  \begin{definition}\label{OrbigraphDefn}
+  \begin{definition}\label{def:OrbigraphDefn}
     A \textbf{$k$-orbigraph} is a directed graph $\Gamma$ where the adjacency matrix $A(\Gamma)$ satisfies the following:
     
     \begin{enumerate}[i.]
@@ -156,11 +163,13 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{Covering Theory for Orbigraphs}
 
-    \begin{definition}\label{EqPartitionDefn}
+    Start with covering theory because it lets us characterize orbigraphs as quotients of $k$-trees by equitable partitions.
+
+    \begin{definition}\label{def:EqPartitionDefn}
       Let $\Gamma$ be an orbigraph and $\pi = \{ \pi_1, \ldots, \pi_m \}$ be a partition of its vertices. Then $\pi$ is an \textbf{equitable partition} if for $v \in \pi_i$, the number $A(\Gamma / \pi)_{ij} = \sum_{u \in \pi_j} w(v, u)$ is independent of the choice of $v$. The multi-digraph with adjacency matrix $A(\Gamma / \pi)$ is called the \textbf{quotient graph}.
     \end{definition}
 
-    \begin{lemma}\label{EqPartitionQuotient}
+    \begin{lemma}\label{lemma:EqPartitionQuotient}
       If $\Gamma$ is an $k$-orbigraph and $\pi$ is an equitable partition of $\Gamma$, then $\Gamma / \pi$ is a $k$-orbigraph.
     \end{lemma}
     \begin{proof}
@@ -176,7 +185,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
     We say that an orbigraph $\Gamma_1$ covers an orbigraph $\Gamma_2$ if there is an equitable partition $\pi$ of $\Gamma$ such that $\Gamma_1 / \pi = \Gamma_2$.
 
-    \begin{lemma}\label{CoveringTransitivity}
+    \begin{lemma}\label{lemma:CoveringTransitivity}
       The covering relation is transitive.
     \end{lemma}
     \begin{proof}
@@ -190,22 +199,26 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       Thus the matrix $X = P(\pi_1)P(\pi_2)$ is such that $A(\Gamma_1) X = X A(\Gamma_3)$. Thus by the converse of Godsil's Lemma 2.1 we have that $X$ is a equitable partition matrix of $\Gamma_1$ with quotient orbigraph $\Gamma_3$.
     \end{proof}
 
-    \begin{theorem}\label{UniversalCovers}
+    \begin{theorem}\label{thm:UniversalCovers}
       Every connected $k$-orbigraph is covered by the $k$-tree and disconnected orbigraphs are covered by disjoint unions of $k$-trees.
     \end{theorem}
     \begin{proof}
-      It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a function $\cdot^{-1} : E(\Gamma) \to E(\Gamma)$ such that if $o(e) = a$ and $t(e) = b$ then $o(e^{-1}) = b$ and $t(e^{-1}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e,e^{-1}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable partition.
-    \end{proof}
+      It suffices to prove the result in the connected case, as the full result follows by induction. Let $\Gamma$ be the connected $k$-orbigraph in question. Choose a mapping $e \mapsto \rev{e}$ on the edge set of $\Gamma$ such that if $o(e) = a$ and $t(e) = b$ then $o(\rev{e}) = b$ and $t(\rev{e}) = a$. Such a function must exist by condition (iii) of the definition of an orbigraph. Define an equivalence relation on the set of walks in $\Gamma$ such that two walks are equivalent if they can be made the same by adding or removing pairs of edges of the form $e\rev{e}$. Define a new graph $T$ as follows. Let $V(T)$ be the collection of equivalence classes of walks under this relation. Then $E(T)$ consists of all pairs of elements $(w_1, w_2)$ of $V(T)$ such that $w_2$ is equivalent to the result of appending a single edge to $w_1$. Now I claim that $T$ is a $k$-tree and the partition of the vertices of $T$ according to their terminus as walks in $\Gamma$ is an equitable.
+
+      To see that $T$ is a $k$-tree, note that each walk $w$ in $\Gamma$ can be extended by one edge in $k$ ways; however, exactly one of these extensions will be the inverse of the last edge of the walk. Therefore, there are $k-1$ edges in $T$ of the form $(w, w')$ where $w'$ is one edge longer than $w$ and $1$ edge of the form $(w'', w)$ where $w''$ is one edge shorter than $w$. Hence each vertex $w \in T$ has degree $k$. Furthermore, because each edge in $T$ is of the form $(w_1, w_2)$ where $w_2$ is one edge longer than $w_1$, there can be no cycles in $T$. Hence $T$ is a $k$-tree.
+
+      Finally, consider the partition $\pi$ of $V(T)$ according to the terminus function. Let $w \in \pi_i$ and consider $\sum_{u \in \pi_j} w_T(w, u)$. Because $T$ does not have multiple edges, this is simply equal to the number of neighbors of $w$ in $\pi_j$. However, by definition of $\pi$, this is then equal $w_\Gamma(t(w), t(u))$ for any $u \in \pi_j$, which is clearly independent of the choice of $w$. This also shows that $T / \pi = \Gamma$, completing the proof.
+      \end{proof}
 
     These two results imply that we can think of $k$-trees as universal covers of orbigraphs.
 
     Comparable to the distinction between \textbf{good} and \textbf{bad} orbi\textit{folds} [see thurston], we call an orb\textit{graph} $\Gamma$ \textbf{good} when it is covered by a \textit{finite} $k$-regular graph and we call $\Gamma$ \textbf{bad} when no finite covering exists. Of course, both good and bad orbigraphs are always covered by infinite $k$-trees as described above, again similar to the universal coverings of orbifolds. But beyond these similarities, orbigraph covering theory parts ways with orbifold covering theory: we are able to characterize good and bad orbigraph via a purely structural property.
 
-    \begin{theorem}\label{thm:good_bad_characterization}
+    \begin{theorem}\label{thm:GoodBadCharacterization}
       Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, $\Gamma$ has a corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
     \end{theorem}
 
-    The cycle condition in \ref{thm:good_bad_characterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains.
+    The cycle condition in Theorem \ref{thm:GoodBadCharacterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains.
 
     \begin{proof}
       \input{GoodCharacterizationProof}
@@ -217,7 +230,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
     We can also investigate the relationship between group actions and orbigraphs:
 
-    \begin{theorem}\label{GroupQuotient}
+    \begin{theorem}\label{thm:GroupQuotient}
       If a group $G$ acts on an orbigraph $\Gamma$ by automorphisms, then the orbits of $V(\Gamma)$ form an equitable partition.
     \end{theorem}
     \begin{proof}
@@ -234,12 +247,13 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
     In this situation will denote the quotient $\Gamma / \pi$ by $\Gamma / G$. Note that this implies that an orbigraph is good if it is the quotient of a $k$-regular graph by a group action. We see that this group action can be lifted to the universal covering tree:
 
-    \begin{theorem}\label{GoodFundamentalGroup}
+    \begin{theorem}\label{thm:GoodFundamentalGroup}
       If $\Gamma$ is a $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
     \end{theorem}
 
     Such a group may be regarded as the fundamental group of the orbigraph.
 
+    \input{SymmetricGroupAction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spectral properties of orbigraphs}
@@ -252,26 +266,41 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
     Many spectral results about manifolds carry over to orbifolds, and the same is true of spectral results of regular graphs to orbigraphs. We start the discussion of the spectral theory of orbigraphs a fundamental result.
 
-    \begin{lemma}\label{SpectrumInclusion}
+    \begin{lemma}\label{lemma:SpectrumInclusion}
       If $\widetilde{\Gamma}$ covers $\Gamma$, then $\spec(\Gamma) \subseteq \spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
     \end{lemma}
     \begin{proof}
+      Let $\varphi \in \mathbb{C}^{V(\Gamma)}$. If the projection map from $\cover{\Gamma}$ to $\Gamma$ is $\phi$, then the lift of $\varphi$ is $\cover{\varphi} = \varphi \circ \phi$. We will show that $\varphi$ is an eigenvector of $A_\Gamma$ if and only if $\cover{\varphi}$ is an eigenvector of $A_{\cover{\Gamma}}$. If $A_{\cover{\Gamma}} \cover{\varphi} = \lambda \cover{\varphi}$, then for $v \in V(\cover{\Gamma})$ we have:
+      \begin{align*}
+        \lambda \varphi(\phi(v)) &= \lambda \cover{\varphi}(v) \\
+        &= \sum_{u \in \cover{\Gamma}} w_{\cover{\Gamma}}(v, u)\cover{\varphi}(u) \\
+        &= \sum_{u \in \cover{\Gamma}} w_{\cover{\Gamma}}(\phi(v), \phi(u)) \varphi(\phi(u)) \\
+        &= \sum_{u \in \Gamma} w_{\cover{\Gamma}}(\phi(v), u) \varphi(u) = [A_\Gamma \varphi](\phi(v)).
+      \end{align*}
+      Because $\phi$ is surjective, this shows that $\varphi$ must be an eigenvector of $A_\Gamma$. On the other hand, if $A_\Gamma \varphi = \lambda \varphi$, then for $v \in V(\cover{\Gamma})$ we have:
+      \begin{align*}
+        [A_{\cover{\Gamma}} \cover{\varphi}](v) &= \sum_{u \in \cover{\Gamma}} w(v, u) \cover{\varphi}(u) \\
+        &= \sum_{u \in \cover{\Gamma}} w(v, u) \varphi(\phi(u)) \\
+        &= \sum_{u \in \cover{\Gamma}} w(\phi(v), \phi(u)) \varphi(\phi(u)) \\
+        &= \sum_{u \in \Gamma} w(\phi(v), u) \varphi(u) \\
+        &= \lambda \varphi(\phi(v)) = \lambda \cover{\varphi}(v).
+      \end{align*}
     \end{proof}
 
-    \begin{theorem}\label{SpectralRadius}
+    \begin{theorem}\label{thm:SpectralRadius}
       The spectral radius of a $k$-orbigraph is $k$.
     \end{theorem}
     \begin{proof}
       Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, [??] so the spectral radius of $\Gamma$ must be exactly $k$. 
     \end{proof}
 
-    \begin{theorem}\label{LengthSpectrum}
+    \begin{theorem}\label{thm:LengthSpectrum}
       The spectrum of an orbigraph determines and is determined by length spectrum.
     \end{theorem}
     \begin{proof}
     \end{proof}
 
-    \begin{theorem}\label{BipartiteSymmetry}
+    \begin{theorem}\label{thm:BipartiteSymmetry}
       An orbigraph is bipartite if and only if its spectrum is symmetric about zero.
     \end{theorem}
     \begin{proof}
@@ -281,18 +310,18 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{Results Intrinsic to Orbigraphs}
 
-    \begin{theorem}\label{ComplexEigenvalues}
+    \begin{theorem}\label{thm:ComplexEigenvalues}
       If $\Gamma$ is a $k$-orbigraph whose spectrum contains a complex eigenvalue, then $\Gamma$ is bad.
     \end{theorem}
     \begin{proof}
-      Suppose that $\Gamma$ has a finite $k$-regular cover $\widetilde{\Gamma}$. The adjacency matrix of $\widetilde{\Gamma}$ must be symmetric, so $\spec{\widetilde{\Gamma}}$ must be entirely real. Thus $\spec{\Gamma}$ is entirely real by Lemma \ref{SpectrumInclusion}. Hence, such a $k$-regular cover cannot exist.
+      Suppose that $\Gamma$ has a finite $k$-regular cover $\widetilde{\Gamma}$. The adjacency matrix of $\widetilde{\Gamma}$ must be symmetric, so $\spec{\widetilde{\Gamma}}$ must be entirely real. Thus $\spec{\Gamma}$ is entirely real by Lemma \ref{lemma:SpectrumInclusion} Hence, such a $k$-regular cover cannot exist.
     \end{proof}
 
     Note that complex eigenvalues mean that there is an imbalanced loop.
 
     As in the orbifold case (reference or quote theorem) we can establish bounds on the singular set of an orbigraph via the spectrum:
 
-    \begin{theorem}\label{SingularBounds}
+    \begin{theorem}\label{thm:SingularBounds}
       Let $\Gamma$ be an $k$-orbigraph on $n$ vertices. If $s$ is the number of singular points in $\Gamma$, then we have
       $$
         \frac{\sum_{i} \lambda_i^2 - n k}{k^2 - k} \le s \le \sum_{i} \lambda_i^2 - n k
@@ -310,7 +339,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     \begin{proof}
       If $\Gamma$ is a simple $k$-regular graph then there are no self loop so $\sum_{i} \lambda_i = tr(A(\Gamma)) = 0$. Additionally, note that $\sum_{i} \lambda_i^2 = tr(A(\Gamma)^2)$ via Jordan normal form decomposition, and this quantity counts the number closed walks of length $2$ in $\Gamma$. For each vertex of $\Gamma$ there are exactly $k$ closed walks of length $2$, therefore $\sum_{i} \lambda_i^2 = n k$. 
 
-      Conversely, assume that $\Gamma$ is an orbigraph such that $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$. Then by the previous theorem, we have $s \le 0$. However, $s \ge 0$ by definition so $s = 0$. Thus the neighborhood of each vertex is a $k$-star and because there are no self loops via the second condition, $\Gamma$ must be a simple $k$-regular graph.
+      Conversely, assume that $\Gamma$ is an orbigraph such that $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$. Then by the Theorem \ref{thm:SingularBounds}, we have $s \le 0$. However, $s \ge 0$ by definition so $s = 0$. Thus the neighborhood of each vertex is a $k$-star and because there are no self loops via the second condition, $\Gamma$ must be a simple $k$-regular graph.
     \end{proof}
 
 
@@ -319,11 +348,11 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
   Here we show that some familiar methods for generating cospectral graphs can be extended to the orbifold case. In particular we extend Sunada's theorem to orbifolds.
 
-  \begin{definition}\label{SunadaEquivalentDefn}
+  \begin{definition}\label{def:SunadaEquivalentDefn}
     Two subgroups $H_1$ and $H_2$  of a finite group $G$ are called Sunada equivalent if, for all $g \in G$ we have $\#([g] \cap H_1) = \#([g] \cap H_2)$.
   \end{definition}
 
-  \begin{theorem}\label{Sunada}
+  \begin{theorem}\label{thm:Sunada}
     If $\Gamma$ is an orbigraph and $H_1$ and $H_2$ are Sunada equivalent subgroups of the automorphism group of $\Gamma$, then $\spec(\Gamma / H_1) = \spec(\Gamma / H_2)$.
   \end{theorem}
   \begin{proof}
@@ -332,9 +361,28 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
   Example using $K_6$ with gadgets.
 
-  The method of Seidel switching (reference) can also be extended to orbigraphs:
+  Seidel Switching is a method used to construct cospectral pairs. It has previously been used in undirected graphs, but there is very little literature on its use in directed graphs. Here we show that the method can be extended to construct cospectral orbigraphs. In its most basic form, Seidel switching produces a pair of cospectral graphs by making connections between two given graphs. 
 
-  \begin{theorem}\label{SeidelSwitching}
+  Suppose $\Gamma_1$ and $\Gamma_2$ are $k$-orbigraphs each on $2l$ vertices with adjacency matrices $A$ and $B$ respectively. Furthermore, suppose that $T$ is a \textbf{switching matrix}, that is, it is a $(0,1)$-matrix with each row and each column summing to $l$. Let $J$ be a $2l \times 2l$ matrix of ones. Then define two new orbigraphs $\mathcal{S}_1$ and $\mathcal{S}_2$ as follows:
+
+  $$
+  A(\mathcal{S}_1) = \begin{bmatrix}
+      A & T \\
+      T^T & B
+  \end{bmatrix} \ \ 
+  A(\mathcal{S}_2) = \begin{bmatrix}
+      A & J - T \\
+      (J - T)^T & B
+  \end{bmatrix}.
+  $$
+
+  \begin{theorem}\label{thm:SeidelSwitchingSimple}
+  The orbigraphs $A(\mathcal{S}_1)$ and $A(\mathcal{S}_2)$ as defined above are cospectral.
+  \end{theorem}
+
+  \input{SimpleSeidelProof}
+
+  \begin{theorem}\label{thm:SeidelSwitchingExtension}
     Complicated statement about cospectral covers.
   \end{theorem}
   \begin{proof}
@@ -342,10 +390,38 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 
   This gives a simple method of finding cospectral good and bad orbigraphs:
 
-  \begin{corollary}\label{GoodBadCospectral}
+  \begin{corollary}\label{coro:GoodBadCospectral}
     There are cospectral good and bad orbigraphs.
   \end{corollary}
   \begin{proof}
+    Let $\Gamma$ an orbigraph with adjacency matrix given by
+    $$
+    A(\Gamma) = 
+      \left( \begin{array}{cc}
+        1 & 2 \\
+        1 & 2
+      \end{array} \right).
+    $$
+    Constructing a pair of cospectral orbigrapsh $S_1$ and $S_2$ by switching $\Gamma$ with itself using the switching matrix $I_2$. The adjacency matrices for $S_1$ and $S_2$ are:
+    $$
+    A(S_1) = 
+      \bordermatrix {
+            & v_1 & v_2 & v_3 & v_4 \cr
+        v_1 & 1   & 2   & 1   & 0   \cr
+        v_2 & 1   & 2   & 0   & 1   \cr
+        v_3 & 1   & 0   & 1   & 2   \cr
+        v_4 & 0   & 1   & 1   & 2
+      } \ \ 
+    A(S_2) = 
+      \bordermatrix {
+            & v_1 & v_2 & v_3 & v_4 \cr
+        v_1 & 1   & 2   & 0   & 1   \cr
+        v_2 & 1   & 2   & 1   & 0   \cr
+        v_3 & 0   & 1   & 1   & 2   \cr
+        v_4 & 1   & 0   & 1   & 2
+      }.
+    $$
+    By inspection, we see that $S_1$ and $S_2$ each have only one non-trivial cycle. In $S_1$ this cycle is $v_1 v_2 v_4 v_3$ and there are $2$ ways to traverse this cycle in either direction. However, in $S_2$ the nontrivial cycle is $v_1 v_2 v_3 v_4$ and there are $4$ ways to traverse it forward, but only one way to traverse it in reverse. Hence by Theorem \ref{thm:GoodBadCharacterization}, $S_1$ is good, but $S_2$ is bad.
   \end{proof}
 
 

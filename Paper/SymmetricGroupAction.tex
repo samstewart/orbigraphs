@@ -1,0 +1,21 @@
+\begin{theorem}
+  If $\Gamma$ is a connected orbigraph such that $A(\Gamma)$ is symmetric, then $\Gamma$ is good and there exists a subgroup $G \le Aut(\cover{\Gamma})$ such that $\cover{\Gamma} / G = \Gamma$.
+\end{theorem}
+\begin{proof}
+  Because $\Gamma$ has a symmetric adjacency matrix, each edge $e \in V(\Gamma)$ can be assigned a unique reverse edge $\rev{e} \in V(\Gamma)$ such that the map $e \mapsto \rev{e}$ is an involution on $V(\Gamma)$. Then for $v_0 \in \Gamma$ the fundamental group $\pi_1(\Gamma, v_0)$ can be defined as the group of equivalence classes of loops based at $v_0$ under reduction by removal of reversals with the operation of composition. Elements of this group will be denoted $[p]$ for some loop $p$ in $\Gamma$. It can easily be verified that this is a group and that it is independent of basepoint because $\Gamma$ is connected.
+
+  Now let $\cover{\Gamma}$ be the cover of $\Gamma$ guarenteed to exist by Theorem \ref{thm:GoodCharacterization}. Via the covering equitable partition of $\cover{\Gamma}$ there is surjective map $\phi : V(\cover{\Gamma}) \to V(\Gamma)$ that takes vertices in the same partition element to the same vertex. It can be extended to a map $\phi: E(\cover{\Gamma}) \to E(\Gamma)$ such that $o \circ \phi = \phi \circ o$ and likewise for the terminus and reversal an edge. Now choose $\cover{v_0} \in V(\cover{\Gamma})$ such that $\phi(\cover{v_0}) = v_0$ and construct the standard fundamental group $\pi_1(\cover{\Gamma}, \cover{v_0})$. By extending $\phi$ to walks in $\cover{\Gamma}$ we obtain a mapping from $\pi_1(\cover{\Gamma}, \cover{v_0})$ to $\pi_1(\Gamma, v_0)$ given by $[p] \mapsto [\phi(p)]$. This is well defined because $\phi$ preserves reversal and therefore preserves the equivalence of loops. I claim that this mapping is a monomorphism, and hence $\pi_1(\cover{\Gamma}, \cover{v_0})$ can be viewed as a subgroup of $\pi_1(\Gamma, v_0)$. That this is a homomorphism is clear: $[p \cdot q] \mapsto [\phi(p \cdot q)] = [\phi(p) \cdot \phi(q)] = [\phi(p)] \cdot [\phi(q)]$. Furthermore, suppose that $[\phi(p)] = [\phi(q)]$, then as above we must have that $[p] = [q]$ because $\phi$ preserves reversals. 
+
+  Now I claim that the image of $\pi_1(\cover{\Gamma}, \cover{v_0})$ under the map above is, in fact, a normal subgroup of $\pi_1(\Gamma, v_0)$. Let $p \in \pi_1(\Gamma, v_0)$ and $[\phi(q)]$ be in the subgroup. Then we have
+  $$
+    [p] \cdot [\phi(q)] \cdot [p]^{-1} = [p \cdot \phi(q) \cdot \rev{p}].
+  $$
+  Then let $\cover{p}$ be a walk in $\cover{\Gamma}$ beginning $\cover{v_0}$ such that $\phi(\cover{p}) = p$. Also, let $\cover{q}$ be a walk in $\cover{\Gamma}$ beginning and ending at $t(\cover{p})$ such that $\phi(\cover{q}) = \phi(q)$. Such walks must exist by the definition of $\phi$. Then consider the walk $\cover{p} \cdot \cover{q} \cdot \rev{\cover{p}}$. This is well defined and begins and ends at $\cover{v_0}$. Then we have $\phi(\cover{p} \cdot \cover{q} \cdot \rev{\cover{p}}) = p \cdot \phi(q) \cdot \rev{p}$. Hence the subgroup in question is closed under conjugation and is therefore normal. 
+
+  For each vertex $v \in \cover{\Gamma}$, let $W_v = \lbrace \phi(w) \ \vert \ w \text{ is a walk from } \cover{v_0} \text{ to } v \rbrace$. Note that the sets $W_v$ form a partition of the walks in $\Gamma$ starting at $v_0$, so there is a map $\gamma$ from walks in $\Gamma$ starting at $v_0$ to vertices of $\cover{\Gamma}$. Define a group action of $\pi_1(\Gamma, v_0) / \pi_1(\cover{\Gamma}, \cover{v_0})$ on $\Gamma$ by
+  $$
+    [p]\pi_1(\cover{\Gamma}, \cover{v_0}) . v = \gamma(p \cdot w) \text{ for } w \in W_v.
+  $$
+  This action is well defined because for 
+
+\end{proof}

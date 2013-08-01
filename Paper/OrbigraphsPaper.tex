@@ -72,12 +72,12 @@
 \small Lewis and Clark College\\[-0.8ex] 
 \small Portland, Oregon\\
 \small\tt remifa@dis.solatido.edu\\
-\and
-Forgotten Second Author \qquad  Forgotten Third Author\\
-\small School of Hard Knocks\\[-0.8ex]
-\small University of Western Nowhere\\[-0.8ex]
-\small Nowhere, Australasiaopia\\
-\small\tt \{fsa,fta\}@uwn.edu.ao
+% \and
+% Forgotten Second Author \qquad  Forgotten Third Author\\
+% \small School of Hard Knocks\\[-0.8ex]
+% \small University of Western Nowhere\\[-0.8ex]
+% \small Nowhere, Australasiaopia\\
+% \small\tt \{fsa,fta\}@uwn.edu.ao
 }
 
 % \date{\dateline{submission date}{acceptance date}\\
@@ -298,6 +298,21 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       The spectrum of an orbigraph determines and is determined by length spectrum.
     \end{theorem}
     \begin{proof}
+      Let $\Gamma$ be a $k$-orbigraph, $A$ its adjacency matrix, and $\langle w_n \rangle$ a sequence of natural numbers such that $w_n$ is the number of cycles in $\Gamma$ of length $n$. We know that
+        \begin{equation}\label{eq:trace_length_spectrum}
+          w_n = Tr(A^n)
+        \end{equation}
+      because the diagonal of $A^n$ counts the number of cycles of length $n$. Converting $A$ to Jordon Normal Form gives
+      \begin{equation*}
+        Tr(\tilde{A}^n) = \sum \lambda_i^n
+      \end{equation*}
+      and by the similarity invariance of trace and \ref{eq:trace_length_spectrum}
+      \begin{equation*}
+        w_n = \sum \lambda_i^n
+      \end{equation*}.
+
+      Thus, the $\lambda_1, \ldots, \lambda_n$ uniquely determines the length spectrum and, conversely, by Newton's identities [Theory of equations, Uspensky] $\langle w_n \rangle$ uniquely determines $\lambda_1, \ldots, \lambda_n$.
+
     \end{proof}
 
     \begin{theorem}\label{thm:BipartiteSymmetry}

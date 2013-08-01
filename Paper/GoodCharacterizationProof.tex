@@ -16,7 +16,7 @@ where $d_i$ and $d_j$ are integers.
 
 We use the detailed balance equation to construct the finite $k$-regular cover $C$ with partition classes corresponding to the vertices of $\Gamma$. Every vertex in class $i$ of $C$ must connect to $A_{i, j}$ vertices in class $j$ and, conversely, every vertex in class $j$ must connect to $A_{j, i}$ vertices in parition $i$.  Equivalently, $A_{j, i}$ should divide the number of vertices in class $i$ and $A_{i, j}$ should divide the number of vertices in class $j$. Thus, we choose $c$ such that $A_{j, i} | c d_i$ and $A_{i, j} | c d_j$ so that \ref{eq:DetailedBalanceNormalized} becomes
 
-\begin{equation} \label{eq:DetailedBalanceNormalized}
+\begin{equation} \label{eq:DetailedBalanceWithConstant}
 	(c d_i) A_{ i, j } = (c d_j) A_{ i, j }
 \end{equation}
 
@@ -24,6 +24,6 @@ and we place $c d_i$ vertices in class $i$ and $c d_j$ vertices in class $j$.
 
 Connections \textit{within} classes require a special treatment. Every vertex in class $i$ must connect to $A_{i, i}$ other vertices its own class, so in total, we need a multiple of $A_{i, i} + 1$ vertices in class $i$. Thus, we choose $c$ such that $(A_{ i, i } + 1) | c d_i$. 
 
-This construction produces a $k$-regular cover with an equitable partition that quotients to $\Gamma$. As outlined above, our choice of $c$ ensures the proper number of vertices and edges and \ref{eq:DetailedBalanceNormalized} guarantees an equitable partition.
+This construction produces a $k$-regular cover with an equitable partition that quotients to $\Gamma$. As outlined above, our choice of $c$ ensures the proper number of vertices and edges and \ref{eq:DetailedBalanceWithConstant} guarantees an equitable partition.
 
 For the other direction of \ref{thm:GoodBadCharacterization}, we rely on [Boyd] who proves that an undirected covering graph $C$ quotients to a reversible graph $\Gamma$. 

@@ -21,6 +21,8 @@
 %%%% REMOVE FOR FINAL DRAFT: %%%%
 %\usepackage{showkeys}
 %\usepackage[left=2in, right=2in]{geometry}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Bibliography.bib}
 
 % use these commands for typesetting doi and arXiv references in the bibliography
 \newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
@@ -54,6 +56,8 @@
 % custom markup
 \DeclareMathOperator*{\spec}{Spec}
 \DeclareMathOperator*{\tr}{tr}
+\providecommand{\ind}{\operatorname{Ind}}
+\DeclareMathOperator*{\res}{Res}
 \providecommand{\cover}[1]{\widetilde{#1}}
 \providecommand{\rev}[1]{\bar{#1}}
 \providecommand{\abs}[1]{\lvert #1 \rvert}
@@ -148,7 +152,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   \begin{definition}\label{def:OrbigraphDefn}
     A \textbf{$k$-orbigraph} is a directed graph $\Gamma$ where the adjacency matrix $A(\Gamma)$ satisfies the following:
     
-    \begin{enumerate}[i.]
+    \begin{enumerate}[(i)]
       \item $A(\Gamma)_{ij} \in \mathbb{Z}_{\ge 0}$
       \item $\sum_j A(\Gamma)_{ij} = k$
       \item $A(\Gamma)_{ij} > 0$ if and only if $A(\Gamma)_{ji} > 0$.
@@ -216,10 +220,10 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     Comparable to the distinction between \textbf{good} and \textbf{bad} orbi\textit{folds} [see thurston], we call an orb\textit{graph} $\Gamma$ \textbf{good} when it is covered by a \textit{finite} $k$-regular graph and we call $\Gamma$ \textbf{bad} when no finite covering exists. Of course, both good and bad orbigraphs are always covered by infinite $k$-trees as described above, again similar to the universal coverings of orbifolds. But beyond these similarities, orbigraph covering theory parts ways with orbifold covering theory: we are able to characterize good and bad orbigraph via a purely structural property.
 
     \begin{theorem}\label{thm:GoodBadCharacterization}
-      Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, $\Gamma$ has a corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
+      Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, the corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
     \end{theorem}
 
-    The cycle condition in Theorem \ref{thm:GoodBadCharacterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains.
+    The cycle condition in Theorem \ref{thm:GoodBadCharacterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains. %FIXME - references
 
     \begin{proof}
       \input{GoodCharacterizationProof}
@@ -249,8 +253,11 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     In this situation will denote the quotient $\Gamma / \pi$ by $\Gamma / G$. Note that this implies that an orbigraph is good if it is the quotient of a $k$-regular graph by a group action. We see that this group action can be lifted to the universal covering tree:
 
     \begin{theorem}\label{thm:GoodFundamentalGroup}
-      If $\Gamma$ is a $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
+      If $\Gamma$ is a connected $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
     \end{theorem}
+    \begin{proof}
+      \input{GoodFundamentalGroupProof}
+    \end{proof}
 
     Such a group may be regarded as the fundamental group of the orbigraph.
 
@@ -292,7 +299,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       The spectral radius of a $k$-orbigraph is $k$.
     \end{theorem}
     \begin{proof}
-      Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, [??] so the spectral radius of $\Gamma$ must be exactly $k$. 
+      Let $\Gamma$ be a $k$-orbigraph. It is clear that $k$ is an eigenvalue of $\Gamma$, so the spectral radius of $\Gamma$ is at least $k$. Furthermore, because $\Gamma$ is covered by a disjoint union of $k$-trees, the spectrum of $\Gamma$ must be contained in the spectrum of a such a graph. However, the $l^\infty$ spectral radius of a $k$-tree is $k$, [ref] so the spectral radius of $\Gamma$ must be exactly $k$. %FIXME - references
     \end{proof}
 
     \begin{theorem}\label{thm:LengthSpectrum}
@@ -447,18 +454,18 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     Two subgroups $H_1$ and $H_2$  of a finite group $G$ are called Sunada equivalent if, for all $g \in G$ we have $\#([g] \cap H_1) = \#([g] \cap H_2)$.
   \end{definition}
 
-  \begin{lemma}
+  \begin{lemma}\label{lemma:SunadaEquivRepresenation}
     Subgroups $H_1$ and $H_2$ of a finite group $G$ are Sunada equivalent if and only if $\operatorname{Ind}_{H_1}^G 1_{H_1}$ and $\operatorname{Ind}_{H_2}^G 1_{H_2}$, the induced representations of $G$ with respect to the trival representation of $H_1$ (resp. $H_2$), are equivalent as representations of $G$.
   \end{lemma}
   \begin{proof}
-  Cite someone - buser?
+  See \cite{BrooksSunadaMethod} Lemma 1.1.
   \end{proof}
 
   \begin{theorem}\label{thm:Sunada}
     If $\Gamma$ is an orbigraph and $H_1$ and $H_2$ are Sunada equivalent subgroups of the automorphism group of $\Gamma$, then $\spec(\Gamma / H_1) = \spec(\Gamma / H_2)$.
   \end{theorem}
 
-  Note: the proof of this theorem is drawn from a proof of a similar result for quotients of undirected graphs found in an unpublished set of notes by Gregory Quenell [ref].
+  Note: the proof of this theorem is drawn from a proof of a similar result for quotients of undirected graphs found in an unpublished set of notes by Gregory Quenell [ref]. %FIXME - references
 
   \begin{proof}
     \input{SunadaProof}
@@ -467,12 +474,12 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   \begin{figure}[h!]
     \caption{$K_6$ with additional singular vertices. Undirected edges represent pairs of directed edges and unweighted directed edges are inferred to have weight one.}\label{fig:K6WithGadgets}
     \centering
-    \includegraphics[width=0.3\textwidth]{K6WithGadgets}
+    \includegraphics[width=0.3\textwidth]{Graphics/K6WithGadgets}
   \end{figure}
   \begin{figure}[h!]
     \caption{The quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$}\label{fig:SunadaQuotients}
     \centering
-    \includegraphics[width=0.5\textwidth]{SunadaQuotients}
+    \includegraphics[width=0.5\textwidth]{Graphics/SunadaQuotients}
   \end{figure}
 
   \begin{example}
@@ -481,7 +488,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       H_1 &= \{ (12)(34), (13)(24), (14)(23) \} \\
       H_2 &= \{ (12)(34), (12)(56), (34)(56) \}
     \end{align*}
-    The subgroups $H_1$ and $H_2$ are Sunada equivalent [ref buser] and so by Theorem \ref{thm:Sunada}, the quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$ are cospectral. A simple calculation shows that their spectra are
+    The subgroups $H_1$ and $H_2$ are Sunada equivalent [ref buser] and so by Theorem \ref{thm:Sunada}, the quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$ are cospectral. A simple calculation shows that their spectra are %FIXME - references
     $$
     \spec(\Gamma / H_1) = \spec(\Gamma / H_2) = \{ -3, -3, -1, 2, 2, 6 \}.
     $$
@@ -507,7 +514,9 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   The orbigraphs $A(\mathcal{S}_1)$ and $A(\mathcal{S}_2)$ as defined above are cospectral.
   \end{theorem}
 
-  Remark: The standard method of proving this result [ref Brooks] relies on the fact that in an undirected graph, the number of walks of a given length originating at a given vertex is equal to the number of walks of that length terminating at the vertex. This is untrue for orbigraphs, so the well known proof is insufficient.
+  Remark: The standard method of proving this result [ref Brooks] relies on the fact that in an undirected graph, the number of walks of a given length originating at a given vertex is equal to the number of walks of that length terminating at the vertex. This is untrue for orbigraphs, so the well known proof is insufficient. %FIXME - references
+
+  Note, in the following, the term ``constant row sum matrix'' is used to describe a matrix $A$ such that $A \vec{1} = k \vec{1}$ for some $k$. It is easy to show that the sum or product of constant row sum matrices is a constant row sum matrix and that the function $Rs(A) = k$ is additive and multiplicative. Similarly, ``constant column matrices'' are those in which for each column, every entry is the same. This set is likewise closed under addition and multiplication.
 
   \input{SimpleSeidelProof}
 
@@ -585,8 +594,9 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 % If you use BibTeX to create a bibliography
 % then copy and past the contents of your .bbl file into your .tex file
 
-\begin{thebibliography}{10}
+%\begin{thebibliography}{10}
+%\end{thebibliography}
 
-\end{thebibliography}
+\printbibliography
 
 \end{document}

@@ -1,0 +1,47 @@
+Define an involution $e \mapsto \rev{e}$ on the edge set of $\cover{\Gamma}$ such that $o(e) = t(\rev{e})$ for all $e \in E(\cover{\Gamma})$. As in the proof of Theorem \ref{thm:UniversalCovers}, define an equivalence relation on walks in $\cover{\Gamma}$, such that two walks $p$ and $q$ are equivalent if they can be made equal by adding or removing pair of edges of the form $e\rev{e}$. The equivalence class of a walk will be denoted $[p]$.
+
+Let $ v_0 \in V(\cover{\Gamma}) $ be an arbitrary vertex. Now we will construct a group $\pi_1(\Gamma, v_0)$ associated with $\Gamma$ such that $T_k / \pi_1(\Gamma, v_0) = \Gamma$. For each $ g \in G $, let $ B_g $ be the set of equivalence classes of paths $ p $ in $\cover{\Gamma}$ with $ o(p) = v_0 $ and $ t(p) = h . v_0 $. Then 
+$$ 
+    \pi_1(\Gamma, v_0) = \lbrace ([p], g) \ \vert \ g \in G, [p] \in B_g \rbrace.
+$$
+We will denote an element of $ \pi_1(\Gamma, v_0) $ by $ [p]_h $ where $ h \in H $ and $ p $ is a path in $ \cover{\Gamma} $ such that $ o(p) = v_0 $ and $ t(p) = h . v_0 $. Define multiplication in $ \pi_1(\Gamma, v_0) $ by
+
+$$
+    [p]_{g} \cdot [q]_{h} = [p \cdot (g . q)]_{g h}.
+$$
+
+It is easy to see that $\pi_1(\Gamma, v_0)$ with this multiplication forms a group with the identity $[\emptyset]_1$ where $[\emptyset]$ is the equivalence class of the path of length zero at $v_0$ and $1$ is the identity of $G$. Then for any walk $ p = e_1 \ldots e_n $ in $ \Gamma $ define the reversed path $ \rev{p} = \rev{e_n} \ldots \rev{e_1} $. Then we can define the inverse of $[p]_h \in \pi_1(\Gamma, v_0)$ as $[h^{-1} . \bar p]_{h^{-1}}$.
+
+Note that the standard graph fundamental group of $ \Gamma $, $\pi_1(\Gamma, v_0) $ is included as a subgroup of $\pi_1(\Gamma, v_0)$ by the monomorphism $[p] \mapsto [p]_1 $.
+
+Because $\cover{\Gamma}$ is $k$-regular, we can take the universal covering tree of the orbigraph $\Gamma$ to be a graph $T$ with $V(T)$ equal to the set of equivalence classes of paths in $\cover{\Gamma}$ with origin $v_0 \in \Gamma$. Two vertices of $T$ are connected by an undirected edge if and only if the path class of one is a one edge extension of the path class of the other. It is clear that $T$ is an infinite $k$-tree independent of choice of $v_0$.
+
+We will now show that $\pi_1(\Gamma, v_0)$ acts on $T$ by automorphisms using the action given by
+$$
+    [p]_h . [q] = [p \cdot h . q]
+$$, where $[q] \in V(T)$ is an equivalence class of walks beginning at $v_0$. To show that this is an automorphism suppose that $[p_1], [p_2] \in V(T)$ with $[p_1] \sim [p_2]$. Thus we may assume without loss of generality that $p_1 = e_1 \ldots e_n$ and $p_2 = e_1 \ldots e_n e_{n+1}$. Then we have
+$$
+    [p]_h . [p_1] = [p \cdot (h . e_1) \cdots (h . e_n)]
+$$
+and 
+$$
+    [p]_h . [p_2] = [p \cdot (h . e_1) \cdots (h . e_{n+1})].
+$$
+Clearly $[p]_h . [p_2]$ is a one-edge extension of $[p]_h . [p_1]$ and they are therefore connected by an edge. The reverse direction of the claim is analogous. 
+
+Now we can show that $T/\pi_1(\Gamma, v_0) \equiv \Gamma$. First, note that for $[p] \in V(T)$, $\phi([p]) = t(p)$ is a graph homomorphism from $T$ to $\Gamma$. To show that $T/\pi_1(\Gamma, v_0) \equiv \Gamma$ we will show that vertices of $T$ are in the same orbit by $\pi_1(\Gamma, v_0)$ if and only if their images under $\phi$ are in the same orbit by $H$. This is sufficient because we know that $ \Gamma = \cover{\Gamma} / H$.
+
+First, assume that for some $[p]_h \in \pi_1(\Gamma, v_0)$, and vertices $[p_0], [p_1] \in T$ we have $[p]_h \cdot [p_0] = [p_1]$. Then I claim that $\phi([p_0]) = h . \phi([p_1])$, and so the images are in the same orbit under $H$. Observe:
+$$
+    \phi([p_1]) = \phi([p]_h \cdot [p_0]) = \phi([p \cdot (h . p_0)]) = t(p \cdot (h . p_0)) = t(h . p_0) = h . t(p_0) = h.\phi([p_0]).
+$$
+
+On the other hand, assume that for $v_a, v_b \in \cover{\Gamma}$ and $h \in H$ we have $h . v_a = v_b$. Then I claim that if $\phi([p_a]) = v_a$ and $\phi([p_b]) = v_b$ for some $[p_a], [p_b] \in T$, then there exists a $g \in \pi_1(\Gamma, v_0)$ such that $g . [p_a] = [p_b]$. In fact, $g = [p_b \cdot (h . \bar {p_a})]_h$. Note that this is a valid element of $\pi(\Gamma, v_0)$ beacuse $o(h . \bar{p_a}) = h . t(p_a) = h . \phi([p_a]) = h . v_a = v_b = \phi([p_b]) = t(p_b)$. Furthermore, $p_b$ begins at $v_0$ and
+$$
+    t(p_b \cdot (h . \bar {p_a})) = t(h . \bar{p_b}) = h . t(\bar{p_b}) = h . o(p_b) = h . v_0.
+$$
+We have
+$$
+    [p_b \cdot (h . \bar {p_a})]_h . [p_a] = [p_b \cdot (h . \bar{p_a}) \cdot h . p_a] = [p_b].
+$$
+Hence $v_a, v_b \in \cover{\Gamma}$ are in the same $H$-orbit if and only if their lifts are in the same $\pi_1(\Gamma, v_0)$-orbit in $T$. Thus $T/\pi_1(\Gamma, v_0) \equiv \Gamma$ as claimed.

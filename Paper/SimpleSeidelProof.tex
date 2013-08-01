@@ -32,13 +32,14 @@
 
 
 \begin{lemma}\label{lemma:SwitchedPowers2}
-  For any $n$, we have $A(\mathcal{S}_1)^n = \begin{bmatrix}
-    C & X \\\\
+  For any $n$, we have $$A(\mathcal{S}_1)^n = \begin{bmatrix}
+    C & X \\
     Y & D
-  \end{bmatrix}$ and $A(\mathcal{S}_2)^n = \begin{bmatrix}
-    C - S_1 & S_2 - X \\\\
-    S_3 - Y & D - S_4
-  \end{bmatrix}$, where $S_1,\ldots,S_4$ are constant column matrices, and $S_1$ and $S_4$ have row sums $0$.
+  \end{bmatrix} \text{ and }
+    A(\mathcal{S}_2)^n = \begin{bmatrix}
+      C - S_1 & S_2 - X \\
+      S_3 - Y & D - S_4
+  \end{bmatrix},$$ where $S_1,\ldots,S_4$ are constant column matrices, and $S_1$ and $S_4$ have row sums $0$.
 \end{lemma}
 
 \begin{proof} We will proceed by induction on $n$. For the base case, we let $C = A, X = T, Y = T^T, D = B, S_1 = 0, S_2 = J, S_3 = J, S_4 = 0$. The only thing interesting to note here is that $S_3 = J$ is valid because $S_3 - Y = J - T^T = (J - T)^T$, using the fact that $J$ is symmetric.

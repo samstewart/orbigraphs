@@ -71,7 +71,7 @@
 \small Department of Mathematical Sciences\\[-0.8ex]
 \small Lewis and Clark College\\[-0.8ex] 
 \small Portland, Oregon\\
-\small\tt remifa@dis.solatido.edu\\
+\small\tt lstanhope@lclark.edu\\
 % \and
 % Forgotten Second Author \qquad  Forgotten Third Author\\
 % \small School of Hard Knocks\\[-0.8ex]
@@ -299,14 +299,14 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     \end{theorem}
     \begin{proof}
       Let $\Gamma$ be a $k$-orbigraph, $A$ its adjacency matrix, and $\langle w_n \rangle$ a sequence of natural numbers such that $w_n$ is the number of cycles in $\Gamma$ of length $n$. We know that
-        \begin{equation}\label{eq:trace_length_spectrum}
+        \begin{equation}\label{eq:TraceLengthSpectrum}
           w_n = Tr(A^n)
         \end{equation}
       because the diagonal of $A^n$ counts the number of cycles of length $n$. Converting $A$ to Jordon Normal Form gives
       \begin{equation*}
         Tr(\tilde{A}^n) = \sum \lambda_i^n
       \end{equation*}
-      and by the similarity invariance of trace and \ref{eq:trace_length_spectrum}
+      and by the similarity invariance of trace and \ref{eq:TraceLengthSpectrum}
       \begin{equation*}
         w_n = \sum \lambda_i^n
       \end{equation*}.
@@ -316,9 +316,87 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     \end{proof}
 
     \begin{theorem}\label{thm:BipartiteSymmetry}
-      An orbigraph is bipartite if and only if its spectrum is symmetric about zero.
+      A $k$-orbigraph is bipartite if and only if its spectrum is symmetric about zero.
     \end{theorem}
     \begin{proof}
+      Let $\Gamma$ be a $k$-orbigraph, $A$ its adjacency matrix, and $\tilde{A}$ the Jordon Normal Form of $A$. The diagonal of $\tilde{A}$ contains the spectrum of $\Gamma$ so
+        \begin{equation} \label{eq:TraceOfJordonForm}
+          Tr(\tilde{A}^n) = \sum \lambda_i^n
+        \end{equation}
+      We know that $Tr(A^n)$ counts the number of cycles of length $n$ and that
+        \begin{equation*}
+          Tr(A^n) = Tr(\tilde{A}^n) = \sum \lambda_i^n
+        \end{equation*}
+      by the similarity invariance of trace and \ref{eq:TraceOfJordonForm}. Recall that a graph is bipartite if it contains only even length cycles. By hypothesis, the spectrum is symmetric and thus
+        \begin{equation*}
+          Tr(A^m) = \sum \lambda_i^m = 0
+        \end{equation*}
+      for all odd $m$ which indicates that $\Gamma$ does not contain any odd length cycles. Hence, $\Gamma$ is bipartite.
+
+      Conversely, if $\Gamma$ is bipartite then we can partition the rows and columns of $A$ intno two disjoint sets
+
+      $$
+    A = 
+      \bordermatrix {
+          & S & T  \cr
+        S & 0 & A  \cr
+        T & B & 0
+      } \ \ 
+      $$
+      so that $S$ and $T$ have no internal connections. Choose an eigenvector of $A$
+
+      $$
+      \bordermatrix {
+          & S & T  \cr
+        S & 0 & A  \cr
+        T & B & 0
+      }
+      \begin{bmatrix}
+        C \cr
+        D
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        AD \cr
+        BC
+      \end{bmatrix}
+      =
+      \lambda 
+      \begin{bmatrix}
+        C \cr
+        D
+      \end{bmatrix}
+      $$
+      where $C$ and $D$ are the appropriate length and create a new eigenvector
+      $$
+      \bordermatrix {
+          & S & T  \cr
+        S & 0 & A  \cr
+        T & B & 0
+      }
+      \begin{bmatrix}
+        -C \cr
+        D
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        AD \cr
+        -BC
+      \end{bmatrix}
+      =
+      \lambda 
+      \begin{bmatrix}
+        C \cr
+        -D
+      \end{bmatrix}
+      =
+      -\lambda 
+      \begin{bmatrix}
+        -C \cr
+        D
+      \end{bmatrix}.
+      $$
+      Thus, there exists a $-\lambda$ for every $\lambda$ so the spectrum is symmetric.
     \end{proof}
 
 

@@ -19,8 +19,10 @@
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 %%%% REMOVE FOR FINAL DRAFT: %%%%
-\usepackage{showkeys}
-\usepackage[left=2in, right=2in]{geometry}
+%\usepackage{showkeys}
+%\usepackage[left=2in, right=2in]{geometry}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Bibliography.bib}
 
 % use these commands for typesetting doi and arXiv references in the bibliography
 \newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
@@ -54,8 +56,11 @@
 % custom markup
 \DeclareMathOperator*{\spec}{Spec}
 \DeclareMathOperator*{\tr}{tr}
+\providecommand{\ind}{\operatorname{Ind}}
+\DeclareMathOperator*{\res}{Res}
 \providecommand{\cover}[1]{\widetilde{#1}}
 \providecommand{\rev}[1]{\bar{#1}}
+\providecommand{\abs}[1]{\lvert #1 \rvert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,7 +152,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   \begin{definition}\label{def:OrbigraphDefn}
     A \textbf{$k$-orbigraph} is a directed graph $\Gamma$ where the adjacency matrix $A(\Gamma)$ satisfies the following:
     
-    \begin{enumerate}[i.]
+    \begin{enumerate}[(i)]
       \item $A(\Gamma)_{ij} \in \mathbb{Z}_{\ge 0}$
       \item $\sum_j A(\Gamma)_{ij} = k$
       \item $A(\Gamma)_{ij} > 0$ if and only if $A(\Gamma)_{ji} > 0$.
@@ -215,10 +220,10 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     Comparable to the distinction between \textbf{good} and \textbf{bad} orbi\textit{folds} [see thurston], we call an orb\textit{graph} $\Gamma$ \textbf{good} when it is covered by a \textit{finite} $k$-regular graph and we call $\Gamma$ \textbf{bad} when no finite covering exists. Of course, both good and bad orbigraphs are always covered by infinite $k$-trees as described above, again similar to the universal coverings of orbifolds. But beyond these similarities, orbigraph covering theory parts ways with orbifold covering theory: we are able to characterize good and bad orbigraph via a purely structural property.
 
     \begin{theorem}\label{thm:GoodBadCharacterization}
-      Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, $\Gamma$ has a corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
+      Let $\Gamma$ be an orbigraph and let $A$ be its adjacency matrix. If and only if, for a given cycle $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1}$, the corresponding reverse cycle $A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$ such that $A_{1,2} A_{2,3} \ldots A_{n-1, n} A_{n, 1} = A_{1, n} A_{n, n-1} \ldots A_{3,2} A_{2,1}$, then $\Gamma$ is good.
     \end{theorem}
 
-    The cycle condition in Theorem \ref{thm:GoodBadCharacterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains.
+    The cycle condition in Theorem \ref{thm:GoodBadCharacterization} is known as the Kolmogorov critition [cite Kemney and Snell] and is equivalent to claiming that $\Gamma$, when converted to a Markov chain by normalizing the edge weights by $k$, is reversible. We discovered the good/bad characterization via Markov chain theory and only later made the structural connection, so while the theorem uses the cycle condition for readability, the proof exploits the concept of Markov reversibility. Interested readers should consult the classic reference [Kemney and Snell] for an in-depth study of reversible chains. %FIXME - references
 
     \begin{proof}
       \input{GoodCharacterizationProof}
@@ -248,8 +253,11 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     In this situation will denote the quotient $\Gamma / \pi$ by $\Gamma / G$. Note that this implies that an orbigraph is good if it is the quotient of a $k$-regular graph by a group action. We see that this group action can be lifted to the universal covering tree:
 
     \begin{theorem}\label{thm:GoodFundamentalGroup}
-      If $\Gamma$ is a $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
+      If $\Gamma$ is a connected $k$-orbigraph such that $\Gamma = \widetilde{\Gamma}/G$ for some subgroup $G$ of the automorphism group of a $k$-regular graph $\widetilde{\Gamma}$, then there exists a group of automorphisms $\widetilde{G}$ of $T_k$ such that $T_k / \widetilde{G} = \Gamma$.
     \end{theorem}
+    \begin{proof}
+      \input{GoodFundamentalGroupProof}
+    \end{proof}
 
     Such a group may be regarded as the fundamental group of the orbigraph.
 
@@ -264,7 +272,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{Familiar Spectral Results}
 
-    Many spectral results about manifolds carry over to orbifolds, and the same is true of spectral results of regular graphs to orbigraphs. We start the discussion of the spectral theory of orbigraphs a fundamental result.
+    Many spectral results about manifolds carry over to orbifolds, and the same is true of spectral results of regular graphs to orbigraphs. We start the discussion of the spectral theory of orbigraphs with a fundamental result.
 
     \begin{lemma}\label{lemma:SpectrumInclusion}
       If $\widetilde{\Gamma}$ covers $\Gamma$, then $\spec(\Gamma) \subseteq \spec(\widetilde{\Gamma})$ as multisets, with equality only when the covering is discrete.
@@ -425,7 +433,8 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
       \input{SingularBounds}
     \end{proof}
 
-    Furthermore, we find that we can determine if an orbigraph is a simple, undirected, $k$-regular graph via its spectrum:
+    Furthermore, we find that we can determine if an orbigraph is a simple, undirected, $k$-regular graph via its spectrum. Therefore, there are no cospectral singular orbigraphs and $k$-regular graphs. Whether the corresponding result for orbifolds holds is still unknown.
+
     \begin{corollary}
       An orbigraph $\Gamma$ is a simple $k$-regular graph if and only if $\sum_{i} \lambda_i^2 = n k$ and $\sum_{i} \lambda_i = 0$.
     \end{corollary}
@@ -445,14 +454,46 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
     Two subgroups $H_1$ and $H_2$  of a finite group $G$ are called Sunada equivalent if, for all $g \in G$ we have $\#([g] \cap H_1) = \#([g] \cap H_2)$.
   \end{definition}
 
+  \begin{lemma}\label{lemma:SunadaEquivRepresenation}
+    Subgroups $H_1$ and $H_2$ of a finite group $G$ are Sunada equivalent if and only if $\operatorname{Ind}_{H_1}^G 1_{H_1}$ and $\operatorname{Ind}_{H_2}^G 1_{H_2}$, the induced representations of $G$ with respect to the trival representation of $H_1$ (resp. $H_2$), are equivalent as representations of $G$.
+  \end{lemma}
+  \begin{proof}
+  See \cite{BrooksSunadaMethod} Lemma 1.1.
+  \end{proof}
+
   \begin{theorem}\label{thm:Sunada}
     If $\Gamma$ is an orbigraph and $H_1$ and $H_2$ are Sunada equivalent subgroups of the automorphism group of $\Gamma$, then $\spec(\Gamma / H_1) = \spec(\Gamma / H_2)$.
   \end{theorem}
+
+  Note: the proof of this theorem is drawn from a proof of a similar result for quotients of undirected graphs found in an unpublished set of notes by Gregory Quenell [ref]. %FIXME - references
+
   \begin{proof}
     \input{SunadaProof}
   \end{proof}
 
-  Example using $K_6$ with gadgets.
+  \begin{figure}[h!]
+    \caption{$K_6$ with additional singular vertices. Undirected edges represent pairs of directed edges and unweighted directed edges are inferred to have weight one.}\label{fig:K6WithGadgets}
+    \centering
+    \includegraphics[width=0.3\textwidth]{Graphics/K6WithGadgets}
+  \end{figure}
+  \begin{figure}[h!]
+    \caption{The quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$}\label{fig:SunadaQuotients}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Graphics/SunadaQuotients}
+  \end{figure}
+
+  \begin{example}
+    Here we demonstrate the extension of Sunada's theorem to orbigraphs by producing two non-isomorphic, cospectral orbigraphs as quotients of a larger orbigraph. The original orbigraph $\Gamma$ we will consider is shown in Figure \ref{fig:K6WithGadgets}. The orbigraph $\Gamma$ consists of $K_6$ with one additional vertex attached to each vertex. From this, we see that its automorphism group $G$ is isomorphic to $S_6$. The action of the following subgroups $H_1$ and $H_2$ of $S_6$ on $\Gamma$ produces the two quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$ in Figure \ref{fig:SunadaQuotients}.
+    \begin{align*}
+      H_1 &= \{ (12)(34), (13)(24), (14)(23) \} \\
+      H_2 &= \{ (12)(34), (12)(56), (34)(56) \}
+    \end{align*}
+    The subgroups $H_1$ and $H_2$ are Sunada equivalent [ref buser] and so by Theorem \ref{thm:Sunada}, the quotient graphs $\Gamma / H_1$ and $\Gamma / H_2$ are cospectral. A simple calculation shows that their spectra are %FIXME - references
+    $$
+    \spec(\Gamma / H_1) = \spec(\Gamma / H_2) = \{ -3, -3, -1, 2, 2, 6 \}.
+    $$
+    They are clearly not isomorphic.
+  \end{example}
 
   Seidel Switching is a method used to construct cospectral pairs. It has previously been used in undirected graphs, but there is very little literature on its use in directed graphs. Here we show that the method can be extended to construct cospectral orbigraphs. In its most basic form, Seidel switching produces a pair of cospectral graphs by making connections between two given graphs. 
 
@@ -473,13 +514,32 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
   The orbigraphs $A(\mathcal{S}_1)$ and $A(\mathcal{S}_2)$ as defined above are cospectral.
   \end{theorem}
 
+  Remark: The standard method of proving this result [ref Brooks] relies on the fact that in an undirected graph, the number of walks of a given length originating at a given vertex is equal to the number of walks of that length terminating at the vertex. This is untrue for orbigraphs, so the well known proof is insufficient. %FIXME - references
+
+  Note, in the following, the term ``constant row sum matrix'' is used to describe a matrix $A$ such that $A \vec{1} = k \vec{1}$ for some $k$. It is easy to show that the sum or product of constant row sum matrices is a constant row sum matrix and that the function $Rs(A) = k$ is additive and multiplicative. Similarly, ``constant column matrices'' are those in which for each column, every entry is the same. This set is likewise closed under addition and multiplication.
+
   \input{SimpleSeidelProof}
 
+  Remark: This theorem can easily be extended to show a pair of cospectral covering orbigraphs can be generated for any orbigraph. (Proof is very similar, not sure we need to include it\ldots.)
+
   \begin{theorem}\label{thm:SeidelSwitchingExtension}
-    Complicated statement about cospectral covers.
+    Suppose $\Gamma$ is a $k$-orbigraph on $m$ vertices and $\cover{\Gamma}_1,\ldots,\cover{\Gamma}_m$ are $k_1,\ldots,k_n$-orbigraphs on $2n_1,\ldots,2n_m$ vertices such that $k_i = A(\Gamma)_{ii}$ and $s_{ij} = A(\Gamma)_{ij} / n_j$ is an integer. Then there exist switching matrices $T_{ij}$ such that the two orbigraphs 
+    $$
+    A(\mathcal{S}_1) = \begin{bmatrix}
+      \cover{\Gamma}_1  & T_{12}            & \cdots & T_{1m} \\
+      T_{21}            & \cover{\Gamma}_2  & \cdots & T_{2m} \\
+      \vdots            & \vdots            & \ddots & \vdots \\
+      T_{m1}            & T_{m2}            & \cdots & \cover{\Gamma}_m
+    \end{bmatrix} \ \ 
+    A(\mathcal{S}_1) = \begin{bmatrix}
+      \cover{\Gamma}_1  & s_{12}J - T_{12}  & \cdots & s_{1m}J - T_{1m} \\
+      s_{21}J - T_{21}  & \cover{\Gamma}_2  & \cdots & s_{2m}J - T_{2m} \\
+      \vdots            & \vdots            & \ddots & \vdots \\
+      s_{m1}J - T_{m1}  & s_{m2}J - T_{m2}  & \cdots & \cover{\Gamma}_m
+    \end{bmatrix}
+    $$
+    are cospectral and cover $\Gamma$.
   \end{theorem}
-  \begin{proof}
-  \end{proof}
 
   This gives a simple method of finding cospectral good and bad orbigraphs:
 
@@ -495,7 +555,7 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
         1 & 2
       \end{array} \right).
     $$
-    Constructing a pair of cospectral orbigrapsh $S_1$ and $S_2$ by switching $\Gamma$ with itself using the switching matrix $I_2$. The adjacency matrices for $S_1$ and $S_2$ are:
+    Constructing a pair of cospectral orbigraphs $S_1$ and $S_2$ by switching $\Gamma$ with itself using the switching matrix $I_2$. The adjacency matrices for $S_1$ and $S_2$ are:
     $$
     A(S_1) = 
       \bordermatrix {
@@ -534,8 +594,9 @@ Riemannian orbifolds are a slight generalization of Riemannian manifolds.  Inste
 % If you use BibTeX to create a bibliography
 % then copy and past the contents of your .bbl file into your .tex file
 
-\begin{thebibliography}{10}
+%\begin{thebibliography}{10}
+%\end{thebibliography}
 
-\end{thebibliography}
+\printbibliography
 
 \end{document}
